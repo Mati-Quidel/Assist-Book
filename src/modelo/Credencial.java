@@ -21,8 +21,6 @@ public class Credencial {
     public Credencial(int idCredencial, int idAlumno, int idColegio, int idComuna) {
         this.idCredencial = idCredencial;
         this.idAlumno = idAlumno;
-        this.idColegio = idColegio;
-        this.idComuna = idComuna;
     }
 
     public int getIdCredencial() {

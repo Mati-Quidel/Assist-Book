@@ -8,15 +8,15 @@ import Conexion.Conexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import modelo.Profesor;
+import modelo.Libro;
 /**
  *
- * @author aliss
+ * @author Matias
  */
-public class Controlador_Profesor {
+public class Controlador_Libro {
     private Conexion Conect;
-    
-    public Controlador_Profesor() {
+
+    public Controlador_Libro() {
         this.setConexion(Conexion.nuevaInstancia());
     }
     private void setConexion(Conexion nuevaConexion){
@@ -26,14 +26,15 @@ public class Controlador_Profesor {
        return this.Conect;
     }
     
-    public boolean agregarProfesor(Profesor nuevoProfesor){
+    public boolean agregarLibro(Libro nuevoLibro){
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO profesor (rutProfe,dv) VALUES(?,?)"
+                    "INSERT INTO Libro (curso,asignatura,profesor) VALUES(?,?,?)"
             );
-            pstm.setInt(1, nuevoProfesor.getRutProfe());
-            pstm.setString(2, nuevoProfesor.getDv());
+            pstm.setString(1, nuevoLibro.getCurso());
+            pstm.setString(2, nuevoLibro.getAsignatura());
+            pstm.setString(3, nuevoLibro.getProfesor());
             if(pstm.executeUpdate()==1){
                 salida = true;
             }
@@ -55,3 +56,10 @@ public class Controlador_Profesor {
     
     
 }
+
+    
+    
+    
+    
+    
+

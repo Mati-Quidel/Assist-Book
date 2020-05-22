@@ -5,18 +5,19 @@
  */
 package controlador;
 import Conexion.Conexion;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import modelo.Profesor;
+import modelo.Asistencia;
 /**
  *
- * @author aliss
+ * @author Matias
  */
-public class Controlador_Profesor {
-    private Conexion Conect;
-    
-    public Controlador_Profesor() {
+public class Controlador_Asistencia {
+   private Conexion Conect;
+
+    public Controlador_Asistencia() {
         this.setConexion(Conexion.nuevaInstancia());
     }
     private void setConexion(Conexion nuevaConexion){
@@ -26,14 +27,14 @@ public class Controlador_Profesor {
        return this.Conect;
     }
     
-    public boolean agregarProfesor(Profesor nuevoProfesor){
+    public boolean agregarAsistencia(Asistencia nuevaAsistencia){
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO profesor (rutProfe,dv) VALUES(?,?)"
+                    "INSERT INTO alumno (TipoAsistencia,Fecha) VALUES(?,?)"
             );
-            pstm.setInt(1, nuevoProfesor.getRutProfe());
-            pstm.setString(2, nuevoProfesor.getDv());
+            pstm.setInt(1, nuevaAsistencia.getTipoAsistencia());
+            pstm.setDate(2, (Date) nuevaAsistencia.getFecha());
             if(pstm.executeUpdate()==1){
                 salida = true;
             }
@@ -52,6 +53,11 @@ public class Controlador_Profesor {
         }
         return salida;
     }
+    
+    
+
+    
+    
     
     
 }
