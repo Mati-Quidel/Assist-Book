@@ -30,10 +30,10 @@ public class Controlador_Profesor {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO profesor (rutProfe,dv) VALUES(?,?)"
+                    "INSERT INTO profesor (rutProfe,nomcompprofe) VALUES(?,?)"
             );
             pstm.setInt(1, nuevoProfesor.getRutProfe());
-            pstm.setString(2, nuevoProfesor.getDv());
+            pstm.setString(2, nuevoProfesor.getNomcompProfe());
             if(pstm.executeUpdate()==1){
                 salida = true;
             }

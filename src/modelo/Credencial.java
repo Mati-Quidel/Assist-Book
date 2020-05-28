@@ -10,49 +10,31 @@ package modelo;
  * @author Matias
  */
 public class Credencial {
-    private int idCredencial;
-    private int idAlumno;
-    private int idColegio;
-    private int idComuna;
+    private int idCREDENCIAL;
+    private int codigo;
 
     public Credencial() {
     }
 
-    public Credencial(int idCredencial, int idAlumno, int idColegio, int idComuna) {
-        this.idCredencial = idCredencial;
-        this.idAlumno = idAlumno;
+    public Credencial(int idCREDENCIAL, int codigo) {
+        this.idCREDENCIAL = idCREDENCIAL;
+        this.codigo = codigo;
     }
 
-    public int getIdCredencial() {
-        return idCredencial;
+    public int getIdCREDENCIAL() {
+        return idCREDENCIAL;
     }
 
-    public void setIdCredencial(int idCredencial) {
-        this.idCredencial = idCredencial;
+    public void setIdCREDENCIAL(int idCREDENCIAL) {
+        this.idCREDENCIAL = idCREDENCIAL;
     }
 
-    public int getIdAlumno() {
-        return idAlumno;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setIdAlumno(int idAlumno) {
-        this.idAlumno = idAlumno;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
-
-    public int getIdColegio() {
-        return idColegio;
-    }
-
-    public void setIdColegio(int idColegio) {
-        this.idColegio = idColegio;
-    }
-
-    public int getIdComuna() {
-        return idComuna;
-    }
-
-    public void setIdComuna(int idComuna) {
-        this.idComuna = idComuna;
-    }
- 
+    
 }

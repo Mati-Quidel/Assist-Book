@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Conexion;
+import com.mysql.cj.conf.PropertyKey;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
 public class Conexion {
     private static Conexion conexion;
     private Connection con;  
-    private Conexion (){}
+    public Conexion (){}
     
     public static Conexion nuevaInstancia(){
     if(conexion == null){
@@ -26,7 +27,7 @@ public class Conexion {
     if(this.con == null || this.con.isClosed()){
     Class.forName("com.mysql.cj.jdbc.Driver");
     this.con = DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306",
+            "jdbc:mysql://localhost:3306/pj-escolar?serverTimezone = -3:00",
             "root",
             "root123"
             );

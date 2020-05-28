@@ -6,34 +6,33 @@
 package modelo;
 
 import java.util.Date;
-
-
-
-
 /**
  *
  * @author Matias
  */
 public class Asistencia {
-    private int idAsistencia;
+    private int idASISTENCIA;
     private Date fecha;
     private int tipoAsistencia;
-
+    private int idLIBRO;
+    private int idCURSO;
+    private int idSALA;
+    private int idASIGNATURA;
     public Asistencia() {
     }
 
-    public Asistencia(int idAsistencia, Date fecha, int tipoAsistencia) {
-        this.idAsistencia = idAsistencia;
+    public Asistencia(int idASISTENCIA, Date fecha, int tipoAsistencia) {
+        this.idASISTENCIA = idASISTENCIA;
         this.fecha = fecha;
         this.tipoAsistencia = tipoAsistencia;
     }
 
-    public int getIdAsistencia() {
-        return idAsistencia;
+    public int getIdASISTENCIA() {
+        return idASISTENCIA;
     }
 
-    public void setIdAsistencia(int idAsistencia) {
-        this.idAsistencia = idAsistencia;
+    public void setIdASISTENCIA(int idASISTENCIA) {
+        this.idASISTENCIA = idASISTENCIA;
     }
 
     public Date getFecha() {
@@ -51,5 +50,37 @@ public class Asistencia {
     public void setTipoAsistencia(int tipoAsistencia) {
         this.tipoAsistencia = tipoAsistencia;
     }
-   
+
+    public int getIdLIBRO() {
+        return idLIBRO;
+    }
+
+    public void setIdLIBRO(int idLIBRO) {
+        this.idLIBRO = idLIBRO;
+    }
+
+    public int getIdCURSO() {
+        return idCURSO;
+    }
+
+    public void setIdCURSO(int idCURSO) {
+        this.idCURSO = idCURSO;
+    }
+
+    public int getIdSALA() {
+        return idSALA;
+    }
+
+    public void setIdSALA(int idSALA) {
+        this.idSALA = idSALA;
+    }
+
+    public int getIdASIGNATURA() {
+        return idASIGNATURA;
+    }
+
+    public void setIdASIGNATURA(int idASIGNATURA) {
+        this.idASIGNATURA = idASIGNATURA;
+    }
+    
 }

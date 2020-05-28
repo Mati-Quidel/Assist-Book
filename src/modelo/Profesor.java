@@ -5,136 +5,97 @@
  */
 package modelo;
 
-import java.util.Date;
 
 /**
  *
  * @author Matias
  */
 public class Profesor {
-    private int idProfesor;
+    private int idPROFESOR;
     private int rutProfe;
-    private String dv;
-    private String nomProfe;
-    private String apellidoPaterno;
-    private String apellidoMaterno;
-    private Date fechaNacimiento; 
+    private String nomcompProfe;
     private String genero;
-    private int idUsuario;
-    private int idGenero;
+    private int idUSUARIO;
+    private int idGENERO;
+    private int idTIPOROL;
 
     //Constructor sin parametros
     public Profesor() {
         }
         //constructor con parametros
-        public Profesor(int rutProfe, String nomProfe, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero) {
+        public Profesor(int rutProfe, String nomcompProfe,String genero) {
             this.rutProfe = rutProfe;
-            this.nomProfe = nomProfe;
-            this.apellidoPaterno = apellidoPaterno;
-            this.apellidoMaterno = apellidoMaterno;
-            this.fechaNacimiento = fechaNacimiento;
+            this.nomcompProfe = nomcompProfe;
             this.genero = genero;
                 }
                 //constructor con todos los parametros.
-                public Profesor(int idProfesor, int rutProfe, String dv, String nomProfe, String apellidoPaterno, String apellidoMaterno, Date fechaNacimiento, String genero, int idUsuario, int idGenero) {
-                    this.idProfesor = idProfesor;
+                public Profesor(int idPROFESOR, int rutProfe, String nomcompProfe, String genero, int idUSUARIO, int idGENERO, int idTIPOROL) {
+                    this.idPROFESOR = idPROFESOR;
             this.rutProfe = rutProfe;
-            this.dv = dv;
-            this.nomProfe = nomProfe;
-            this.apellidoPaterno = apellidoPaterno;
-            this.apellidoMaterno = apellidoMaterno;
-            this.fechaNacimiento = fechaNacimiento;
+            this.nomcompProfe = nomcompProfe;
             this.genero = genero;
-            this.idUsuario = idUsuario;
-            this.idGenero = idGenero;
+            this.idUSUARIO = idUSUARIO;
+            this.idGENERO = idGENERO;
+            this.idTIPOROL = idTIPOROL;
         }
 
                 //Getter y Setter
-                    public int getIdProfesor() {
-        return idProfesor;
+
+    public int getIdPROFESOR() {
+        return idPROFESOR;
     }
 
-                    public void setIdProfesor(int idProfesor) {
-        this.idProfesor = idProfesor;
+    public void setIdPROFESOR(int idPROFESOR) {
+        this.idPROFESOR = idPROFESOR;
     }
 
-                    public int getRutProfe() {
+    public int getRutProfe() {
         return rutProfe;
     }
 
-                    public void setRutProfe(int rutProfe) {
+    public void setRutProfe(int rutProfe) {
         this.rutProfe = rutProfe;
     }
 
-                    public String getDv() {
-        return dv;
+    public String getNomcompProfe() {
+        return nomcompProfe;
     }
 
-                    public void setDv(String dv) {
-                        this.dv = dv;
-                    }
-
-                    public String getNomProfe() {
-        return nomProfe;
+    public void setNomcompProfe(String nomcompProfe) {
+        this.nomcompProfe = nomcompProfe;
     }
 
-                    public void setNomProfe(String nomProfe) {
-        this.nomProfe = nomProfe;
-    }
-
-                    public String getApellidoPaterno() {
-        return apellidoPaterno;
-    }
-
-                    public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
-    }
-
-                    public String getApellidoMaterno() {
-        return apellidoMaterno;
-    }
-
-                    public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
-    }
-
-                    public Date getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-                    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-                    public String getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-                    public void setGenero(String genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
-                    public int getIdUsuario() {
-        return idUsuario;
+    public int getIdUSUARIO() {
+        return idUSUARIO;
     }
 
-                    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdUSUARIO(int idUSUARIO) {
+        this.idUSUARIO = idUSUARIO;
     }
 
-                    public int getIdGenero() {
-        return idGenero;
+    public int getIdGENERO() {
+        return idGENERO;
     }
 
-                    public void setIdGenero(int idGenero) {
-        this.idGenero = idGenero;
+    public void setIdGENERO(int idGENERO) {
+        this.idGENERO = idGENERO;
     }
-    
-    
-    
-    
-    
-    
+
+    public int getIdTIPOROL() {
+        return idTIPOROL;
+    }
+
+    public void setIdTIPOROL(int idTIPOROL) {
+        this.idTIPOROL = idTIPOROL;
+    }
     
 }
             

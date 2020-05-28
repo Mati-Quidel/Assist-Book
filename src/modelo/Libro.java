@@ -10,11 +10,12 @@ package modelo;
  * @author Matias
  */
 public class Libro {
-    private int idLibro;
+    private int idLIBRO;
     private String curso;
     private String asignatura;
     private String profesor;
-    private int idCurso;
+    private int idCURSO;
+    private int idSALA;
         
         //Constructor sin parametros.
         public Libro() {
@@ -28,20 +29,21 @@ public class Libro {
         }
 
                 //constructor con parametros BD.
-                    public Libro(int idLibro, String curso, String asignatura, String profesor, int idCurso) {
-                        this.idLibro = idLibro;
+                    public Libro(int idLIBRO, String curso, String asignatura, String profesor, int idCURSO, int idSALA) {
+                        this.idLIBRO = idLIBRO;
                         this.curso = curso;
                         this.asignatura = asignatura;
                         this.profesor = profesor;
-                        this.idCurso = idCurso;
+                        this.idCURSO = idCURSO;
+                        this.idSALA = idSALA;
         }
                         //getter y setter.
-                            public int getIdLibro() {
-                                return idLibro;
+                            public int getIdLIBRO() {
+                                return idLIBRO;
                             }
 
-                            public void setIdLibro(int idLibro) {
-                                this.idLibro = idLibro;
+                            public void setIdLIBRO(int idLIBRO) {
+                                this.idLIBRO = idLIBRO;
                             }
 
                             public String getCurso() {
@@ -68,12 +70,19 @@ public class Libro {
                                 this.profesor = profesor;
                             }
 
-                            public int getIdCurso() {
-                                return idCurso;
+                            public int getIdCURSO() {
+                                return idCURSO;
                             }
 
-                            public void setIdCurso(int idCurso) {
-                                this.idCurso = idCurso;
+                            public void setIdCurso(int idCURSO) {
+                                this.idCURSO = idCURSO;
                             }
+                            public int getidSALA() {
+                                return idSALA;
+                            }
+                            public void setidCURSO(int idSALA) {
+                                this.idSALA = idSALA;
+                            }
+
                 
 }

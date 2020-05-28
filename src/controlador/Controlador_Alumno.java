@@ -30,10 +30,12 @@ public class Controlador_Alumno {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO alumno (rutAlumno,dv) VALUES(?,?)"
+                    "INSERT INTO alumno (rutAlumno,nomcompAlumno,idGENERO ) VALUES(?,?,?)"
             );
             pstm.setInt(1, nuevoAlumno.getRutAlumno());
-            pstm.setString(2, nuevoAlumno.getDv());
+            pstm.setString(2, nuevoAlumno.getNomcompAlumno());
+            pstm.setInt(3, nuevoAlumno.getIdGENERO());
+            
             if(pstm.executeUpdate()==1){
                 salida = true;
             }
@@ -53,5 +55,29 @@ public class Controlador_Alumno {
         return salida;
     }
     
-    
+    public boolean modificarAlumno(Alumno nuevoAlumno){
+        boolean salida = false;
+        try{
+            PreparedStatement pstm = this.getConexion().obtenerConexion()
+                    .prepareStatement(
+                    "UPDATE "
+                    );
+       }
+        catch(ClassNotFoundException e){
+            System.out.println("Clase no encontrada"+e.getMessage());
+        }
+        catch(SQLException e){
+            System.out.println(String.format("Error SQL %s : %s",e.getSQLState(),e.getMessage()));
+        }
+        catch(Exception e){
+            System.out.println("Otro error "+e.getMessage());
+        }
+        finally{
+            this.getConexion().cerrarConexion();
+        }
+        return salida;
+    }
+
+
+
 }

@@ -29,9 +29,9 @@ public class Controlador_Credencial {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO credencial (rutAlumno) VALUES(?,?)"
+                    "INSERT INTO credencial (codigo) VALUES(?)"
             );
-            pstm.setInt(1, nuevaCredencial.getIdCredencial());
+            pstm.setInt(1, nuevaCredencial.getCodigo());
             if(pstm.executeUpdate()==1){
                 salida = true;
             }
