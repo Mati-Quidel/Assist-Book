@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.Alumno;
+import java.util.ArrayList;
 /**
  *
  * @author Matias
@@ -60,8 +61,15 @@ public class Controlador_Alumno {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "UPDATE "
+                    "UPDATE ALUMNO SET rutAlumno = ?,nomcompAlumno = ? where id = ?"
                     );
+            pstm.setInt(1, nuevoAlumno.getRutAlumno());
+            pstm.setString(2, nuevoAlumno.getNomcompAlumno());
+            pstm.setInt(4,nuevoAlumno.getIdALUMNO());
+            if(pstm.executeUpdate() == 1){
+                salida = true; 
+            } 
+            
        }
         catch(ClassNotFoundException e){
             System.out.println("Clase no encontrada"+e.getMessage());
@@ -77,7 +85,5 @@ public class Controlador_Alumno {
         }
         return salida;
     }
-
-
 
 }
