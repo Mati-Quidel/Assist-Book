@@ -30,9 +30,9 @@ public class Controlador_Libro {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO Libro (curso,asignatura,profesor) VALUES(?,?,?)"
+                    "INSERT INTO Libro (idCURSO,asignatura,profesor) VALUES(?,?,?)"
             );
-            pstm.setString(1, nuevoLibro.getCurso());
+            pstm.setInt(1, nuevoLibro.getIdCURSO());
             pstm.setString(2, nuevoLibro.getAsignatura());
             pstm.setString(3, nuevoLibro.getProfesor());
             if(pstm.executeUpdate()==1){

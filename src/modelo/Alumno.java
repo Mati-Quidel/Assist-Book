@@ -14,11 +14,9 @@ public class Alumno {
     private int idALUMNO;
     private int rutAlumno;
     private String nomcompAlumno;
-    private int idMATRICULA;
     private int idGENERO;
-    private int idCURSO;
-    private int idSALA;
-    private int idLIBRO;
+    private int idESTADO_MATRICULA;
+    private int idCREDENCIAL;
   //Constructor sin parametros.
     public Alumno(){
     
@@ -31,14 +29,13 @@ public class Alumno {
         this.idGENERO = nuevoGenero;
     }
   // Construtor con parametros desde BD
-    public Alumno(int idALUMNO, int rutAlumno, String nomcompAlumno, int idGENERO, int idMATRICULA, int idCURSO, int idSALA, int idLIBRO) {
+    public Alumno(int idALUMNO, int rutAlumno, String nomcompAlumno, int idGENERO, int idESTADO_MATRICULA, int idCREDENCIAL) {
         this.idALUMNO = idALUMNO;
         this.rutAlumno = rutAlumno;
-        this.idMATRICULA = idMATRICULA;
+        this.idESTADO_MATRICULA = idESTADO_MATRICULA;
         this.idGENERO = idGENERO;
-        this.idCURSO = idCURSO;
-        this.idSALA = idSALA;
-        this.idLIBRO = idLIBRO;
+        this.idCREDENCIAL= idCREDENCIAL;
+     
     }
 
     public int getIdALUMNO() {
@@ -65,12 +62,12 @@ public class Alumno {
         this.nomcompAlumno = nombreAlumno;
     }
 
-    public int getIdMATRICULA() {
-        return idMATRICULA;
+    public int getIdESTADO_MATRICULA() {
+        return idESTADO_MATRICULA;
     }
 
-    public void setIdMATRICULA(int idMATRICULA) {
-        this.idMATRICULA = idMATRICULA;
+    public void setIdESTADO_MATRICULA(int idMATRICULA) {
+        this.idESTADO_MATRICULA = idMATRICULA;
     }
 
     public int getIdGENERO() {
@@ -81,28 +78,12 @@ public class Alumno {
         this.idGENERO = idGENERO;
     }
 
-    public int getIdCURSO() {
-        return idCURSO;
+    public int getIdCREDENCIAL() {
+        return idCREDENCIAL;
     }
 
-    public void setIdCURSO(int idCURSO) {
-        this.idCURSO = idCURSO;
-    }
-
-    public int getIdSALA() {
-        return idSALA;
-    }
-
-    public void setIdSala(int idSALA) {
-        this.idSALA = idSALA;
-    }
-
-    public int getIdLIBRO() {
-        return idLIBRO;
-    }
-
-    public void setIdLIBRO(int idLIBRO) {
-        this.idLIBRO = idLIBRO;
+    public void setIdCREDENCIAL(int idCURSO) {
+        this.idCREDENCIAL= idCURSO;
     }
     
     

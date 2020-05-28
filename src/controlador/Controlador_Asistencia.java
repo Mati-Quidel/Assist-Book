@@ -31,9 +31,9 @@ public class Controlador_Asistencia {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO alumno (TipoAsistencia,Fecha) VALUES(?,?)"
+                    "INSERT INTO alumno (idTIPO_ASISTENCIA,Fecha) VALUES(?,?)"
             );
-            pstm.setInt(1, nuevaAsistencia.getTipoAsistencia());
+            pstm.setInt(1, nuevaAsistencia.getIdTIPO_ASISTENCIA());
             pstm.setDate(2, (Date) nuevaAsistencia.getFecha());
             if(pstm.executeUpdate()==1){
                 salida = true;
