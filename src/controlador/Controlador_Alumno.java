@@ -85,6 +85,7 @@ public class Controlador_Alumno {
         }
         return salida;
     }
+    
     public boolean eliminarAlumno(int id){
         boolean salida = false;
         try{
@@ -113,5 +114,40 @@ public class Controlador_Alumno {
         return salida;
 
     }
+    
+    public Alumno buscarAlumno(int id){
+        Alumno encontrado = null;
+        try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
+                .prepareStatement(
+                    "SELECT idALUMNO, rutAlumno, nomcompAlumno from ALUMNO WHERE id = ?"
+                    );
+                ResultSet rs = pstm.executeQuery();
+                        if(rs.first()){
+                            encontrado = new Alumno(
+                            rs.getInt(1),
+                            rs.getString(2), 
+                            rs.getInt(3));
+                        }
+        
+        
+        }
+        catch(ClassNotFoundException e){
+            System.out.println("ERROR, Clase no encontrada "+e.getMessage());
+        }
+        catch(SQLException e){
+            System.out.println(String.format("ERROR SQL %s : %s",e.getSQLState(),e.getMessage()));
+        }    
+        catch(Exception e){
+            System.out.println("Otra excepción "+e.getMessage());
+        }
+       finally{
+            this.getConexion().cerrarConexion();
+        }
+        return encontrado;
+    
+    }
+            
+    public List<Alumno>
+
 
 }
