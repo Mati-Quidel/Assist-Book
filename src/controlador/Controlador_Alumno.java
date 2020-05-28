@@ -85,5 +85,33 @@ public class Controlador_Alumno {
         }
         return salida;
     }
+    public boolean eliminarAlumno(int id){
+        boolean salida = false;
+        try{
+            PreparedStatement pstm = this.getConexion().obtenerConexion()
+                    .prepareStatement(
+                    "DELETE FROM ALUMNO WHERE id = ?"
+                    );
+                        pstm.setInt(1, id);
+                        if(pstm.executeUpdate() == 1) {
+                            salida = true;
+                        }
+
+                                }
+        catch(ClassNotFoundException e){
+            System.out.println("Error, Clase no encontrada "+e.getMessage() );
+        }
+        catch(SQLException e) {
+            System.out.println(String.format("Error SQL %s : %s",e.getSQLState(),e.getMessage()));
+        }
+        catch(Exception e) {
+            System.out.println("Otra excepción "+e.getMessage());
+        }
+        finally{
+            this.getConexion().cerrarConexion();
+        }
+        return salida;
+
+    }
 
 }
