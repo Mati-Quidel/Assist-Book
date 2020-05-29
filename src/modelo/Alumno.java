@@ -24,9 +24,11 @@ public class Alumno {
   //Constructor con parametros
     public Alumno(int nuevoRutAlumno, String nuevoNomcompAlumno, int nuevoGenero) {
     
-        this.rutAlumno = nuevoRutAlumno;
-        this.nomcompAlumno = nuevoNomcompAlumno;
-        this.idGENERO = nuevoGenero;
+        this.setRutAlumno(nuevoRutAlumno);
+        this.setNomcompAlumno(nuevoNomcompAlumno);
+        this.setIdGENERO(nuevoGenero);
+        
+        
     }
   // Construtor con parametros desde BD
     public Alumno(int idALUMNO, int rutAlumno, String nomcompAlumno, int idGENERO, int idESTADO_MATRICULA, int idCREDENCIAL) {
@@ -74,7 +76,7 @@ public class Alumno {
         return idGENERO;
     }
 
-    public void setIdGENERAL(int idGENERO) {
+    public void setIdGENERO(int idGENERO) {
         this.idGENERO = idGENERO;
     }
 
@@ -89,4 +91,3 @@ public class Alumno {
     
 }
     
-           

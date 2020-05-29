@@ -14,7 +14,6 @@ public class Profesor {
     private int idPROFESOR;
     private int rutProfe;
     private String nomcompProfe;
-    private String genero;
     private int idUSUARIO;
     private int idGENERO;
     private int idTIPOROL;
@@ -23,17 +22,16 @@ public class Profesor {
     public Profesor() {
         }
         //constructor con parametros
-        public Profesor(int rutProfe, String nomcompProfe,String genero) {
-            this.rutProfe = rutProfe;
-            this.nomcompProfe = nomcompProfe;
-            this.genero = genero;
+        public Profesor(int nuevoRutProfe, String nuevoNomcompProfe,int nuevoIdGENERO) {
+            this.setRutProfe(nuevoRutProfe);
+            this.setNomcompProfe(nuevoNomcompProfe);
+            this.setIdGENERO(nuevoIdGENERO);
                 }
                 //constructor con todos los parametros.
-                public Profesor(int idPROFESOR, int rutProfe, String nomcompProfe, String genero, int idUSUARIO, int idGENERO, int idTIPOROL) {
+                public Profesor(int idPROFESOR, int rutProfe, String nomcompProfe, int idUSUARIO, int idGENERO, int idTIPOROL) {
                     this.idPROFESOR = idPROFESOR;
             this.rutProfe = rutProfe;
             this.nomcompProfe = nomcompProfe;
-            this.genero = genero;
             this.idUSUARIO = idUSUARIO;
             this.idGENERO = idGENERO;
             this.idTIPOROL = idTIPOROL;
@@ -63,14 +61,6 @@ public class Profesor {
 
     public void setNomcompProfe(String nomcompProfe) {
         this.nomcompProfe = nomcompProfe;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
     }
 
     public int getIdUSUARIO() {

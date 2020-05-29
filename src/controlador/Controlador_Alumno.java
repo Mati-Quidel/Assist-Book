@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.Alumno;
+import java.util.List;
 import java.util.ArrayList;
 /**
  *
@@ -65,7 +66,7 @@ public class Controlador_Alumno {
                     );
             pstm.setInt(1, nuevoAlumno.getRutAlumno());
             pstm.setString(2, nuevoAlumno.getNomcompAlumno());
-            pstm.setInt(4,nuevoAlumno.getIdALUMNO());
+            pstm.setInt(3,nuevoAlumno.getIdALUMNO());
             if(pstm.executeUpdate() == 1){
                 salida = true; 
             } 
@@ -121,6 +122,7 @@ public class Controlador_Alumno {
                 .prepareStatement(
                     "SELECT idALUMNO, rutAlumno, nomcompAlumno from ALUMNO WHERE id = ?"
                     );
+                pstm.setInt(1,id);
                 ResultSet rs = pstm.executeQuery();
                         if(rs.first()){
                             encontrado = new Alumno(
@@ -147,7 +149,37 @@ public class Controlador_Alumno {
     
     }
             
-    public List<Alumno>
-
-
+    public List<Alumno> listarAlumnos(){
+        List <Alumno> Alumno = new ArrayList<Alumno>();
+        try {
+            PreparedStatement pstm = this.getConexion().obtenerConexion()
+                    .prepareStatement(
+                      "SELECT rutAlumno,nomcompAlumno,idGENERO, FORM Alumno "      
+                    );
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                Alumno temp = new Alumno (
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3)
+                      
+                );
+                Alumno.add(temp);
+            }
+        }
+        catch (ClassNotFoundException e){
+            System.out.println("Clase no encontrada " + e.getMessage());
+        }
+        catch(SQLException e){
+            System.out.println(String.format("ERROR SQL %s : %s",e.getSQLState(),e.getMessage()));
+        }    
+        catch(Exception e){
+            System.out.println("Otra excepción "+e.getMessage());
+        }
+        finally{
+            this.getConexion().cerrarConexion();
+        }
+        return Alumno;
+    }
 }
+
