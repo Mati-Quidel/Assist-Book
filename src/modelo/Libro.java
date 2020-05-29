@@ -31,6 +31,14 @@ public class Libro {
                 this.profesor = profesor;
         }
 
+    public Libro(int aInt, String string, String string0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Libro(int aInt, int aInt0, String string, String string0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getIdLIBRO() {
         return idLIBRO;
     }

@@ -148,7 +148,7 @@ public class Controlador_Libro {
     }
             
     public List<Libro> listarLibros(){
-        List <Libro> Libro = new ArrayList<Libro>();
+        List <Libro> Libro = new ArrayList <Libro>();
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
@@ -156,7 +156,7 @@ public class Controlador_Libro {
                     );
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
-                Libro temp= new Libro(
+                Libro temp = new Libro(
                         rs.getInt(1),
                         rs.getInt(2),
                         rs.getString(3),

@@ -27,7 +27,7 @@ public class Conexion {
     if(this.con == null || this.con.isClosed()){
     Class.forName("com.mysql.cj.jdbc.Driver");
     this.con = DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/pj-escolar?serverTimezone = -3:00",
+            "jdbc:mysql://localhost:3306/pjescolar?serverTimezone = GMT-3",
             "root",
             "root123"
             );
