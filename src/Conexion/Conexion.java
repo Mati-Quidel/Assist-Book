@@ -24,7 +24,7 @@ public class Conexion {
     return conexion;
     }
     private void abrirConexion() throws ClassNotFoundException, SQLException{
-    if(this.con == null || this.con.isClosed()){
+    if(this.con == null|| this.con.isClosed()){
     Class.forName("com.mysql.cj.jdbc.Driver");
     this.con = DriverManager.getConnection(
             "jdbc:mysql://168.138.149.15:3306/pjEscolar",
@@ -40,7 +40,7 @@ public class Conexion {
     public void cerrarConexion(){
         try{
             if(!this.con.isClosed()){
-        this.con.close();
+                this.con.close();
     } 
         }
         catch(SQLException e){

@@ -60,7 +60,7 @@ public class Controlador_Libro {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "UPDATE LIBRO SET idCURSO = ?,Asignatura = ? where id = ?"
+                    "UPDATE LIBRO SET idCURSO = ?,Asignatura = ? where idLIBRO = ?"
                     );
             pstm.setInt(1, nuevoLibro.getIdCURSO());
             pstm.setString(2, nuevoLibro.getAsignatura());
@@ -85,14 +85,14 @@ public class Controlador_Libro {
         return salida;
     }
     
-    public boolean eliminarLibro(int id){
+    public boolean eliminarLibro(int idLIBRO){
         boolean salida = false;
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "DELETE FROM LIBRO WHERE id = ?"
+                    "DELETE FROM LIBRO WHERE idLIBRO = ?"
                     );
-                        pstm.setInt(1, id);
+                        pstm.setInt(1, idLIBRO);
                         if(pstm.executeUpdate() == 1) {
                             salida = true;
                         }
@@ -114,13 +114,13 @@ public class Controlador_Libro {
 
     }
     
-    public Libro buscarLibro(int id){
+    public Libro buscarLibro(int idLIBRO){
         Libro encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT idCURSO, Asignatura, Profesor from LIBRO WHERE id = ?"
+                    "SELECT idCURSO, Asignatura, Profesor from LIBRO WHERE idLIBRO = ?"
                     );
-                pstm.setInt(1,id);
+                pstm.setInt(1,idLIBRO);
                 ResultSet rs = pstm.executeQuery();
                         if(rs.first()){
                             encontrado = new Libro(

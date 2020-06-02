@@ -58,9 +58,9 @@ public class Controlador_Credencial {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "UPDATE Credencual SET codigo = ? where id = ?"
+                    "UPDATE Credencual SET codigo = ? where idCREDENCIAL = ?"
                     );
-            pstm.setInt(0, 0);
+            pstm.setInt(1, 0);
             pstm.setInt(1, nuevaCredencial.getCodigo());
             if(pstm.executeUpdate() == 1){
                 salida = true; 
@@ -82,14 +82,14 @@ public class Controlador_Credencial {
         return salida;
     }
     
-    public boolean eliminarCredencial(int id){
+    public boolean eliminarCredencial(int idCREDENCIAL){
         boolean salida = false;
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "DELETE FROM CREDENCIAL WHERE id = ?"
+                    "DELETE FROM CREDENCIAL WHERE idCREDENCIAL = ?"
                     );
-                        pstm.setInt(1, id);
+                        pstm.setInt(1, idCREDENCIAL);
                         if(pstm.executeUpdate() == 1) {
                             salida = true;
                         }
@@ -111,13 +111,13 @@ public class Controlador_Credencial {
 
     }
     
-    public Credencial buscarCredencial(int id){
+    public Credencial buscarCredencial(int idCREDENCIAL){
         Credencial encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT idCREDENCIAL, codigo from CREDENCIAL WHERE id = ?"
+                    "SELECT idCREDENCIAL, codigo from CREDENCIAL WHERE idCREDENCIAL = ?"
                     );
-                pstm.setInt(1,id);
+                pstm.setInt(1,idCREDENCIAL);
                 ResultSet rs = pstm.executeQuery();
                         if(rs.first()){
                             encontrado = new Credencial(

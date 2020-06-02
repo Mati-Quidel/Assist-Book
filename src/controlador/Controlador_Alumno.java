@@ -62,7 +62,7 @@ public class Controlador_Alumno {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "UPDATE ALUMNO SET rutAlumno = ?,nomcompAlumno = ? where id = ?"
+                    "UPDATE ALUMNO SET rutAlumno = ?,nomcompAlumno = ? where idALUMNO = ?"
                     );
             pstm.setInt(1, nuevoAlumno.getRutAlumno());
             pstm.setString(2, nuevoAlumno.getNomcompAlumno());
@@ -87,14 +87,14 @@ public class Controlador_Alumno {
         return salida;
     }
     
-    public boolean eliminarAlumno(int id){
+    public boolean eliminarAlumno(int idALUMNO){
         boolean salida = false;
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "DELETE FROM ALUMNO WHERE id = ?"
+                    "DELETE FROM ALUMNO WHERE idALUMNO = ?"
                     );
-                        pstm.setInt(1, id);
+                        pstm.setInt(1, idALUMNO);
                         if(pstm.executeUpdate() == 1) {
                             salida = true;
                         }
@@ -116,13 +116,13 @@ public class Controlador_Alumno {
 
     }
     
-    public Alumno buscarAlumno(int id){
+    public Alumno buscarAlumno(int idALUMNO){
         Alumno encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT idALUMNO, rutAlumno, nomcompAlumno from ALUMNO WHERE id = ?"
+                    "SELECT idALUMNO, rutAlumno, nomcompAlumno from ALUMNO WHERE idALUMNO = ?"
                     );
-                pstm.setInt(1,id);
+                pstm.setInt(1,idALUMNO);
                 ResultSet rs = pstm.executeQuery();
                         if(rs.first()){
                             encontrado = new Alumno(
@@ -154,7 +154,7 @@ public class Controlador_Alumno {
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                      "SELECT rutAlumno,nomcompAlumno,idGENERO, FORM Alumno "      
+                      "SELECT rutAlumno,nomcompAlumno,idGENERO FORM Alumno "      
                     );
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){

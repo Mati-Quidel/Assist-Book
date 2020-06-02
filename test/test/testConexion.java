@@ -14,7 +14,7 @@ public class testConexion {
     public static void main(String... args){
         Conexion con = null;
         try{
-            con = Conexion.nuevaInstancia();
+                con = Conexion.nuevaInstancia();
                     if(!con.obtenerConexion().isClosed()){
                         System.out.println("Conexion abierta");
                     }

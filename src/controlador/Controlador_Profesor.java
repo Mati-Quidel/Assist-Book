@@ -60,7 +60,7 @@ public class Controlador_Profesor {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "UPDATE PROFESOR SET rutProfe = ?,nomcompProfe = ? where id = ?"
+                    "UPDATE PROFESOR SET rutProfe = ?,nomcompProfe = ? where idPROFESOR = ?"
                     );
             pstm.setInt(0, 0);
             pstm.setInt(1, nuevoProfesor.getRutProfe());
@@ -85,14 +85,14 @@ public class Controlador_Profesor {
         return salida;
     }
     
-    public boolean eliminarProfesor(int id){
+    public boolean eliminarProfesor(int idPROFESOR){
         boolean salida = false;
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "DELETE FROM PROFESOR WHERE id = ?"
+                    "DELETE FROM PROFESOR WHERE idPROFESOR = ?"
                     );
-                        pstm.setInt(1, id);
+                        pstm.setInt(1, idPROFESOR);
                         if(pstm.executeUpdate() == 1) {
                             salida = true;
                         }
@@ -114,13 +114,13 @@ public class Controlador_Profesor {
 
     }
     
-    public Profesor buscarProfesor(int id){
+    public Profesor buscarProfesor(int idPROFESOR){
         Profesor encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT idPROFESOR, nomcompProfe, rutProfe from LIBRO WHERE id = ?"
+                    "SELECT idPROFESOR, nomcompProfe, rutProfe from LIBRO WHERE idPROFESOR = ?"
                     );
-                pstm.setInt(1,id);
+                pstm.setInt(1,idPROFESOR);
                 ResultSet rs = pstm.executeQuery();
                         if(rs.first()){
                             encontrado = new Profesor(
