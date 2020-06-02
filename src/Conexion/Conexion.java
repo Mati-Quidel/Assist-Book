@@ -27,9 +27,9 @@ public class Conexion {
     if(this.con == null || this.con.isClosed()){
     Class.forName("com.mysql.cj.jdbc.Driver");
     this.con = DriverManager.getConnection(
-            "jdbc:mysql://168.138.149.15:3306/?user=assist_book",
+            "jdbc:mysql://168.138.149.15:3306/pjEscolar",
             "assist_book",
-            "Assist_book __//1"
+            "Assist_book__//1"
             );
         }
     }
