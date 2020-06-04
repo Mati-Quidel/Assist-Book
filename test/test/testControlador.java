@@ -17,8 +17,8 @@ public class testControlador {
     private static Controlador_Alumno cAlumno = new Controlador_Alumno();
     
     public static void main (String... args){
-        //testBuscarAlumno(1);
-        testListarAlumnos();
+        testBuscarAlumno(1);
+        //testListarAlumnos();
     }
 
     public static void testBuscarAlumno (int idBuscar){

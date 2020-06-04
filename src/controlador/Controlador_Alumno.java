@@ -127,8 +127,8 @@ public class Controlador_Alumno {
                         if(rs.first()){
                             encontrado = new Alumno(
                             rs.getInt(1),
-                            rs.getString(2), 
-                            rs.getInt(3));
+                            rs.getString(3), 
+                            rs.getInt(2));
                         }
         
         
