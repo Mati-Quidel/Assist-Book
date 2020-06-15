@@ -32,11 +32,14 @@ public class Controlador_Alumno {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO alumno (rutAlumno,nomcompAlumno,idGENERO ) VALUES(?,?,?)"
+                    "INSERT INTO ALUMNO (rutAlumno,nomcompAlumno,GENERO_idGENERO,"
+                            + "ESTADO_MATRICULA_idESTADO_MATRICULA,CREDENCIAL_idCREDENCIAL ) VALUES(?,?,?,?,?)"
             );
             pstm.setInt(1, nuevoAlumno.getRutAlumno());
             pstm.setString(2, nuevoAlumno.getNomcompAlumno());
-            pstm.setInt(3, nuevoAlumno.getIdGENERO());
+            pstm.setInt(3, nuevoAlumno.getGENERO_idGENERO());
+            pstm.setInt(4,nuevoAlumno.getESTADO_MATRICULA_idESTADO_MATRICULA());
+            pstm.setInt(5,nuevoAlumno.getCREDENCIAL_idCREDENCIAL());
             
             if(pstm.executeUpdate()==1){
                 salida = true;
@@ -62,11 +65,16 @@ public class Controlador_Alumno {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "UPDATE ALUMNO SET rutAlumno = ?,nomcompAlumno = ? where idALUMNO = ?"
+                    "UPDATE ALUMNO SET rutAlumno = ?,nomcompAlumno = ? ,GENERO_idGENERO = ?,"
+                            + "ESTADO_MATRICULA_idESTADO_MATRICULA = ?,"
+                            + "CREDENCIAL_idCREDENCIAL = ? where idALUMNO = ?"
                     );
             pstm.setInt(1, nuevoAlumno.getRutAlumno());
             pstm.setString(2, nuevoAlumno.getNomcompAlumno());
-            pstm.setInt(3,nuevoAlumno.getIdALUMNO());
+            pstm.setInt(3, nuevoAlumno.getGENERO_idGENERO());
+            pstm.setInt(4,nuevoAlumno.getESTADO_MATRICULA_idESTADO_MATRICULA());
+            pstm.setInt(5,nuevoAlumno.getCREDENCIAL_idCREDENCIAL());
+            pstm.setInt(6,nuevoAlumno.getIdALUMNO());
             if(pstm.executeUpdate() == 1){
                 salida = true; 
             } 
@@ -120,15 +128,15 @@ public class Controlador_Alumno {
         Alumno encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT idALUMNO, rutAlumno, nomcompAlumno from ALUMNO WHERE idALUMNO = ?"
+                    "SELECT  rutAlumno, nomcompAlumno from ALUMNO WHERE idALUMNO = ?"
                     );
                 pstm.setInt(1,idALUMNO);
                 ResultSet rs = pstm.executeQuery();
                         if(rs.first()){
                             encontrado = new Alumno(
                             rs.getInt(1),
-                            rs.getString(3), 
-                            rs.getInt(2));
+                            rs.getString(2));
+                           
                         }
         
         
@@ -150,11 +158,11 @@ public class Controlador_Alumno {
     }
             
     public List<Alumno> listarAlumnos(){
-        List <Alumno> Alumno = new ArrayList<Alumno>();
+        List <Alumno> alumnos = new ArrayList<>();
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                      "SELECT rutAlumno,nomcompAlumno,idGENERO FORM Alumno "      
+                      "SELECT rutAlumno,nomcompAlumno,GENERO_idGENERO from ALUMNO"   
                     );
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
@@ -164,7 +172,7 @@ public class Controlador_Alumno {
                         rs.getInt(3)
                       
                 );
-                Alumno.add(temp);
+                alumnos.add(temp);
             }
         }
         catch (ClassNotFoundException e){
@@ -179,7 +187,7 @@ public class Controlador_Alumno {
         finally{
             this.getConexion().cerrarConexion();
         }
-        return Alumno;
+        return alumnos;
     }
 }
 

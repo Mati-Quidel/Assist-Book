@@ -14,30 +14,36 @@ public class Alumno {
     private int idALUMNO;
     private int rutAlumno;
     private String nomcompAlumno;
-    private int idGENERO;
-    private int idESTADO_MATRICULA;
-    private int idCREDENCIAL;
-  //Constructor sin parametros.
-    public Alumno(){
+    private int GENERO_idGENERO;
+    private int ESTADO_MATRICULA_idESTADO_MATRICULA;
+    private int CREDENCIAL_idCREDENCIAL;
+  //Constructor parametros ingresar información.
     
+    public Alumno(int nuevoRutAlumno, String nuevoNomcompAlumno, int nuevoGENERO_idGENERO,
+                  int nuevoESTADO_MATRICULA_idESTADO_MATRICULA, int nuevoCREDENCIAL_idCREDENCIAL){
+        this.rutAlumno = (nuevoRutAlumno);
+        this.nomcompAlumno = (nuevoNomcompAlumno);
+        this.GENERO_idGENERO = (nuevoGENERO_idGENERO);
+        this.ESTADO_MATRICULA_idESTADO_MATRICULA = (nuevoESTADO_MATRICULA_idESTADO_MATRICULA);
+        this.CREDENCIAL_idCREDENCIAL = (nuevoCREDENCIAL_idCREDENCIAL);
     }
   //Constructor con parametros
-    public Alumno(int nuevoRutAlumno, String nuevoNomcompAlumno, int nuevoGenero) {
-    
-        this.setRutAlumno(nuevoRutAlumno);
-        this.setNomcompAlumno(nuevoNomcompAlumno);
-        this.setIdGENERO(nuevoGenero);
-        
-        
-    }
-  // Construtor con parametros desde BD
-    public Alumno(int idALUMNO, int rutAlumno, String nomcompAlumno, int idGENERO, int idESTADO_MATRICULA, int idCREDENCIAL) {
+
+    public Alumno(int idALUMNO, int rutAlumno, String nomcompAlumno, int GENERO_idGENERO, int ESTADO_MATRICULA_idESTADO_MATRICULA, int CREDENCIAL_idCREDENCIAL) {
         this.idALUMNO = idALUMNO;
         this.rutAlumno = rutAlumno;
-        this.idESTADO_MATRICULA = idESTADO_MATRICULA;
-        this.idGENERO = idGENERO;
-        this.idCREDENCIAL= idCREDENCIAL;
-     
+        this.nomcompAlumno = nomcompAlumno;
+        this.GENERO_idGENERO = GENERO_idGENERO;
+        this.ESTADO_MATRICULA_idESTADO_MATRICULA = ESTADO_MATRICULA_idESTADO_MATRICULA;
+        this.CREDENCIAL_idCREDENCIAL = CREDENCIAL_idCREDENCIAL;
+    }
+
+    public Alumno(int aInt, String string, int aInt0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Alumno(int aInt, String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getIdALUMNO() {
@@ -60,34 +66,38 @@ public class Alumno {
         return nomcompAlumno;
     }
 
-    public void setNomcompAlumno(String nombreAlumno) {
-        this.nomcompAlumno = nombreAlumno;
+    public void setNomcompAlumno(String nomcompAlumno) {
+        this.nomcompAlumno = nomcompAlumno;
     }
 
-    public int getIdESTADO_MATRICULA() {
-        return idESTADO_MATRICULA;
+    public int getGENERO_idGENERO() {
+        return GENERO_idGENERO;
     }
 
-    public void setIdESTADO_MATRICULA(int idMATRICULA) {
-        this.idESTADO_MATRICULA = idMATRICULA;
+    public void setGENERO_idGENERO(int GENERO_idGENERO) {
+        this.GENERO_idGENERO = GENERO_idGENERO;
     }
 
-    public int getIdGENERO() {
-        return idGENERO;
+    public int getESTADO_MATRICULA_idESTADO_MATRICULA() {
+        return ESTADO_MATRICULA_idESTADO_MATRICULA;
     }
 
-    public void setIdGENERO(int idGENERO) {
-        this.idGENERO = idGENERO;
+    public void setESTADO_MATRICULA_idESTADO_MATRICULA(int ESTADO_MATRICULA_idESTADO_MATRICULA) {
+        this.ESTADO_MATRICULA_idESTADO_MATRICULA = ESTADO_MATRICULA_idESTADO_MATRICULA;
     }
 
-    public int getIdCREDENCIAL() {
-        return idCREDENCIAL;
+    public int getCREDENCIAL_idCREDENCIAL() {
+        return CREDENCIAL_idCREDENCIAL;
     }
 
-    public void setIdCREDENCIAL(int idCURSO) {
-        this.idCREDENCIAL= idCURSO;
+    public void setCREDENCIAL_idCREDENCIAL(int CREDENCIAL_idCREDENCIAL) {
+        this.CREDENCIAL_idCREDENCIAL = CREDENCIAL_idCREDENCIAL;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Alumno{" + "idALUMNO=" + idALUMNO + ", rutAlumno=" + rutAlumno + ", nomcompAlumno=" + nomcompAlumno + ", GENERO_idGENERO=" + GENERO_idGENERO + ", ESTADO_MATRICULA_idESTADO_MATRICULA=" + ESTADO_MATRICULA_idESTADO_MATRICULA + ", CREDENCIAL_idCREDENCIAL=" + CREDENCIAL_idCREDENCIAL + '}';
+    }
+   
 }
     
