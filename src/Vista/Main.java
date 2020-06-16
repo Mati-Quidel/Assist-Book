@@ -197,6 +197,28 @@ public class Main {
         }
         
         // genero
+        
+        System.out.print(String.format("Ingrese un nuevo genero (1=femenino / 2=masculino) %s "
+                + "(Dejar vacio para no cambiar): ", encontrado.getGENERO_idGENERO()));
+        String GENERO_idGENEROTemp = scann.nextLine().trim();
+        int nuevoGENERO_idGENERO = 0;
+        if(GENERO_idGENEROTemp.length()==0){
+            nuevoGENERO_idGENERO = encontrado.getGENERO_idGENERO();
+        }
+        while (nuevoGENERO_idGENERO == 0){
+            try{
+                nuevoGENERO_idGENERO = Integer.parseInt(GENERO_idGENEROTemp);
+                if(nuevoGENERO_idGENERO ==1 || nuevoGENERO_idGENERO ==2){
+                    break;
+                }
+            }
+            catch(NumberFormatException e){
+                nuevoGENERO_idGENERO = 0;
+            }
+            System.out.println("Ingrese un valor correcto: ");
+            GENERO_idGENEROTemp = scann.nextLine().trim();
+        }
+        encontrado.setGENERO_idGENERO(nuevoGENERO_idGENERO);
              
         
     }

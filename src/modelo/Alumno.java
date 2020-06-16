@@ -38,14 +38,6 @@ public class Alumno {
         this.CREDENCIAL_idCREDENCIAL = CREDENCIAL_idCREDENCIAL;
     }
 
-    public Alumno(int aInt, String string, int aInt0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Alumno(int aInt, String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public int getIdALUMNO() {
         return idALUMNO;
     }
@@ -94,6 +86,13 @@ public class Alumno {
         this.CREDENCIAL_idCREDENCIAL = CREDENCIAL_idCREDENCIAL;
     }
 
+    public Alumno( int rutAlumno, String nomcompAlumno) {
+   
+        this.rutAlumno = rutAlumno;
+        this.nomcompAlumno = nomcompAlumno;
+    }
+
+    
     @Override
     public String toString() {
         return "Alumno{" + "idALUMNO=" + idALUMNO + ", rutAlumno=" + rutAlumno + ", nomcompAlumno=" + nomcompAlumno + ", GENERO_idGENERO=" + GENERO_idGENERO + ", ESTADO_MATRICULA_idESTADO_MATRICULA=" + ESTADO_MATRICULA_idESTADO_MATRICULA + ", CREDENCIAL_idCREDENCIAL=" + CREDENCIAL_idCREDENCIAL + '}';

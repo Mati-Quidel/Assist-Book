@@ -18,7 +18,7 @@ public class testControlador {
     
     public static void main (String... args){
        //testAgregarAlumno();
-       testBuscarAlumno(1);
+       //testBuscarAlumno(2);
        //testModificarAlumno();
        //testEliminarAlumno(278);
        //testListarAlumnos();
@@ -32,12 +32,12 @@ public class testControlador {
             System.out.println("No se agrego");
         }
     }
-    
 
     public static void testBuscarAlumno (int idBuscar){
-        Alumno encontrado = cAlumno.buscarAlumno(1);
+        Alumno encontrado = cAlumno.buscarAlumno(2);
         if(encontrado != null){
-            System.out.println("El alumno es " +encontrado.getNomcompAlumno());
+            System.out.println("El alumno es"+encontrado.getNomcompAlumno()
+                                +" de rut "+encontrado.getRutAlumno());
             
         }
         else{
@@ -65,7 +65,7 @@ public class testControlador {
     public static void testListarAlumnos(){
         List<Alumno> alumnos = cAlumno.listarAlumnos();
                 for(Alumno tem:alumnos){
-                    System.out.println(tem.toString());
+                    System.out.println("nombre: "+tem.getNomcompAlumno()+ "Rut: "+tem.getRutAlumno());
                 }
     }
     

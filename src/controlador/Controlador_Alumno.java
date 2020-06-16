@@ -128,15 +128,14 @@ public class Controlador_Alumno {
         Alumno encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT  idALUMNO, rutAlumno, nomcompAlumno from ALUMNO WHERE idALUMNO = ?"
+                    "SELECT   rutAlumno, nomcompAlumno from ALUMNO WHERE idALUMNO = ?"
                     );
                 pstm.setInt(1,idALUMNO);
                 ResultSet rs = pstm.executeQuery();
                         if(rs.first()){
                             encontrado = new Alumno(
                             rs.getInt(1),
-                            rs.getString(3),
-                            rs.getInt(2));
+                            rs.getString(2));
                            
                         }
         
@@ -163,14 +162,13 @@ public class Controlador_Alumno {
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                      "SELECT rutAlumno,nomcompAlumno,GENERO_idGENERO from ALUMNO"   
+                      "SELECT rutAlumno,nomcompAlumno from ALUMNO"   
                     );
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
                 Alumno temp = new Alumno (
                         rs.getInt(1),
-                        rs.getString(2),
-                        rs.getInt(3)
+                        rs.getString(2)
                       
                 );
                 alumnos.add(temp);
