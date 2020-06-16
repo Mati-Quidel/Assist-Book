@@ -128,14 +128,15 @@ public class Controlador_Alumno {
         Alumno encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT  rutAlumno, nomcompAlumno from ALUMNO WHERE idALUMNO = ?"
+                    "SELECT  idALUMNO, rutAlumno, nomcompAlumno from ALUMNO WHERE idALUMNO = ?"
                     );
                 pstm.setInt(1,idALUMNO);
                 ResultSet rs = pstm.executeQuery();
                         if(rs.first()){
                             encontrado = new Alumno(
                             rs.getInt(1),
-                            rs.getString(2));
+                            rs.getString(3),
+                            rs.getInt(2));
                            
                         }
         

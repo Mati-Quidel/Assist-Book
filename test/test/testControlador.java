@@ -18,7 +18,7 @@ public class testControlador {
     
     public static void main (String... args){
        //testAgregarAlumno();
-       testBuscarAlumno(5);
+       testBuscarAlumno(1);
        //testModificarAlumno();
        //testEliminarAlumno(278);
        //testListarAlumnos();
@@ -35,7 +35,7 @@ public class testControlador {
     
 
     public static void testBuscarAlumno (int idBuscar){
-        Alumno encontrado = cAlumno.buscarAlumno(5);
+        Alumno encontrado = cAlumno.buscarAlumno(1);
         if(encontrado != null){
             System.out.println("El alumno es " +encontrado.getNomcompAlumno());
             
