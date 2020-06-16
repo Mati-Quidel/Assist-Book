@@ -13,29 +13,44 @@ public class Libro {
     private int idLIBRO;
     private String asignatura;
     private String profesor;
-    private int idCURSO;
-    private int idSALA;
-    private int idALUMNO;
-    private int idGENERO;
-    private int idESTADO_MATRICULA;
-    private int idCREDENCIAL;
-        
-        //Constructor sin parametros.
-        public Libro() {
+    private int CURSO_idCURSO;
+    private int CURSO_SALA_idSALA;
+    private int CURSO_ALUMNO_idALUMNO;
+    private int CURSO_ALUMNO_GENERO_idGENERO;
+    private int CURSO_ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA;
+    private int CURSO_ALUMNO_CREDENCIAL_idCREDENCIAL;
+
+    public Libro(String nuevoAsignatura, String nuevoProfesor, int nuevoCURSO_idCURSO, 
+            int nuevoCURSO_SALA_idSALA, int nuevoCURSO_ALUMNO_idALUMNO, int nuevoCURSO_ALUMNO_GENERO_idGENERO, 
+            int nuevoCURSO_ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA, int nuevoCURSO_ALUMNO_CREDENCIAL_idCREDENCIAL) {
+       
+        this.asignatura = (nuevoAsignatura);
+        this.profesor = (nuevoProfesor);
+        this.CURSO_idCURSO = (nuevoCURSO_idCURSO);
+        this.CURSO_SALA_idSALA = (nuevoCURSO_SALA_idSALA);
+        this.CURSO_ALUMNO_idALUMNO = (nuevoCURSO_ALUMNO_idALUMNO);
+        this.CURSO_ALUMNO_GENERO_idGENERO = ( nuevoCURSO_ALUMNO_GENERO_idGENERO);
+        this.CURSO_ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA = (nuevoCURSO_ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA);
+        this.CURSO_ALUMNO_CREDENCIAL_idCREDENCIAL = (nuevoCURSO_ALUMNO_CREDENCIAL_idCREDENCIAL);
     }
-         
-            //constructor con parametros.
-            public Libro(String asignatura, String profesor) {
-                
-                this.asignatura = asignatura;
-                this.profesor = profesor;
-        }
+
+    public Libro(int idLIBRO, String asignatura, String profesor, 
+            int CURSO_idCURSO, int CURSO_SALA_idSALA, int CURSO_ALUMNO_idALUMNO, 
+            int CURSO_ALUMNO_GENERO_idGENERO, int CURSO_ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA,
+            int CURSO_ALUMNO_CREDENCIAL_idCREDENCIAL) {
+        
+        this.idLIBRO = idLIBRO;
+        this.asignatura = asignatura;
+        this.profesor = profesor;
+        this.CURSO_idCURSO = CURSO_idCURSO;
+        this.CURSO_SALA_idSALA = CURSO_SALA_idSALA;
+        this.CURSO_ALUMNO_idALUMNO = CURSO_ALUMNO_idALUMNO;
+        this.CURSO_ALUMNO_GENERO_idGENERO = CURSO_ALUMNO_GENERO_idGENERO;
+        this.CURSO_ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA = CURSO_ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA;
+        this.CURSO_ALUMNO_CREDENCIAL_idCREDENCIAL = CURSO_ALUMNO_CREDENCIAL_idCREDENCIAL;
+    }
 
     public Libro(int aInt, String string, String string0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Libro(int aInt, int aInt0, String string, String string0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -63,71 +78,64 @@ public class Libro {
         this.profesor = profesor;
     }
 
-    public int getIdCURSO() {
-        return idCURSO;
+    public int getCURSO_idCURSO() {
+        return CURSO_idCURSO;
     }
 
-    public void setIdCURSO(int idCURSO) {
-        this.idCURSO = idCURSO;
+    public void setCURSO_idCURSO(int CURSO_idCURSO) {
+        this.CURSO_idCURSO = CURSO_idCURSO;
     }
-            
 
-                //constructor con parametros BD.
-                    public Libro(int idLIBRO, String curso, String asignatura, String profesor, int idCURSO, int idSALA,
-                    int idALUMNO,int idGENERO,int idESTADO_MATRICULA, int idCREDENCIAL) {
-                        this.idLIBRO = idLIBRO;
-                        this.asignatura = asignatura;
-                        this.profesor = profesor;
-                        this.idCURSO = idCURSO;
-                        this.idSALA = idSALA;
-                        this.idALUMNO= idALUMNO;
-                        this.idGENERO =idGENERO;
-                        this.idESTADO_MATRICULA = idESTADO_MATRICULA;
-                        this.idCREDENCIAL = idCREDENCIAL;
-        }
-                        //getter y setter.
+    public int getCURSO_SALA_idSALA() {
+        return CURSO_SALA_idSALA;
+    }
 
-                            public int getIdSALA() {
-                                return idSALA;
-                            }
+    public void setCURSO_SALA_idSALA(int CURSO_SALA_idSALA) {
+        this.CURSO_SALA_idSALA = CURSO_SALA_idSALA;
+    }
 
-                            public void setIdSALA(int idSALA) {
-                                this.idSALA = idSALA;
-                            }
+    public int getCURSO_ALUMNO_idALUMNO() {
+        return CURSO_ALUMNO_idALUMNO;
+    }
 
-                            public int getIdALUMNO() {
-                                return idALUMNO;
-                            }
+    public void setCURSO_ALUMNO_idALUMNO(int CURSO_ALUMNO_idALUMNO) {
+        this.CURSO_ALUMNO_idALUMNO = CURSO_ALUMNO_idALUMNO;
+    }
 
-                            public void setIdALUMNO(int idALUMNO) {
-                                this.idALUMNO = idALUMNO;
-                            }
+    public int getCURSO_ALUMNO_GENERO_idGENERO() {
+        return CURSO_ALUMNO_GENERO_idGENERO;
+    }
 
-                            public int getIdGENERO() {
-                                return idGENERO;
-                            }
+    public void setCURSO_ALUMNO_GENERO_idGENERO(int CURSO_ALUMNO_GENERO_idGENERO) {
+        this.CURSO_ALUMNO_GENERO_idGENERO = CURSO_ALUMNO_GENERO_idGENERO;
+    }
 
-                            public void setIdGENERO(int idGENERO) {
-                                this.idGENERO = idGENERO;
-                            }
+    public int getCURSO_ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA() {
+        return CURSO_ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA;
+    }
 
-                            public int getIdESTADO_MATRICULA() {
-                                return idESTADO_MATRICULA;
-                            }
+    public void setCURSO_ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA(int CURSO_ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA) {
+        this.CURSO_ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA = CURSO_ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA;
+    }
 
-                            public void setIdESTADO_MATRICULA(int idESTADO_MATRICULA) {
-                                this.idESTADO_MATRICULA = idESTADO_MATRICULA;
-                            }
+    public int getCURSO_ALUMNO_CREDENCIAL_idCREDENCIAL() {
+        return CURSO_ALUMNO_CREDENCIAL_idCREDENCIAL;
+    }
 
-                            public int getIdCREDENCIAL() {
-                                return idCREDENCIAL;
-                            }
+    public void setCURSO_ALUMNO_CREDENCIAL_idCREDENCIAL(int CURSO_ALUMNO_CREDENCIAL_idCREDENCIAL) {
+        this.CURSO_ALUMNO_CREDENCIAL_idCREDENCIAL = CURSO_ALUMNO_CREDENCIAL_idCREDENCIAL;
+    }
 
-                            public void setIdCREDENCIAL(int idCREDENCIAL) {
-                                this.idCREDENCIAL = idCREDENCIAL;
-                            }
-
-                    
-
+    @Override
+    public String toString() {
+        return "Libro{" + "idLIBRO=" + idLIBRO + ", asignatura=" + asignatura + 
+                ", profesor=" + profesor + ", CURSO_idCURSO=" + CURSO_idCURSO + 
+                ", CURSO_SALA_idSALA=" + CURSO_SALA_idSALA + 
+                ", CURSO_ALUMNO_idALUMNO=" + CURSO_ALUMNO_idALUMNO + 
+                ", CURSO_ALUMNO_GENERO_idGENERO=" + CURSO_ALUMNO_GENERO_idGENERO + 
+                ", CURSO_ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA=" + CURSO_ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA + 
+                ", CURSO_ALUMNO_CREDENCIAL_idCREDENCIAL=" + CURSO_ALUMNO_CREDENCIAL_idCREDENCIAL + '}';
+    }
+   
                 
 }

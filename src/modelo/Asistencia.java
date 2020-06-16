@@ -13,37 +13,37 @@ import java.util.Date;
 public class Asistencia {
     private int idASISTENCIA;
     private Date fecha;
-    private int idASIGNATURA;
-    private int idTIPO_ASISTENCIA;
-    private int idLIBRO;
-    private int idCURSO;
-    private int idSALA;
-    private int idALUMNO;
-    private int idGENERO;
-    private int idESTADO_MATRICULA;
-    private int idCREDENCIAL;
-    
-    
-    public Asistencia() {
+    private int ASIGNATURA_idASIGNATURA;
+    private int TIPO_ASISTENCIA_idTIPO_ASISTENCIA;
+    private int LIBRO_idLIBRO;
+    private int CURSO_idCURSO;
+    private int SALA_idSALA;
+    private int ALUMNO_idALUMNO;
+    private int GENERO_idGENERO;
+    private int ESTADO_MATRICULA_idESTADO_MATRICULA;
+    private int CREDENCIAL_idCREDENCIAL;
+
+    public Asistencia(Date nuevaFecha, int nuevoTIPO_ASISTENCIA_idTIPO_ASISTENCIA) {
+        this.fecha = (nuevaFecha);
+        this.TIPO_ASISTENCIA_idTIPO_ASISTENCIA = (nuevoTIPO_ASISTENCIA_idTIPO_ASISTENCIA);
     }
-    
-    
-     public Asistencia(int idASISTENCIA, Date fecha, int idTIPO_ASISTENCIA) {
+
+    public Asistencia(int idASISTENCIA, Date fecha, int ASIGNATURA_idASIGNATURA, 
+            int TIPO_ASISTENCIA_idTIPO_ASISTENCIA, int LIBRO_idLIBRO, int CURSO_idCURSO, 
+            int SALA_idSALA, int ALUMNO_idALUMNO, int GENERO_idGENERO, 
+            int ESTADO_MATRICULA_idESTADO_MATRICULA, int CREDENCIAL_idCREDENCIAL) {
         this.idASISTENCIA = idASISTENCIA;
         this.fecha = fecha;
-        this.idTIPO_ASISTENCIA = idTIPO_ASISTENCIA;}
-     
-     public Asistencia(int idASIGNATURA,int idLIBRO,int idCURSO,int idSALA,int idALUMNO, int idGENERO,
-     int idESTADO_MATRICULA,int idCREDENCIAL) {
-        this.idASIGNATURA = idASIGNATURA;
-        this.idLIBRO = idLIBRO;
-        this.idCURSO = idCURSO;
-        this.idSALA = idSALA;
-        this.idALUMNO = idALUMNO;
-        this.idGENERO = idGENERO;
-        this.idESTADO_MATRICULA = idESTADO_MATRICULA;
-        this.idCREDENCIAL = idCREDENCIAL;
-                }
+        this.ASIGNATURA_idASIGNATURA = ASIGNATURA_idASIGNATURA;
+        this.TIPO_ASISTENCIA_idTIPO_ASISTENCIA = TIPO_ASISTENCIA_idTIPO_ASISTENCIA;
+        this.LIBRO_idLIBRO = LIBRO_idLIBRO;
+        this.CURSO_idCURSO = CURSO_idCURSO;
+        this.SALA_idSALA = SALA_idSALA;
+        this.ALUMNO_idALUMNO = ALUMNO_idALUMNO;
+        this.GENERO_idGENERO = GENERO_idGENERO;
+        this.ESTADO_MATRICULA_idESTADO_MATRICULA = ESTADO_MATRICULA_idESTADO_MATRICULA;
+        this.CREDENCIAL_idCREDENCIAL = CREDENCIAL_idCREDENCIAL;
+    }
 
     public int getIdASISTENCIA() {
         return idASISTENCIA;
@@ -61,77 +61,87 @@ public class Asistencia {
         this.fecha = fecha;
     }
 
-    public int getIdASIGNATURA() {
-        return idASIGNATURA;
+    public int getASIGNATURA_idASIGNATURA() {
+        return ASIGNATURA_idASIGNATURA;
     }
 
-    public void setIdASIGNATURA(int idASIGNATURA) {
-        this.idASIGNATURA = idASIGNATURA;
+    public void setASIGNATURA_idASIGNATURA(int ASIGNATURA_idASIGNATURA) {
+        this.ASIGNATURA_idASIGNATURA = ASIGNATURA_idASIGNATURA;
     }
 
-    public int getIdTIPO_ASISTENCIA() {
-        return idTIPO_ASISTENCIA;
+    public int getTIPO_ASISTENCIA_idTIPO_ASISTENCIA() {
+        return TIPO_ASISTENCIA_idTIPO_ASISTENCIA;
     }
 
-    public void setIdTIPO_ASISTENCIA(int idTIPO_ASISTENCIA) {
-        this.idTIPO_ASISTENCIA = idTIPO_ASISTENCIA;
+    public void setTIPO_ASISTENCIA_idTIPO_ASISTENCIA(int TIPO_ASISTENCIA_idTIPO_ASISTENCIA) {
+        this.TIPO_ASISTENCIA_idTIPO_ASISTENCIA = TIPO_ASISTENCIA_idTIPO_ASISTENCIA;
     }
 
-    public int getIdLIBRO() {
-        return idLIBRO;
+    public int getLIBRO_idLIBRO() {
+        return LIBRO_idLIBRO;
     }
 
-    public void setIdLIBRO(int idLIBRO) {
-        this.idLIBRO = idLIBRO;
+    public void setLIBRO_idLIBRO(int LIBRO_idLIBRO) {
+        this.LIBRO_idLIBRO = LIBRO_idLIBRO;
     }
 
-    public int getIdCURSO() {
-        return idCURSO;
+    public int getCURSO_idCURSO() {
+        return CURSO_idCURSO;
     }
 
-    public void setIdCURSO(int idCURSO) {
-        this.idCURSO = idCURSO;
+    public void setCURSO_idCURSO(int CURSO_idCURSO) {
+        this.CURSO_idCURSO = CURSO_idCURSO;
     }
 
-    public int getIdSALA() {
-        return idSALA;
+    public int getSALA_idSALA() {
+        return SALA_idSALA;
     }
 
-    public void setIdSALA(int idSALA) {
-        this.idSALA = idSALA;
+    public void setSALA_idSALA(int SALA_idSALA) {
+        this.SALA_idSALA = SALA_idSALA;
     }
 
-    public int getIdALUMNO() {
-        return idALUMNO;
+    public int getALUMNO_idALUMNO() {
+        return ALUMNO_idALUMNO;
     }
 
-    public void setIdALUMNO(int idALUMNO) {
-        this.idALUMNO = idALUMNO;
+    public void setALUMNO_idALUMNO(int ALUMNO_idALUMNO) {
+        this.ALUMNO_idALUMNO = ALUMNO_idALUMNO;
     }
 
-    public int getIdGENERO() {
-        return idGENERO;
+    public int getGENERO_idGENERO() {
+        return GENERO_idGENERO;
     }
 
-    public void setIdGENERO(int idGENERO) {
-        this.idGENERO = idGENERO;
+    public void setGENERO_idGENERO(int GENERO_idGENERO) {
+        this.GENERO_idGENERO = GENERO_idGENERO;
     }
 
-    public int getIdESTADO_MATRICULA() {
-        return idESTADO_MATRICULA;
+    public int getESTADO_MATRICULA_idESTADO_MATRICULA() {
+        return ESTADO_MATRICULA_idESTADO_MATRICULA;
     }
 
-    public void setIdESTADO_MATRICULA(int idESTADO_MATRICULA) {
-        this.idESTADO_MATRICULA = idESTADO_MATRICULA;
+    public void setESTADO_MATRICULA_idESTADO_MATRICULA(int ESTADO_MATRICULA_idESTADO_MATRICULA) {
+        this.ESTADO_MATRICULA_idESTADO_MATRICULA = ESTADO_MATRICULA_idESTADO_MATRICULA;
     }
 
-    public int getIdCREDENCIAL() {
-        return idCREDENCIAL;
+    public int getCREDENCIAL_idCREDENCIAL() {
+        return CREDENCIAL_idCREDENCIAL;
     }
 
-    public void setIdCREDENCIAL(int idCREDENCIAL) {
-        this.idCREDENCIAL = idCREDENCIAL;
+    public void setCREDENCIAL_idCREDENCIAL(int CREDENCIAL_idCREDENCIAL) {
+        this.CREDENCIAL_idCREDENCIAL = CREDENCIAL_idCREDENCIAL;
+    }
+
+    @Override
+    public String toString() {
+        return "Asistencia{" + "idASISTENCIA=" + idASISTENCIA + 
+                ", fecha=" + fecha + ", ASIGNATURA_idASIGNATURA=" + ASIGNATURA_idASIGNATURA + 
+                ", TIPO_ASISTENCIA_idTIPO_ASISTENCIA=" + TIPO_ASISTENCIA_idTIPO_ASISTENCIA + 
+                ", LIBRO_idLIBRO=" + LIBRO_idLIBRO + ", CURSO_idCURSO=" + CURSO_idCURSO + 
+                ", SALA_idSALA=" + SALA_idSALA + ", ALUMNO_idALUMNO=" + ALUMNO_idALUMNO + 
+                ", GENERO_idGENERO=" + GENERO_idGENERO + ", ESTADO_MATRICULA_idESTADO_MATRICULA=" + ESTADO_MATRICULA_idESTADO_MATRICULA +
+                ", CREDENCIAL_idCREDENCIAL=" + CREDENCIAL_idCREDENCIAL + '}';
     }
     
-    
-}
+}  

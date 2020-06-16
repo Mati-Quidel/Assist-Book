@@ -32,9 +32,9 @@ public class Controlador_Libro {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO Libro (idCURSO,asignatura,profesor) VALUES(?,?,?)"
+                    "INSERT INTO Libro (CURSO_idCURSO,asignatura,profesor) VALUES(?,?,?)"
             );
-            pstm.setInt(1, nuevoLibro.getIdCURSO());
+            pstm.setInt(1, nuevoLibro.getCURSO_idCURSO());
             pstm.setString(2, nuevoLibro.getAsignatura());
             pstm.setString(3, nuevoLibro.getProfesor());
             if(pstm.executeUpdate()==1){
@@ -60,10 +60,11 @@ public class Controlador_Libro {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "UPDATE LIBRO SET idCURSO = ?,Asignatura = ? where idLIBRO = ?"
+                    "UPDATE LIBRO SET CURSO_idCURSO = ?,Asignatura = ?, Profesor = ? where idLIBRO = ?"
                     );
-            pstm.setInt(1, nuevoLibro.getIdCURSO());
+            pstm.setInt(1, nuevoLibro.getCURSO_idCURSO());
             pstm.setString(2, nuevoLibro.getAsignatura());
+            pstm.setString(3,nuevoLibro.getProfesor());
             pstm.setInt(4,nuevoLibro.getIdLIBRO());
             if(pstm.executeUpdate() == 1){
                 salida = true; 
@@ -148,22 +149,19 @@ public class Controlador_Libro {
     }
             
     public List<Libro> listarLibros(){
-        List <Libro> Libro = new ArrayList <Libro>();
+        List <Libro> libros = new ArrayList <Libro>();
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                      "SELECT idLIBRO,idCURSO,Asignatura,Profesor FORM Libro "      
+                      "SELECT idCURSO,Asignatura,Profesor FORM LIBRO"      
                     );
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
                 Libro temp = new Libro(
                         rs.getInt(1),
-                        rs.getInt(2),
-                        rs.getString(3),
-                        rs.getString(4)
-                      
-                );
-                Libro.add(temp);
+                        rs.getString(2),
+                        rs.getString(3));
+                libros.add(temp);
             }
         }
         catch (ClassNotFoundException e){
@@ -178,8 +176,11 @@ public class Controlador_Libro {
         finally{
             this.getConexion().cerrarConexion();
         }
-        return Libro;
+        return libros;
     }
+
+    
+    
 }
     
     

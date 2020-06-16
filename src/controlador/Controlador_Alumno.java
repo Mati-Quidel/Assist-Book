@@ -158,7 +158,7 @@ public class Controlador_Alumno {
     }
             
     public List<Alumno> listarAlumnos(){
-        List <Alumno> alumnos = new ArrayList<>();
+        List <Alumno> alumnos = new ArrayList<Alumno>();
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(

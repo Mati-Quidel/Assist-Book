@@ -31,9 +31,9 @@ public class Controlador_Asistencia {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO alumno (idTIPO_ASISTENCIA,Fecha) VALUES(?,?)"
+                    "INSERT INTO ASISTENCIA (TIPO_ASISTENCIA_idTIPO_ASISTENCIA,Fecha) VALUES(?,?)"
             );
-            pstm.setInt(1, nuevaAsistencia.getIdTIPO_ASISTENCIA());
+            pstm.setInt(1, nuevaAsistencia.getTIPO_ASISTENCIA_idTIPO_ASISTENCIA());
             pstm.setDate(2, (Date) nuevaAsistencia.getFecha());
             if(pstm.executeUpdate()==1){
                 salida = true;
@@ -54,10 +54,36 @@ public class Controlador_Asistencia {
         return salida;
     }
     
+    public boolean modificarAsistencia(Asistencia nuevaAsistencia){
+        boolean salida = false;
+        try{
+            PreparedStatement pstm = this.getConexion().obtenerConexion()
+                    .prepareStatement(
+                    "UPDATE ASISTENCIA SET TIPO_ASISTENCIA_idTIPO_ASISTENCIA = ?"
+                            + ",nomcompAlumno = ? ,Fecha = ? where idASISTENCIA = ?"
+                    );
+            pstm.setInt(1, nuevaAsistencia.getTIPO_ASISTENCIA_idTIPO_ASISTENCIA());
+            pstm.setDate(2,(Date) nuevaAsistencia.getFecha());
+            pstm.setInt(3, nuevaAsistencia.getIdASISTENCIA());
+            if(pstm.executeUpdate() == 1){
+                salida = true; 
+            } 
+            
+       }
+        catch(ClassNotFoundException e){
+            System.out.println("Clase no encontrada"+e.getMessage());
+        }
+        catch(SQLException e){
+            System.out.println(String.format("Error SQL %s : %s",e.getSQLState(),e.getMessage()));
+        }
+        catch(Exception e){
+            System.out.println("Otro error "+e.getMessage());
+        }
+        finally{
+            this.getConexion().cerrarConexion();
+        }
+        return salida;
+    }
     
-
-    
-    
-    
-    
+  
 }

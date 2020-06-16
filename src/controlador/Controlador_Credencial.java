@@ -62,6 +62,7 @@ public class Controlador_Credencial {
                     );
             pstm.setInt(1, 0);
             pstm.setInt(1, nuevaCredencial.getCodigo());
+            pstm.setInt(2,nuevaCredencial.getIdCREDENCIAL());
             if(pstm.executeUpdate() == 1){
                 salida = true; 
             } 

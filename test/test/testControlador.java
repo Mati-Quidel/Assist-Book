@@ -18,9 +18,10 @@ public class testControlador {
     
     public static void main (String... args){
        //testAgregarAlumno();
-       //testBuscarAlumno(1);
+       testBuscarAlumno(1);
        //testModificarAlumno();
        //testEliminarAlumno(278);
+       //testListarAlumnos();
     }
     
     public static void testAgregarAlumno(){
@@ -60,8 +61,12 @@ public class testControlador {
             System.out.println("No se elimino");
         }
     }
+   
     public static void testListarAlumnos(){
-        
+        List<Alumno> alumnos = cAlumno.listarAlumnos();
+                for(Alumno tem:alumnos){
+                    System.out.println(tem.toString());
+                }
     }
     
 }

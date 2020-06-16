@@ -12,23 +12,34 @@ package modelo;
 public class Curso {
     private int idCURSO;
     private String nivel;
-    private int idSALA;
-    private int idALUMNO;
-    private int idGENERO;
-    private int idESTADO_MATRICULA;
-    private int idCREDENCIAL;
+    private int SALA_idSALA;
+    private int ALUMNO_idALUMNO;
+    private int ALUMNO_GENERO_idGENERO;
+    private int ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA;
+    private int ALUMNO_CREDENCIAL_idCREDENCIAL;
 
-    public Curso() {
+    public Curso(String nuevoNivel, int nuevoSALA_idSALA, int nuevoALUMNO_idALUMNO, 
+                int nuevoALUMNO_GENERO_idGENERO, 
+                int nuevoALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA, 
+                int nuevoALUMNO_CREDENCIAL_idCREDENCIAL) {
+        this.nivel = (nuevoNivel);
+        this.SALA_idSALA = (nuevoSALA_idSALA);
+        this.ALUMNO_idALUMNO = (nuevoALUMNO_idALUMNO);
+        this.ALUMNO_GENERO_idGENERO = (nuevoALUMNO_GENERO_idGENERO);
+        this.ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA = (nuevoALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA);
+        this.ALUMNO_CREDENCIAL_idCREDENCIAL = (nuevoALUMNO_CREDENCIAL_idCREDENCIAL);
     }
 
-    public Curso(int idCURSO, String nivel, int idSALA, int idALUMNO, int idGENERO, int idESTADO_MATRICULA, int idCREDENCIAL) {
+    public Curso(int idCURSO, String nivel, int SALA_idSALA, int ALUMNO_idALUMNO, 
+            int ALUMNO_GENERO_idGENERO, int ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA, 
+            int ALUMNO_CREDENCIAL_idCREDENCIAL) {
         this.idCURSO = idCURSO;
         this.nivel = nivel;
-        this.idSALA = idSALA;
-        this.idALUMNO = idALUMNO;
-        this.idGENERO = idGENERO;
-        this.idESTADO_MATRICULA = idESTADO_MATRICULA;
-        this.idCREDENCIAL = idCREDENCIAL;
+        this.SALA_idSALA = SALA_idSALA;
+        this.ALUMNO_idALUMNO = ALUMNO_idALUMNO;
+        this.ALUMNO_GENERO_idGENERO = ALUMNO_GENERO_idGENERO;
+        this.ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA = ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA;
+        this.ALUMNO_CREDENCIAL_idCREDENCIAL = ALUMNO_CREDENCIAL_idCREDENCIAL;
     }
 
     public int getIdCURSO() {
@@ -47,46 +58,58 @@ public class Curso {
         this.nivel = nivel;
     }
 
-    public int getIdSALA() {
-        return idSALA;
+    public int getSALA_idSALA() {
+        return SALA_idSALA;
     }
 
-    public void setIdSALA(int idSALA) {
-        this.idSALA = idSALA;
+    public void setSALA_idSALA(int SALA_idSALA) {
+        this.SALA_idSALA = SALA_idSALA;
     }
 
-    public int getIdALUMNO() {
-        return idALUMNO;
+    public int getALUMNO_idALUMNO() {
+        return ALUMNO_idALUMNO;
     }
 
-    public void setIdALUMNO(int idALUMNO) {
-        this.idALUMNO = idALUMNO;
+    public void setALUMNO_idALUMNO(int ALUMNO_idALUMNO) {
+        this.ALUMNO_idALUMNO = ALUMNO_idALUMNO;
     }
 
-    public int getIdGENERO() {
-        return idGENERO;
+    public int getALUMNO_GENERO_idGENERO() {
+        return ALUMNO_GENERO_idGENERO;
     }
 
-    public void setIdGENERO(int idGENERO) {
-        this.idGENERO = idGENERO;
+    public void setALUMNO_GENERO_idGENERO(int ALUMNO_GENERO_idGENERO) {
+        this.ALUMNO_GENERO_idGENERO = ALUMNO_GENERO_idGENERO;
     }
 
-    public int getIdESTADO_MATRICULA() {
-        return idESTADO_MATRICULA;
+    public int getALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA() {
+        return ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA;
     }
 
-    public void setIdESTADO_MATRICULA(int idESTADO_MATRICULA) {
-        this.idESTADO_MATRICULA = idESTADO_MATRICULA;
+    public void setALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA(int ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA) {
+        this.ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA = ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA;
     }
 
-    public int getIdCREDENCIAL() {
-        return idCREDENCIAL;
+    public int getALUMNO_CREDENCIAL_idCREDENCIAL() {
+        return ALUMNO_CREDENCIAL_idCREDENCIAL;
     }
 
-    public void setIdCREDENCIAL(int idCREDENCIAL) {
-        this.idCREDENCIAL = idCREDENCIAL;
+    public void setALUMNO_CREDENCIAL_idCREDENCIAL(int ALUMNO_CREDENCIAL_idCREDENCIAL) {
+        this.ALUMNO_CREDENCIAL_idCREDENCIAL = ALUMNO_CREDENCIAL_idCREDENCIAL;
+    }
+
+    @Override
+    public String toString() {
+        return "Curso{" + "idCURSO=" + idCURSO + 
+                ", nivel=" + nivel + ", SALA_idSALA=" + SALA_idSALA + 
+                ", ALUMNO_idALUMNO=" + ALUMNO_idALUMNO + 
+                ", ALUMNO_GENERO_idGENERO=" + ALUMNO_GENERO_idGENERO + 
+                ", ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA=" + ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA + 
+                ", ALUMNO_CREDENCIAL_idCREDENCIAL=" + ALUMNO_CREDENCIAL_idCREDENCIAL + '}';
     }
     
     
+
+   
     
 }
