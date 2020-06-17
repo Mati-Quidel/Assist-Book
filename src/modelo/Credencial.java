@@ -36,5 +36,11 @@ public class Credencial {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
+
+    @Override
+    public String toString() {
+        return "Credencial{" + "idCREDENCIAL=" + idCREDENCIAL + ", codigo=" + codigo + '}';
+    }
+    
     
 }

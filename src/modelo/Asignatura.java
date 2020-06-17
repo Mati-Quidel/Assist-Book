@@ -36,6 +36,11 @@ public class Asignatura {
     public void setNomAsig(String nomAsig) {
         this.nomAsig = nomAsig;
     }
+
+    @Override
+    public String toString() {
+        return "Asignatura{" + "idASIGNATURA=" + idASIGNATURA + ", nomAsig=" + nomAsig + '}';
+    }
     
     
 }
