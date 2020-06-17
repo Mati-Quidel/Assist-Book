@@ -173,6 +173,7 @@ public class Main {
     
     private static void modificarAlumno(){
         System.out.println("Bienvenido a Modificar Alumno, por favor siga las instrucciones");
+        if(cAlumno.listarAlumnos().size()>0){
         System.out.print("Ingrese el ID del alumno a modificar: ");
         String idALUMNOTemp = scann.nextLine().trim();
         int idBuscar = 0;
@@ -317,7 +318,11 @@ public class Main {
             System.out.println("Producto Modificado correctamente");
         }
         else{
+           
             System.out.println("No modificado");
+            }
+        }else{
+            System.out.println("Debe Tener Alumnos antes de usar esta opción");
         }
         System.out.print("Presione Enter para continuar");
         scann.nextLine();
@@ -326,6 +331,7 @@ public class Main {
     
     private static void eliminarAlumno (){
         System.out.println("Bienvenido a Eliminar Alumno");
+        if(cAlumno.listarAlumnos().size()>0){
         System.out.print("Ingrese un ID para eliminar un alumno");
         String idALUMNOTemp = scann.nextLine().trim();
         int idAlum = 0 ;
@@ -373,12 +379,16 @@ public class Main {
             cAlumno.eliminarAlumno(encontrado.getIdALUMNO());
             System.out.println("Alumno Eliminado");
         }
+        }else{
+            System.out.println("Debe Tener Alumnos antes de usar esta opción");
+        }
         System.out.print("Presione Enter para continuar...");
         scann.nextLine();
     }
     
     private static void buscarAlumno(){
         System.out.println("Bienvenido a Buscar Alumno");
+        if(cAlumno.listarAlumnos().size()>0){
         System.out.print("Ingrese una ID de un alumno");
         String idALUMNOTemp = scann.nextLine();
         int idAlum = 0;
@@ -419,7 +429,12 @@ public class Main {
             System.out.println("Buscando Alumno...");
             encontrado = cAlumno.buscarAlumno(idAlum);
         }
+        
         System.out.println(String.format("Alumno Encontrado %s ",encontrado.getNomcompAlumno()));
+        
+        }else{
+            System.out.println("Debe Tener Alumnos antes de usar esta opción");
+        }
         System.out.print("Presione Enter para continuar");
         scann.nextLine();
     }
