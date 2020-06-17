@@ -25,7 +25,8 @@ public class Alumno {
         this.nomcompAlumno = (nuevoNomcompAlumno);
         this.GENERO_idGENERO = (nuevoGENERO_idGENERO);
         this.ESTADO_MATRICULA_idESTADO_MATRICULA = (nuevoESTADO_MATRICULA_idESTADO_MATRICULA);
-        this.CREDENCIAL_idCREDENCIAL = (nuevoCREDENCIAL_idCREDENCIAL);
+        this.CREDENCIAL_idCREDENCIAL = nuevoCREDENCIAL_idCREDENCIAL ;
+        
     }
   //Constructor con parametros
 

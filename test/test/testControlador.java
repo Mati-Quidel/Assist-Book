@@ -18,7 +18,7 @@ public class testControlador {
     
     public static void main (String... args){
        //testAgregarAlumno();
-       //testBuscarAlumno(2);
+       testBuscarAlumno(279);
        //testModificarAlumno();
        //testEliminarAlumno(278);
        //testListarAlumnos();
@@ -34,9 +34,9 @@ public class testControlador {
     }
 
     public static void testBuscarAlumno (int idBuscar){
-        Alumno encontrado = cAlumno.buscarAlumno(2);
+        Alumno encontrado = cAlumno.buscarAlumno(279);
         if(encontrado != null){
-            System.out.println("El alumno es"+encontrado.getNomcompAlumno()
+            System.out.println("El alumno es "+encontrado.getNomcompAlumno()
                                 +" de rut "+encontrado.getRutAlumno());
             
         }
@@ -64,8 +64,8 @@ public class testControlador {
    
     public static void testListarAlumnos(){
         List<Alumno> alumnos = cAlumno.listarAlumnos();
-                for(Alumno tem:alumnos){
-                    System.out.println("nombre: "+tem.getNomcompAlumno()+ "Rut: "+tem.getRutAlumno());
+                for(Alumno temp:alumnos){
+                    System.out.println("nombre: "+temp.getNomcompAlumno()+ "Rut: "+temp.getRutAlumno());
                 }
     }
     

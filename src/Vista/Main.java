@@ -7,6 +7,7 @@ package Vista;
 import controlador.Controlador_Alumno;
 import modelo.Alumno;
 import java.util.Scanner;
+import java.util.List;
 
 /**
  *
@@ -29,13 +30,13 @@ public class Main {
                 modificarAlumno();
             }
             else if(opcion==3){
-                
+                eliminarAlumno();
             }
             else if(opcion==4){
-                
+                buscarAlumno();
             }
             else if(opcion==5){
-                
+                listarAlumnos();
             }
             else if(opcion==6){
                 break;  
@@ -56,7 +57,7 @@ public class Main {
         System.out.println("4.-Busque un Alumno por su id");
         System.out.println("5.-Liste los Alumnos Existentes");
         System.out.println("6.-Salir");
-        System.out.print("Ingrese una opción del 1 al 6");
+        System.out.print("Ingrese una opción del 1 al 6: ");
         
     }
     
@@ -68,7 +69,7 @@ public class Main {
     
     private static void agregarAlumno(){
         limpiarConsola();
-        System.out.println("Bienvenidos a la creación de un nuevo Alumno");
+        System.out.println("Bienvenidos a la creación de un nuevo Alumno.\n");
         //Ingresando Rut Alumno
         System.out.print("Ingrese rut sin puntos ni guión ni digito verificador:");
         String rutAlumnoTemp =scann.nextLine().trim();
@@ -106,9 +107,7 @@ public class Main {
                 nuevoGENERO_idGENERO = Integer.parseInt(nuevoGENERO_idGENEROTemp);
                 if(nuevoGENERO_idGENERO ==1 || nuevoGENERO_idGENERO==2){
                     break;
-                }
-                else if(nuevoGENERO_idGENERO !=1 || nuevoGENERO_idGENERO!=2){
-                    break;
+                
                 }
             }
                 catch(NumberFormatException e){
@@ -130,9 +129,7 @@ public class Main {
                 if(nuevoESTADO_MATRICULA_idESTADO_MATRICULA ==1){
                     break;
                 }
-                else if(nuevoESTADO_MATRICULA_idESTADO_MATRICULA!=1){
-                    break;
-                }
+                
             }
                 catch(NumberFormatException e){
                    nuevoESTADO_MATRICULA_idESTADO_MATRICULA =0;
@@ -141,12 +138,43 @@ public class Main {
            nuevoESTADO_MATRICULA_idESTADO_MATRICULATemp = scann.nextLine().trim();
         }
         
+        
+       // ingresar id credencial
+       
+       System.out.print("Ingrese id credencial, si no lo conoce, ponga su rut sin punto si guion:");
+        String nuevoCREDENCIAL_idCREDENCIALTemp =scann.nextLine().trim();
+       
+        int nuevoCREDENCIAL_idCREDENCIAL=0;
+        while(nuevoCREDENCIAL_idCREDENCIAL==0){
+            try{
+                nuevoCREDENCIAL_idCREDENCIAL = Integer.parseInt(nuevoCREDENCIAL_idCREDENCIALTemp);
+                if(nuevoCREDENCIAL_idCREDENCIAL >0){
+                    break;
+                }
+            }
+                catch(NumberFormatException e){
+                   nuevoCREDENCIAL_idCREDENCIAL =0;
+                }
+            System.out.println("Ingrese un valor correcto: ");
+           nuevoCREDENCIAL_idCREDENCIALTemp = scann.nextLine().trim();
+        }
+        System.out.println("Creando Alumno... por favor espere");
+        Alumno tempAlumno =new Alumno(nuevoRutAlumno,nuevoNomcompAlumno,nuevoGENERO_idGENERO, nuevoESTADO_MATRICULA_idESTADO_MATRICULA,nuevoCREDENCIAL_idCREDENCIAL);
+        if(cAlumno.agregarAlumno(tempAlumno)){
+            System.out.println("Alumno Agregado Correctamente");
+        }
+        else{
+            System.out.println("Alumno no agregado");
+        }
+        System.out.print("Presione enter para continuar");
+        scann.nextLine();
+        
     }
     
     private static void modificarAlumno(){
         System.out.println("Bienvenido a Modificar Alumno, por favor siga las instrucciones");
-        System.out.print("Ingrese el ID del alumno a modificar");
-        String idALUMNOTemp = scann.nextLine();
+        System.out.print("Ingrese el ID del alumno a modificar: ");
+        String idALUMNOTemp = scann.nextLine().trim();
         int idBuscar = 0;
         while (idBuscar ==0){
             try{
@@ -164,6 +192,33 @@ public class Main {
         System.out.println("Buscando Alumno...");
         Alumno encontrado = cAlumno.buscarAlumno(idBuscar);
         while(encontrado == null){
+            System.out.println("La ID no es de un Alumno válido, intente denuevo");
+            System.out.print("Vuelva a ingresar una ID ");
+            idALUMNOTemp = scann.nextLine();
+            idBuscar =0;
+            while(idBuscar ==0){
+                try{
+                    idBuscar = Integer.parseInt(idALUMNOTemp);
+                    if(idBuscar > 0){
+                    break;
+                }
+                    
+                }
+                catch(NumberFormatException e){
+                    idBuscar = 0;
+                }
+                System.out.print("Debe ingresar una ID valida: ");
+                idALUMNOTemp = scann.nextLine();
+            }
+            System.out.println("Buscando Alumno...");
+            encontrado = cAlumno.buscarAlumno(idBuscar);
+        }
+            
+            System.out.print(String.format("Ingrese un nuevo nombre para %s (Deje vacio para no cambiar) :", encontrado.getNomcompAlumno()));
+            String nuevoNomcompAlumno = scann.nextLine().trim();
+            if(nuevoNomcompAlumno.length()>0){
+                encontrado.setNomcompAlumno(nuevoNomcompAlumno);
+            }
             
         //rut alumno
         System.out.print(String.format("Ingrese un nuevo rut %s (Dejar vacio para no cambiar): ", encontrado.getRutAlumno()));
@@ -187,19 +242,9 @@ public class Main {
         }
         encontrado.setRutAlumno(nuevoRutAlumno);
         
-     
-        //nombre ALumno
+        //genero alumno
         
-        System.out.print(String.format("Ingrese uin nuevo nombre para %s (Deje vacio para no cambiar) :", encontrado.getNomcompAlumno()));
-        String nuevoNomcompAlumno = scann.nextLine().trim();
-        if(nuevoNomcompAlumno.length()>0){
-            encontrado.setNomcompAlumno(nuevoNomcompAlumno);
-        }
-        
-        // genero
-        
-        System.out.print(String.format("Ingrese un nuevo genero (1=femenino / 2=masculino) %s "
-                + "(Dejar vacio para no cambiar): ", encontrado.getGENERO_idGENERO()));
+        System.out.print(String.format("Ingrese un nuevo genero %s (Dejar vacio para no cambiar): ", encontrado.getGENERO_idGENERO()));
         String GENERO_idGENEROTemp = scann.nextLine().trim();
         int nuevoGENERO_idGENERO = 0;
         if(GENERO_idGENEROTemp.length()==0){
@@ -208,7 +253,7 @@ public class Main {
         while (nuevoGENERO_idGENERO == 0){
             try{
                 nuevoGENERO_idGENERO = Integer.parseInt(GENERO_idGENEROTemp);
-                if(nuevoGENERO_idGENERO ==1 || nuevoGENERO_idGENERO ==2){
+                if(nuevoGENERO_idGENERO == 1 || nuevoGENERO_idGENERO ==2){
                     break;
                 }
             }
@@ -219,9 +264,183 @@ public class Main {
             GENERO_idGENEROTemp = scann.nextLine().trim();
         }
         encontrado.setGENERO_idGENERO(nuevoGENERO_idGENERO);
-             
         
+        //ESTADO MATRICULA
+        System.out.print(String.format("Ingrese un nuevo E.Matricula %s (Dejar vacio para no cambiar): ", encontrado.getESTADO_MATRICULA_idESTADO_MATRICULA()));
+        String ESTADO_MATRICULA_idESTADO_MATRICULATemp = scann.nextLine().trim();
+        
+        int nuevoESTADO_MATRICULA_idESTADO_MATRICULA = 0;
+        
+        if(ESTADO_MATRICULA_idESTADO_MATRICULATemp.length()==0){
+            nuevoESTADO_MATRICULA_idESTADO_MATRICULA = encontrado.getESTADO_MATRICULA_idESTADO_MATRICULA();
+        }
+        while (nuevoESTADO_MATRICULA_idESTADO_MATRICULA == 0){
+            try{
+                nuevoESTADO_MATRICULA_idESTADO_MATRICULA = Integer.parseInt(ESTADO_MATRICULA_idESTADO_MATRICULATemp);
+                if(nuevoESTADO_MATRICULA_idESTADO_MATRICULA ==1){
+                    break;
+                }
+            }
+            catch(NumberFormatException e){
+                nuevoESTADO_MATRICULA_idESTADO_MATRICULA = 0;
+            }
+            System.out.println("Ingrese un valor correcto: ");
+            ESTADO_MATRICULA_idESTADO_MATRICULATemp = scann.nextLine().trim();
+        }
+        encontrado.setESTADO_MATRICULA_idESTADO_MATRICULA(nuevoESTADO_MATRICULA_idESTADO_MATRICULA);
+        
+        //credencial
+        System.out.print(String.format("Ingrese un nuevo ID credencial %s (Dejar vacio para no cambiar): ", encontrado.getCREDENCIAL_idCREDENCIAL()));
+        String CREDENCIAL_idCREDENCIALTemp = scann.nextLine().trim();
+        
+        int nuevoCREDENCIAL_idCREDENCIAL = 0;
+        if(CREDENCIAL_idCREDENCIALTemp.length()==0){
+            nuevoCREDENCIAL_idCREDENCIAL= encontrado.getCREDENCIAL_idCREDENCIAL();
+        }
+        while (nuevoCREDENCIAL_idCREDENCIAL == 0){
+            try{
+                nuevoCREDENCIAL_idCREDENCIAL = Integer.parseInt(CREDENCIAL_idCREDENCIALTemp);
+                if(nuevoCREDENCIAL_idCREDENCIAL>0){
+                    break;
+                }
+            }
+            catch(NumberFormatException e){
+                nuevoCREDENCIAL_idCREDENCIAL = 0;
+            }
+            System.out.println("Ingrese un valor correcto: ");
+            CREDENCIAL_idCREDENCIALTemp = scann.nextLine().trim();
+        }
+        encontrado.setCREDENCIAL_idCREDENCIAL(nuevoCREDENCIAL_idCREDENCIAL);
+        
+        System.out.println("Actualizando Alumno...");
+        if(cAlumno.modificarAlumno(encontrado)){
+            System.out.println("Producto Modificado correctamente");
+        }
+        else{
+            System.out.println("No modificado");
+        }
+        System.out.print("Presione Enter para continuar");
+        scann.nextLine();
+     
     }
+    
+    private static void eliminarAlumno (){
+        System.out.println("Bienvenido a Eliminar Alumno");
+        System.out.print("Ingrese un ID para eliminar un alumno");
+        String idALUMNOTemp = scann.nextLine().trim();
+        int idAlum = 0 ;
+        while (idAlum ==0){
+            try{
+                idAlum = Integer.parseInt(idALUMNOTemp);
+                if(idAlum >0){
+                   break;
+                }
+            }
+            catch(NumberFormatException e){
+                idAlum = 0;
+            }
+            System.out.print("Debe ingresar una ID valida: ");
+            idALUMNOTemp = scann.nextLine().trim();
+        }
+        System.out.println("Buscando Alumno...");
+        Alumno encontrado = cAlumno.buscarAlumno(idAlum);
+        while(encontrado == null){
+            System.out.println("la ID no es de un Alumno valido");
+            System.out.print("Ingrese una ID valida");
+            idALUMNOTemp = scann.nextLine().trim();
+            idAlum = 0;
+            while(idAlum== 0){
+                try{
+                    idAlum = Integer.parseInt(idALUMNOTemp);
+                    if(idAlum >0){
+                        break;
+                    }
+                }
+                catch(NumberFormatException e){
+                    idAlum = 0;
+                }
+                System.out.print("Ingrese una ID valida");
+                idALUMNOTemp = scann.nextLine().trim();
+            }
+            System.out.println("Buscando Alumno...");
+            encontrado = cAlumno.buscarAlumno(idAlum);
+        }
+        System.out.println(String.format("Alumno Encontrado %s ",encontrado.getNomcompAlumno()));
+        System.out.print("Ingrese 1 para eliminar, 2 para cancelar");
+        String opcion = scann.nextLine();
+        if(opcion.equals("1")){
+            System.out.println("Eliminando Alumno...");
+            cAlumno.eliminarAlumno(encontrado.getIdALUMNO());
+            System.out.println("Alumno Eliminado");
+        }
+        System.out.print("Presione Enter para continuar...");
+        scann.nextLine();
+    }
+    
+    private static void buscarAlumno(){
+        System.out.println("Bienvenido a Buscar Alumno");
+        System.out.print("Ingrese una ID de un alumno");
+        String idALUMNOTemp = scann.nextLine();
+        int idAlum = 0;
+        while (idAlum ==0){
+            try{
+                idAlum = Integer.parseInt(idALUMNOTemp);
+                if(idAlum >0){
+                   break;
+                }
+            }
+            catch(NumberFormatException e){
+                idAlum = 0;
+            }
+            System.out.print("Debe ingresar una ID valida: ");
+            idALUMNOTemp = scann.nextLine().trim();
+        
+        }
+        System.out.println("Buscando Alumno...");
+        Alumno encontrado = cAlumno.buscarAlumno(idAlum);
+        while(encontrado == null){
+            System.out.println("la ID no es de un Alumno valido");
+            System.out.print("Ingrese una ID valida");
+            idALUMNOTemp = scann.nextLine().trim();
+            idAlum = 0;
+            while(idAlum== 0){
+                try{
+                    idAlum = Integer.parseInt(idALUMNOTemp);
+                    if(idAlum >0){
+                        break;
+                    }
+                }
+                catch(NumberFormatException e){
+                    idAlum = 0;
+                }
+                System.out.print("Ingrese una ID valida");
+                idALUMNOTemp = scann.nextLine().trim();
+            }
+            System.out.println("Buscando Alumno...");
+            encontrado = cAlumno.buscarAlumno(idAlum);
+        }
+        System.out.println(String.format("Alumno Encontrado %s ",encontrado.getNomcompAlumno()));
+        System.out.print("Presione Enter para continuar");
+        scann.nextLine();
+    }
+    
+    private static void listarAlumnos(){
+        List<Alumno> alumnos = cAlumno.listarAlumnos();
+        System.out.println("Buscando Alumnos...");
+        if(alumnos.size()==0){
+            System.out.println("No hay alumnos para mostrar");
+        }
+        else{
+            for(Alumno temp:cAlumno.listarAlumnos()){
+                System.out.println("-------------------------------------------");
+                System.out.println("nombre: "+temp.getNomcompAlumno()+ "Rut: "+temp.getRutAlumno());
+                System.out.println("-------------------------------------------");
+            }
+            System.out.println("Terminado\n");
+            System.out.print("Presione una tecla y Enter para continuar.");
+            scann.next();
+        }
+        
     }
 }
 
