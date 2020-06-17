@@ -18,7 +18,7 @@ public class testControlador {
     
     public static void main (String... args){
        //testAgregarAlumno();
-       testBuscarAlumno(279);
+       //testBuscarAlumno(279);
        //testModificarAlumno();
        //testEliminarAlumno(278);
        //testListarAlumnos();

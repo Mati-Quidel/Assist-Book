@@ -146,7 +146,7 @@ public class Controlador_Credencial {
     }
             
     public List<Credencial> listarCredenciales(){
-        List <Credencial> Credencial = new ArrayList<Credencial>();
+        List <Credencial> credenciales = new ArrayList<Credencial>();
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
@@ -158,7 +158,7 @@ public class Controlador_Credencial {
                         rs.getInt(1),
                         rs.getInt(2)
                 );
-                Credencial.add(temp);
+                credenciales.add(temp);
             }
         }
         catch (ClassNotFoundException e){
@@ -173,7 +173,7 @@ public class Controlador_Credencial {
         finally{
             this.getConexion().cerrarConexion();
         }
-        return Credencial;
+        return credenciales;
     }
    
 }

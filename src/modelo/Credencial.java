@@ -13,8 +13,11 @@ public class Credencial {
     private int idCREDENCIAL;
     private int codigo;
 
-    public Credencial() {
+    public Credencial(int nuevoCodigo) {
+        this.codigo = (nuevoCodigo);
     }
+
+    
 
     public Credencial(int idCREDENCIAL, int codigo) {
         this.idCREDENCIAL = idCREDENCIAL;

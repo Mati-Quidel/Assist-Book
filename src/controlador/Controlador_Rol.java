@@ -18,27 +18,28 @@ import java.util.ArrayList;
  */
 public class Controlador_Rol {
 
- private Conexion Conect;
+    private Conexion Conect;
 
-    public Controlador_Rol() {
-        this.setConexion(Conexion.nuevaInstancia());
-    }
-    private void setConexion(Conexion nuevaConexion){
-        this.Conect = nuevaConexion;
-    } 
-    private Conexion getConexion(){
-       return this.Conect;
-    }
-    
-    public boolean agregarRol(Rol nuevoRol){
+       public Controlador_Rol() {
+           this.setConexion(Conexion.nuevaInstancia());
+       }
+       private void setConexion(Conexion nuevaConexion){
+           this.Conect = nuevaConexion;
+       } 
+       private Conexion getConexion(){
+          return this.Conect;
+       }
+
+       public boolean agregarRol(Rol nuevoRol){
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO Rol (idROL,nombreUsuario,contraseñaUsuario ) VALUES(?,?,?)"
+                    "INSERT INTO ROL (nombreUsuario,contraseñaUsuario, TIPOROL_idTIPOROL) VALUES(?,?,?)"
             );
-            pstm.setInt(1, nuevoRol.getIdROL());
-            pstm.setString(2, nuevoRol.getNombreUsuario());
-            pstm.setString(3, nuevoRol.getContraseñaUsuario());
+            pstm.setString(1, nuevoRol.getNombreUsuario());
+            pstm.setString(2, nuevoRol.getContraseñaUsuario());
+            pstm.setInt(3, nuevoRol.getTIPOROL_idTIPOROL());
+            
             
             if(pstm.executeUpdate()==1){
                 salida = true;
@@ -64,11 +65,13 @@ public class Controlador_Rol {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "UPDATE ROL SET nombreUsuario = ?,contraseñaUsuario = ? where idROL = ?"
+                    "UPDATE ROL SET nombreUsuario = ?,contraseñaUsuario = ?, "
+                            + "TIPOROL_idTIPOROL = ? where idROL = ?"
                     );
             pstm.setString(1, nuevoRol.getNombreUsuario());
             pstm.setString(2, nuevoRol.getContraseñaUsuario());
-            pstm.setInt(3,nuevoRol.getIdROL());
+            pstm.setInt(3, nuevoRol.getTIPOROL_idTIPOROL());
+            pstm.setInt(4,nuevoRol.getIdROL());
             if(pstm.executeUpdate() == 1){
                 salida = true; 
             } 
@@ -88,4 +91,98 @@ public class Controlador_Rol {
         }
         return salida;
     }
+    
+    public boolean eliminarRol(int idROL){
+        boolean salida = false;
+        try{
+            PreparedStatement pstm = this.getConexion().obtenerConexion()
+                    .prepareStatement(
+                    "DELETE FROM ROL WHERE idROL = ?"
+                    );
+                        pstm.setInt(1, idROL);
+                        if(pstm.executeUpdate() == 1) {
+                            salida = true;
+                        }
+
+                                }
+        catch(ClassNotFoundException e){
+            System.out.println("Error, Clase no encontrada "+e.getMessage() );
+        }
+        catch(SQLException e) {
+            System.out.println(String.format("Error SQL %s : %s",e.getSQLState(),e.getMessage()));
+        }
+        catch(Exception e) {
+            System.out.println("Otra excepción "+e.getMessage());
+        }
+        finally{
+            this.getConexion().cerrarConexion();
+        }
+        return salida;
+
+    }
+    
+    public Rol buscarRol(int idROL){
+        Rol encontrado = null;
+        try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
+                .prepareStatement(
+                    "SELECT   nombreUsuario,contraseñaUsuario, TIPOROL_idTIPOROL FROM ROL WHERE idROL = ?"
+                    );
+                pstm.setInt(1,idROL);
+                ResultSet rs = pstm.executeQuery();
+                        if(rs.first()){
+                            encontrado = new Rol(
+                            rs.getString(1),     
+                            rs.getString(2),
+                            rs.getInt(3));
+                           
+                        }
+        
+        
+        }
+        catch(ClassNotFoundException e){
+            System.out.println("ERROR, Clase no encontrada "+e.getMessage());
+        }
+        catch(SQLException e){
+            System.out.println(String.format("ERROR SQL %s : %s",e.getSQLState(),e.getMessage()));
+        }    
+        catch(Exception e){
+            System.out.println("Otra excepción "+e.getMessage());
+        }
+       finally{
+            this.getConexion().cerrarConexion();
+        }
+        return encontrado;
+    
+    }
+            
+    public List<Rol> listarRoles(){
+        List <Rol> roles = new ArrayList<Rol>();
+        try {
+            PreparedStatement pstm = this.getConexion().obtenerConexion()
+                    .prepareStatement(
+                      "SELECT nombreUsuario,contraseñaUsuario, TIPOROL_idTIPOROL from ROL"   
+                    );
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                Rol temp = new Rol (
+                        rs.getString(1),     
+                        rs.getString(2),
+                        rs.getInt(3));
+                roles.add(temp);
+            }
+        }
+        catch (ClassNotFoundException e){
+            System.out.println("Clase no encontrada " + e.getMessage());
+        }
+        catch(SQLException e){
+            System.out.println(String.format("ERROR SQL %s : %s",e.getSQLState(),e.getMessage()));
+        }    
+        catch(Exception e){
+            System.out.println("Otra excepción "+e.getMessage());
+        }
+        finally{
+            this.getConexion().cerrarConexion();
+        }
+        return roles;
    }
+}
