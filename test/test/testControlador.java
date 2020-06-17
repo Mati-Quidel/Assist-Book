@@ -65,7 +65,7 @@ public class testControlador {
     public static void testListarAlumnos(){
         List<Alumno> alumnos = cAlumno.listarAlumnos();
                 for(Alumno temp:alumnos){
-                    System.out.println("nombre: "+temp.getNomcompAlumno()+ "Rut: "+temp.getRutAlumno());
+                    System.out.println("nombre: "+temp.getNomcompAlumno()+ " Rut: "+temp.getRutAlumno());
                 }
     }
     

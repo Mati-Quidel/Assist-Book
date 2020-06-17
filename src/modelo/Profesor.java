@@ -12,32 +12,33 @@ package modelo;
  */
 public class Profesor {
     private int idPROFESOR;
-    private int rutProfe;
+    private int rutcProfe;
     private String nomcompProfe;
-    private int idUSUARIO;
-    private int idGENERO;
-    private int idTIPOROL;
+    private int GENERO_idGENERO;
+    private int ROL_idTIPOROL;
+    private int ROL_TIPOROL_idTIPOROL;
 
-    //Constructor sin parametros
-    public Profesor() {
-        }
-        //constructor con parametros
-        public Profesor(int nuevoRutProfe, String nuevoNomcompProfe,int nuevoIdGENERO) {
-            this.setRutProfe(nuevoRutProfe);
-            this.setNomcompProfe(nuevoNomcompProfe);
-            this.setIdGENERO(nuevoIdGENERO);
-                }
-                //constructor con todos los parametros.
-                public Profesor(int idPROFESOR, int rutProfe, String nomcompProfe, int idUSUARIO, int idGENERO, int idTIPOROL) {
-                    this.idPROFESOR = idPROFESOR;
-            this.rutProfe = rutProfe;
-            this.nomcompProfe = nomcompProfe;
-            this.idUSUARIO = idUSUARIO;
-            this.idGENERO = idGENERO;
-            this.idTIPOROL = idTIPOROL;
-        }
+    public Profesor(int nuevoRutcProfe, String nuevoNomcompProfe, int nuevoGENERO_idGENERO, int nuevoROL_idTIPOROL, int nuevoROL_TIPOROL_idTIPOROL) {
+        this.rutcProfe = (nuevoRutcProfe);
+        this.nomcompProfe = (nuevoNomcompProfe);
+        this.GENERO_idGENERO = (nuevoGENERO_idGENERO);
+        this.ROL_idTIPOROL = (nuevoROL_idTIPOROL);
+        this.ROL_TIPOROL_idTIPOROL = (nuevoROL_TIPOROL_idTIPOROL);
+    }
 
-                //Getter y Setter
+    public Profesor(int rutcProfe, String nomcompProfe) {
+        this.rutcProfe = rutcProfe;
+        this.nomcompProfe = nomcompProfe;
+    }
+
+    public Profesor(int idPROFESOR, int rutcProfe, String nomcompProfe, int GENERO_idGENERO, int ROL_idTIPOROL, int ROL_TIPOROL_idTIPOROL) {
+        this.idPROFESOR = idPROFESOR;
+        this.rutcProfe = rutcProfe;
+        this.nomcompProfe = nomcompProfe;
+        this.GENERO_idGENERO = GENERO_idGENERO;
+        this.ROL_idTIPOROL = ROL_idTIPOROL;
+        this.ROL_TIPOROL_idTIPOROL = ROL_TIPOROL_idTIPOROL;
+    }
 
     public int getIdPROFESOR() {
         return idPROFESOR;
@@ -47,12 +48,12 @@ public class Profesor {
         this.idPROFESOR = idPROFESOR;
     }
 
-    public int getRutProfe() {
-        return rutProfe;
+    public int getRutcProfe() {
+        return rutcProfe;
     }
 
-    public void setRutProfe(int rutProfe) {
-        this.rutProfe = rutProfe;
+    public void setRutcProfe(int rutcProfe) {
+        this.rutcProfe = rutcProfe;
     }
 
     public String getNomcompProfe() {
@@ -63,29 +64,40 @@ public class Profesor {
         this.nomcompProfe = nomcompProfe;
     }
 
-    public int getIdUSUARIO() {
-        return idUSUARIO;
+    public int getGENERO_idGENERO() {
+        return GENERO_idGENERO;
     }
 
-    public void setIdUSUARIO(int idUSUARIO) {
-        this.idUSUARIO = idUSUARIO;
+    public void setGENERO_idGENERO(int GENERO_idGENERO) {
+        this.GENERO_idGENERO = GENERO_idGENERO;
     }
 
-    public int getIdGENERO() {
-        return idGENERO;
+    public int getROL_idTIPOROL() {
+        return ROL_idTIPOROL;
     }
 
-    public void setIdGENERO(int idGENERO) {
-        this.idGENERO = idGENERO;
+    public void setROL_idTIPOROL(int ROL_idTIPOROL) {
+        this.ROL_idTIPOROL = ROL_idTIPOROL;
     }
 
-    public int getIdTIPOROL() {
-        return idTIPOROL;
+    public int getROL_TIPOROL_idTIPOROL() {
+        return ROL_TIPOROL_idTIPOROL;
     }
 
-    public void setIdTIPOROL(int idTIPOROL) {
-        this.idTIPOROL = idTIPOROL;
+    public void setROL_TIPOROL_idTIPOROL(int ROL_TIPOROL_idTIPOROL) {
+        this.ROL_TIPOROL_idTIPOROL = ROL_TIPOROL_idTIPOROL;
     }
+
+    @Override
+    public String toString() {
+        return "Profesor{" + "idPROFESOR=" + idPROFESOR + ", rutcProfe=" + rutcProfe + ", nomcompProfe=" + nomcompProfe + ", GENERO_idGENERO=" + GENERO_idGENERO + ", ROL_idTIPOROL=" + ROL_idTIPOROL + ", ROL_TIPOROL_idTIPOROL=" + ROL_TIPOROL_idTIPOROL + '}';
+    }
+
+    
+    
+    
+
+    
     
 }
             

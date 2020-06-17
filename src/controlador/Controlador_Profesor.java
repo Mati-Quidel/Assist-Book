@@ -33,10 +33,13 @@ public class Controlador_Profesor {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO profesor (rutProfe,nomcompprofe) VALUES(?,?)"
+                    "INSERT INTO PROFESOR (rutcProfe,nomcompprofe,GENERO_idGENERO,ROL_idROL,ROL_TIPOROL_idTIPOROL) VALUES(?,?,?,?,?)"
             );
-            pstm.setInt(1, nuevoProfesor.getRutProfe());
+            pstm.setInt(1, nuevoProfesor.getRutcProfe());
             pstm.setString(2, nuevoProfesor.getNomcompProfe());
+            pstm.setInt(3, nuevoProfesor.getGENERO_idGENERO());
+            pstm.setInt(4, nuevoProfesor.getROL_idTIPOROL());
+            pstm.setInt(5, nuevoProfesor.getROL_TIPOROL_idTIPOROL());
             if(pstm.executeUpdate()==1){
                 salida = true;
             }
@@ -60,11 +63,16 @@ public class Controlador_Profesor {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "UPDATE PROFESOR SET rutProfe = ?,nomcompProfe = ? where idPROFESOR = ?"
+                    "UPDATE PROFESOR SET rutcProfe = ?,nomcompProfe = ?,GENERO_idGENERO = ?,"
+                            + "ROL_idROL = ?,ROL_TIPOROL_idTIPOROL= ? where idPROFESOR = ?"
                     );
-            pstm.setInt(0, 0);
-            pstm.setInt(1, nuevoProfesor.getRutProfe());
+            
+            pstm.setInt(1, nuevoProfesor.getRutcProfe());
             pstm.setString(2, nuevoProfesor.getNomcompProfe());
+            pstm.setInt(3, nuevoProfesor.getGENERO_idGENERO());
+            pstm.setInt(4, nuevoProfesor.getROL_idTIPOROL());
+            pstm.setInt(5, nuevoProfesor.getROL_TIPOROL_idTIPOROL());
+            pstm.setInt(6, nuevoProfesor.getIdPROFESOR());
             if(pstm.executeUpdate() == 1){
                 salida = true; 
             } 
@@ -118,15 +126,14 @@ public class Controlador_Profesor {
         Profesor encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT idPROFESOR, nomcompProfe, rutProfe from LIBRO WHERE idPROFESOR = ?"
+                    "SELECT  nomcompProfe, rutcProfe from PROFESOR WHERE idPROFESOR = ?"
                     );
                 pstm.setInt(1,idPROFESOR);
                 ResultSet rs = pstm.executeQuery();
                         if(rs.first()){
                             encontrado = new Profesor(
-                            rs.getInt(1),
-                            rs.getString(2),
-                            rs.getInt(3)
+                            rs.getInt(2),
+                            rs.getString(1)
                             );
                         }
         
@@ -149,21 +156,19 @@ public class Controlador_Profesor {
     }
             
     public List<Profesor> listarProfesores(){
-        List <Profesor> Profesor = new ArrayList<Profesor>();
+        List <Profesor> profesores = new ArrayList<Profesor>();
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                      "SELECT idPROFE,nomcompProfe,rutProfe FORM Profesor "      
+                      "SELECT rutcProfe,nomcompProfe FROM PROFESOR "      
                     );
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
                 Profesor temp = new Profesor(
                         rs.getInt(1),
-                        rs.getString(2),
-                        rs.getInt(3)
-                    
+                        rs.getString(2)
                 );
-                Profesor.add(temp);
+                profesores.add(temp);
             }
         }
         catch (ClassNotFoundException e){
@@ -178,7 +183,7 @@ public class Controlador_Profesor {
         finally{
             this.getConexion().cerrarConexion();
         }
-        return Profesor;
+        return profesores;
     }
     
 }

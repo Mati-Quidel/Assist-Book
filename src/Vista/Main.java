@@ -20,7 +20,7 @@ public class Main {
     public static void main ( String...args){
         int opcion = 0;
         while(opcion<=6){
-            menu();
+            menuAlumno();
             opcion=scann.nextInt();
             
             if(opcion==1){
@@ -47,7 +47,7 @@ public class Main {
         System.exit(0);
     }
     
-    private static void menu (){
+    private static void menuAlumno (){
         System.out.println("BIENVENIDO AL MENÚ ALUMNO");
         System.out.println("-----------------------------------");
         System.out.println("Seleccione una de las siguientes opciones (1-6) para continuar");
