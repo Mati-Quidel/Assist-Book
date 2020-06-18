@@ -50,7 +50,7 @@ public class testControlador_Curso {
                 for(Curso temp:cursos){
                     System.out.println("El Curso "+temp.getNivel()
                                         +" en la sala "+temp.getSALA_idSALA()
-                                         +" de Alumno "+temp.getALUMNO_idALUMNO ());
+                                         +" de Alumno "+temp.getAlumno().getNomcompAlumno());
                 }
     }
 }

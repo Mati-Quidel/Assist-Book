@@ -11,40 +11,39 @@ package modelo;
  * @author Matias
  */
 public class Alumno {
-    private int idALUMNO;
+    private int idAlumno;
     private int rutAlumno;
-    private String nomcompAlumno;
-    private int GENERO_idGENERO;
-    private int ESTADO_MATRICULA_idESTADO_MATRICULA;
-    private int CREDENCIAL_idCREDENCIAL;
-  //Constructor parametros ingresar información.
-    
-    public Alumno(int nuevoRutAlumno, String nuevoNomcompAlumno, int nuevoGENERO_idGENERO,
-                  int nuevoESTADO_MATRICULA_idESTADO_MATRICULA, int nuevoCREDENCIAL_idCREDENCIAL){
+    private String nomAlumno;
+    private int idGenero;
+    private int idCredencial;
+    private int idMatricula;
+
+    public Alumno() {
+    }
+
+    public Alumno( int nuevoRutAlumno, String nuevoNomAlumno, int nuevoIdGenero, int nuevoIdCredencial, int nuevoIdMatricula) {
         this.rutAlumno = (nuevoRutAlumno);
-        this.nomcompAlumno = (nuevoNomcompAlumno);
-        this.GENERO_idGENERO = (nuevoGENERO_idGENERO);
-        this.ESTADO_MATRICULA_idESTADO_MATRICULA = (nuevoESTADO_MATRICULA_idESTADO_MATRICULA);
-        this.CREDENCIAL_idCREDENCIAL = nuevoCREDENCIAL_idCREDENCIAL ;
-        
+        this.nomAlumno = (nuevoNomAlumno);
+        this.idGenero = (nuevoIdGenero);
+        this.idCredencial = (nuevoIdCredencial);
+        this.idMatricula = (nuevoIdMatricula);
     }
-  //Constructor con parametros
 
-    public Alumno(int idALUMNO, int rutAlumno, String nomcompAlumno, int GENERO_idGENERO, int ESTADO_MATRICULA_idESTADO_MATRICULA, int CREDENCIAL_idCREDENCIAL) {
-        this.idALUMNO = idALUMNO;
+    public Alumno(int idAlumno, int rutAlumno, String nomAlumno, int idGenero, int idCredencial, int idMatricula) {
+        this.idAlumno = idAlumno;
         this.rutAlumno = rutAlumno;
-        this.nomcompAlumno = nomcompAlumno;
-        this.GENERO_idGENERO = GENERO_idGENERO;
-        this.ESTADO_MATRICULA_idESTADO_MATRICULA = ESTADO_MATRICULA_idESTADO_MATRICULA;
-        this.CREDENCIAL_idCREDENCIAL = CREDENCIAL_idCREDENCIAL;
+        this.nomAlumno = nomAlumno;
+        this.idGenero = idGenero;
+        this.idCredencial = idCredencial;
+        this.idMatricula = idMatricula;
     }
 
-    public int getIdALUMNO() {
-        return idALUMNO;
+    public int getIdAlumno() {
+        return idAlumno;
     }
 
-    public void setIdALUMNO(int idALUMNO) {
-        this.idALUMNO = idALUMNO;
+    public void setIdAlumno(int idAlumno) {
+        this.idAlumno = idAlumno;
     }
 
     public int getRutAlumno() {
@@ -55,49 +54,46 @@ public class Alumno {
         this.rutAlumno = rutAlumno;
     }
 
-    public String getNomcompAlumno() {
-        return nomcompAlumno;
+    public String getNomAlumno() {
+        return nomAlumno;
     }
 
-    public void setNomcompAlumno(String nomcompAlumno) {
-        this.nomcompAlumno = nomcompAlumno;
+    public void setNomAlumno(String nomAlumno) {
+        this.nomAlumno = nomAlumno;
     }
 
-    public int getGENERO_idGENERO() {
-        return GENERO_idGENERO;
+    public int getIdGenero() {
+        return idGenero;
     }
 
-    public void setGENERO_idGENERO(int GENERO_idGENERO) {
-        this.GENERO_idGENERO = GENERO_idGENERO;
+    public void setIdGenero(int idGenero) {
+        this.idGenero = idGenero;
     }
 
-    public int getESTADO_MATRICULA_idESTADO_MATRICULA() {
-        return ESTADO_MATRICULA_idESTADO_MATRICULA;
+    public int getIdCredencial() {
+        return idCredencial;
     }
 
-    public void setESTADO_MATRICULA_idESTADO_MATRICULA(int ESTADO_MATRICULA_idESTADO_MATRICULA) {
-        this.ESTADO_MATRICULA_idESTADO_MATRICULA = ESTADO_MATRICULA_idESTADO_MATRICULA;
+    public void setIdCredencial(int idCredencial) {
+        this.idCredencial = idCredencial;
     }
 
-    public int getCREDENCIAL_idCREDENCIAL() {
-        return CREDENCIAL_idCREDENCIAL;
+    public int getIdMatricula() {
+        return idMatricula;
     }
 
-    public void setCREDENCIAL_idCREDENCIAL(int CREDENCIAL_idCREDENCIAL) {
-        this.CREDENCIAL_idCREDENCIAL = CREDENCIAL_idCREDENCIAL;
+    public void setIdMatricula(int idMatricula) {
+        this.idMatricula = idMatricula;
     }
 
-    public Alumno( int rutAlumno, String nomcompAlumno) {
-   
-        this.rutAlumno = rutAlumno;
-        this.nomcompAlumno = nomcompAlumno;
-    }
-
-    
     @Override
     public String toString() {
-        return "Alumno{" + "idALUMNO=" + idALUMNO + ", rutAlumno=" + rutAlumno + ", nomcompAlumno=" + nomcompAlumno + ", GENERO_idGENERO=" + GENERO_idGENERO + ", ESTADO_MATRICULA_idESTADO_MATRICULA=" + ESTADO_MATRICULA_idESTADO_MATRICULA + ", CREDENCIAL_idCREDENCIAL=" + CREDENCIAL_idCREDENCIAL + '}';
+        return "Alumno{" + "idAlumno=" + idAlumno + ", rutAlumno=" + rutAlumno + ", nomAlumno=" + nomAlumno + ", idGenero=" + idGenero + ", idCredencial=" + idCredencial + ", idMatricula=" + idMatricula + '}';
     }
+    
+    
+    
+    
    
 }
     

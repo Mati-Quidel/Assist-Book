@@ -10,38 +10,44 @@ package modelo;
  * @author aliss
  */
 public class Rol {
-    private int idROL;
-    private String nombreUsuario;
+    private int idRol;
+    private String nomUsuario;
     private String contraseñaUsuario;
-    private int TIPOROL_idTIPOROL;
+    private int idProfesor;
+    private int idTipoRol;
 
-    public Rol(String nuevoNombreUsuario, String nuevoContraseñaUsuario, int nuevoTIPOROL_idTIPOROL) {
-        this.nombreUsuario = (nuevoNombreUsuario);
+    public Rol() {
+    }
+
+    public Rol(String nuevoNomUsuario, String nuevoContraseñaUsuario, int nuevoIdProfesor, int nuevoIdTipoRol) {
+        this.nomUsuario = (nuevoNomUsuario);
         this.contraseñaUsuario = (nuevoContraseñaUsuario);
-        this.TIPOROL_idTIPOROL = (nuevoTIPOROL_idTIPOROL);
+        this.idProfesor = (nuevoIdProfesor);
+        this.idTipoRol = (nuevoIdTipoRol);
     }
 
-    public Rol(int idROL, String nombreUsuario, String contraseñaUsuario, int TIPOROL_idTIPOROL) {
-        this.idROL = idROL;
-        this.nombreUsuario = nombreUsuario;
+    public Rol(int idRol, String nomUsuario, String contraseñaUsuario, int idProfesor, int idTipoRol) {
+        this.idRol = idRol;
+        this.nomUsuario = nomUsuario;
         this.contraseñaUsuario = contraseñaUsuario;
-        this.TIPOROL_idTIPOROL = TIPOROL_idTIPOROL;
+        this.idProfesor = idProfesor;
+        this.idTipoRol = idTipoRol;
     }
 
-    public int getIdROL() {
-        return idROL;
+    public int getIdRol() {
+        return idRol;
     }
 
-    public void setIdROL(int idROL) {
-        this.idROL = idROL;
+    public void setIdRol(int idRol) {
+        this.idRol = idRol;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public String getNomUsuario() {
+        return nomUsuario;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setNomUsuario(String nomUsuario) {
+        this.nomUsuario = nomUsuario;
     }
 
     public String getContraseñaUsuario() {
@@ -52,18 +58,28 @@ public class Rol {
         this.contraseñaUsuario = contraseñaUsuario;
     }
 
-    public int getTIPOROL_idTIPOROL() {
-        return TIPOROL_idTIPOROL;
+    public int getIdProfesor() {
+        return idProfesor;
     }
 
-    public void setTIPOROL_idTIPOROL(int TIPOROL_idTIPOROL) {
-        this.TIPOROL_idTIPOROL = TIPOROL_idTIPOROL;
+    public void setIdProfesor(int idProfesor) {
+        this.idProfesor = idProfesor;
+    }
+
+    public int getIdTipoRol() {
+        return idTipoRol;
+    }
+
+    public void setIdTipoRol(int idTipoRol) {
+        this.idTipoRol = idTipoRol;
     }
 
     @Override
     public String toString() {
-        return "Rol{" + "idROL=" + idROL + ", nombreUsuario=" + nombreUsuario + ", contrase\u00f1aUsuario=" + contraseñaUsuario + ", TIPOROL_idTIPOROL=" + TIPOROL_idTIPOROL + '}';
+        return "Rol{" + "idRol=" + idRol + ", nomUsuario=" + nomUsuario + ", contrase\u00f1aUsuario=" + contraseñaUsuario + ", idProfesor=" + idProfesor + ", idTipoRol=" + idTipoRol + '}';
     }
+    
+    
     
     
 

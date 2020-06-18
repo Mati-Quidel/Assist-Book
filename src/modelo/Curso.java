@@ -17,7 +17,18 @@ public class Curso {
     private int ALUMNO_GENERO_idGENERO;
     private int ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA;
     private int ALUMNO_CREDENCIAL_idCREDENCIAL;
+    private Alumno alumno;
 
+    public Alumno getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
+    }
+    
+    
+    
     public Curso(String nuevoNivel, int nuevoSALA_idSALA, int nuevoALUMNO_idALUMNO, 
                 int nuevoALUMNO_GENERO_idGENERO, 
                 int nuevoALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA, 
