@@ -30,6 +30,14 @@ public class Curso {
         this.ALUMNO_CREDENCIAL_idCREDENCIAL = (nuevoALUMNO_CREDENCIAL_idCREDENCIAL);
     }
 
+    public Curso(String nivel, int SALA_idSALA, int ALUMNO_idALUMNO) {
+        this.nivel = nivel;
+        this.SALA_idSALA = SALA_idSALA;
+        this.ALUMNO_idALUMNO = ALUMNO_idALUMNO;
+    }
+
+    
+    
     public Curso(int idCURSO, String nivel, int SALA_idSALA, int ALUMNO_idALUMNO, 
             int ALUMNO_GENERO_idGENERO, int ALUMNO_ESTADO_MATRICULA_idESTADO_MATRICULA, 
             int ALUMNO_CREDENCIAL_idCREDENCIAL) {
