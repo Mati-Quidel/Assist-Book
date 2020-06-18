@@ -10,7 +10,7 @@ package modelo;
  * @author Matias
  */
 public class Credencial {
-    private int idCREDENCIAL;
+    private int idCredencial;
     private int codigo;
 
     public Credencial(int nuevoCodigo) {
@@ -20,16 +20,16 @@ public class Credencial {
     
 
     public Credencial(int idCREDENCIAL, int codigo) {
-        this.idCREDENCIAL = idCREDENCIAL;
+        this.idCredencial = idCREDENCIAL;
         this.codigo = codigo;
     }
 
-    public int getIdCREDENCIAL() {
-        return idCREDENCIAL;
+    public int getIdCredencial() {
+        return idCredencial;
     }
 
-    public void setIdCREDENCIAL(int idCREDENCIAL) {
-        this.idCREDENCIAL = idCREDENCIAL;
+    public void setIdCredencial(int idCredencial) {
+        this.idCredencial = idCredencial;
     }
 
     public int getCodigo() {
@@ -42,8 +42,9 @@ public class Credencial {
 
     @Override
     public String toString() {
-        return "Credencial{" + "idCREDENCIAL=" + idCREDENCIAL + ", codigo=" + codigo + '}';
+        return "Credencial{" + "idCredencial=" + idCredencial + ", codigo=" + codigo + '}';
     }
+
     
     
 }

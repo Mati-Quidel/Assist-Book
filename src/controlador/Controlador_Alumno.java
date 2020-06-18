@@ -32,14 +32,13 @@ public class Controlador_Alumno {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO ALUMNO (rutAlumno,nomcompAlumno,GENERO_idGENERO,"
-                            + "ESTADO_MATRICULA_idESTADO_MATRICULA,CREDENCIAL_idCREDENCIAL ) VALUES(?,?,?,?,?)"
+                    "INSERT INTO ALUMNO (rutAlumno,nomAlumno,idGenero,idCredencial,idMatricula) VALUES(?,?,?,?,?)"
             );
             pstm.setInt(1, nuevoAlumno.getRutAlumno());
-            pstm.setString(2, nuevoAlumno.getNomcompAlumno());
-            pstm.setInt(3, nuevoAlumno.getGENERO_idGENERO());
-            pstm.setInt(4,nuevoAlumno.getESTADO_MATRICULA_idESTADO_MATRICULA());
-            pstm.setInt(5,nuevoAlumno.getCREDENCIAL_idCREDENCIAL());
+            pstm.setString(2, nuevoAlumno.getNomAlumno());
+            pstm.setInt(3, nuevoAlumno.getIdGenero());
+            pstm.setInt(4,nuevoAlumno.getIdCredencial());
+            pstm.setInt(5,nuevoAlumno.getIdMatricula());
             
             if(pstm.executeUpdate()==1){
                 salida = true;
@@ -65,16 +64,16 @@ public class Controlador_Alumno {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "UPDATE ALUMNO SET rutAlumno = ?,nomcompAlumno = ? ,GENERO_idGENERO = ?,"
-                            + "ESTADO_MATRICULA_idESTADO_MATRICULA = ?,"
-                            + "CREDENCIAL_idCREDENCIAL = ? where idALUMNO = ?"
+                    "UPDATE ALUMNO SET rutAlumno = ?,nomAlumno = ?,idGenero = ?,"
+                            + "idCredencial = ?,idMatricula = ? where idALumno = ?"
                     );
             pstm.setInt(1, nuevoAlumno.getRutAlumno());
-            pstm.setString(2, nuevoAlumno.getNomcompAlumno());
-            pstm.setInt(3, nuevoAlumno.getGENERO_idGENERO());
-            pstm.setInt(4,nuevoAlumno.getESTADO_MATRICULA_idESTADO_MATRICULA());
-            pstm.setInt(5,nuevoAlumno.getCREDENCIAL_idCREDENCIAL());
-            pstm.setInt(6,nuevoAlumno.getIdALUMNO());
+            pstm.setInt(1, nuevoAlumno.getRutAlumno());
+            pstm.setString(2, nuevoAlumno.getNomAlumno());
+            pstm.setInt(3, nuevoAlumno.getIdGenero());
+            pstm.setInt(4,nuevoAlumno.getIdCredencial());
+            pstm.setInt(5,nuevoAlumno.getIdMatricula());
+            pstm.setInt(6,nuevoAlumno.getIdAlumno());
             if(pstm.executeUpdate() == 1){
                 salida = true; 
             } 
@@ -95,14 +94,14 @@ public class Controlador_Alumno {
         return salida;
     }
     
-    public boolean eliminarAlumno(int idALUMNO){
+    public boolean eliminarAlumno(int idAlumno){
         boolean salida = false;
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "DELETE FROM ALUMNO WHERE idALUMNO = ?"
+                    "DELETE FROM ALUMNO WHERE idALumno = ?"
                     );
-                        pstm.setInt(1, idALUMNO);
+                        pstm.setInt(1, idAlumno);
                         if(pstm.executeUpdate() == 1) {
                             salida = true;
                         }
@@ -124,18 +123,21 @@ public class Controlador_Alumno {
 
     }
     
-    public Alumno buscarAlumno(int idALUMNO){
+    public Alumno buscarAlumno(int idAlumno){
         Alumno encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT   rutAlumno, nomcompAlumno from ALUMNO WHERE idALUMNO = ?"
+                    "SELECT   rutAlumno,nomAlumno,idGenero,idCredencial,idMatricula from ALUMNO WHERE idAlumno = ?"
                     );
-                pstm.setInt(1,idALUMNO);
+                pstm.setInt(1,idAlumno);
                 ResultSet rs = pstm.executeQuery();
                         if(rs.first()){
                             encontrado = new Alumno(
                             rs.getInt(1),
-                            rs.getString(2));
+                            rs.getString(2),
+                            rs.getInt(3),
+                            rs.getInt(4),
+                            rs.getInt(5));
                            
                         }
         
@@ -162,15 +164,16 @@ public class Controlador_Alumno {
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                      "SELECT rutAlumno,nomcompAlumno from ALUMNO"   
+                      "SELECT rutAlumno,nomAlumno,idGenero,idCredencial,idMatricula from ALUMNO"   
                     );
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
                 Alumno temp = new Alumno (
                         rs.getInt(1),
-                        rs.getString(2)
-                      
-                );
+                            rs.getString(2),
+                            rs.getInt(3),
+                            rs.getInt(4),
+                            rs.getInt(5));
                 alumnos.add(temp);
             }
         }

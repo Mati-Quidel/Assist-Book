@@ -32,11 +32,11 @@ public class Controlador_Libro {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO LIBRO (CURSO_idCURSO,asignatura,profesor) VALUES(?,?,?)"
+                    "INSERT INTO LIBRO (nivel, idSala, idProfesor) VALUES(?,?,?)"
             );
-            pstm.setInt(1, nuevoLibro.getCURSO_idCURSO());
-            pstm.setString(2, nuevoLibro.getAsignatura());
-            pstm.setString(3, nuevoLibro.getProfesor());
+            pstm.setString(1, nuevoLibro.getNivel());
+            pstm.setInt(2, nuevoLibro.getIdSala());
+            pstm.setInt(3, nuevoLibro.getIdProfesor());
             if(pstm.executeUpdate()==1){
                 salida = true;
             }
@@ -60,12 +60,12 @@ public class Controlador_Libro {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "UPDATE LIBRO SET CURSO_idCURSO = ?,Asignatura = ?, Profesor = ? where idLIBRO = ?"
+                    "UPDATE LIBRO SET nivel = ?,idSala = ?,idProfesor = ? where idLibro= ?"
                     );
-            pstm.setInt(1, nuevoLibro.getCURSO_idCURSO());
-            pstm.setString(2, nuevoLibro.getAsignatura());
-            pstm.setString(3,nuevoLibro.getProfesor());
-            pstm.setInt(4,nuevoLibro.getIdLIBRO());
+            pstm.setString(1, nuevoLibro.getNivel());
+            pstm.setInt(2, nuevoLibro.getIdSala());
+            pstm.setInt(3, nuevoLibro.getIdProfesor());
+            pstm.setInt(4,nuevoLibro.getIdLibro());
             if(pstm.executeUpdate() == 1){
                 salida = true; 
             } 
@@ -86,14 +86,14 @@ public class Controlador_Libro {
         return salida;
     }
     
-    public boolean eliminarLibro(int idLIBRO){
+    public boolean eliminarLibro(int idLibro){
         boolean salida = false;
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "DELETE FROM LIBRO WHERE idLIBRO = ?"
+                    "DELETE FROM LIBRO WHERE idLibro = ?"
                     );
-                        pstm.setInt(1, idLIBRO);
+                        pstm.setInt(1, idLibro);
                         if(pstm.executeUpdate() == 1) {
                             salida = true;
                         }
@@ -115,19 +115,19 @@ public class Controlador_Libro {
 
     }
     
-    public Libro buscarLibro(int idLIBRO){
+    public Libro buscarLibro(int idLibro){
         Libro encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT idCURSO, Asignatura, Profesor from LIBRO WHERE idLIBRO = ?"
+                    "SELECT nivel, idSala, idProfesor from LIBRO WHERE idLibro = ?"
                     );
-                pstm.setInt(1,idLIBRO);
+                pstm.setInt(1,idLibro);
                 ResultSet rs = pstm.executeQuery();
                         if(rs.first()){
                             encontrado = new Libro(
-                            rs.getInt(1),
-                            rs.getString(2), 
-                            rs.getString(3));
+                            rs.getString(1),
+                            rs.getInt(2), 
+                            rs.getInt(3));
                         }
         
         
@@ -153,14 +153,14 @@ public class Controlador_Libro {
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                      "SELECT idCURSO,Asignatura,Profesor FORM LIBRO"      
+                      "SELECT nivel, idSala, idProfesor FROM LIBRO"      
                     );
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
                 Libro temp = new Libro(
-                        rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3));
+                        rs.getString(1),
+                        rs.getInt(2), 
+                        rs.getInt(3));;
                 libros.add(temp);
             }
         }

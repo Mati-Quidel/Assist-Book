@@ -33,13 +33,12 @@ public class Controlador_Profesor {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO PROFESOR (rutcProfe,nomcompprofe,GENERO_idGENERO,ROL_idROL,ROL_TIPOROL_idTIPOROL) VALUES(?,?,?,?,?)"
-            );
-            pstm.setInt(1, nuevoProfesor.getRutcProfe());
-            pstm.setString(2, nuevoProfesor.getNomcompProfe());
-            pstm.setInt(3, nuevoProfesor.getGENERO_idGENERO());
-            pstm.setInt(4, nuevoProfesor.getROL_idTIPOROL());
-            pstm.setInt(5, nuevoProfesor.getROL_TIPOROL_idTIPOROL());
+                    "INSERT INTO PROFESOR (rutProfe,nomProfe) VALUES(?,?)");
+            
+            pstm.setInt(1, nuevoProfesor.getRutProfe());
+            pstm.setString(2, nuevoProfesor.getNomProfe());
+        
+            
             if(pstm.executeUpdate()==1){
                 salida = true;
             }
@@ -63,16 +62,12 @@ public class Controlador_Profesor {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "UPDATE PROFESOR SET rutcProfe = ?,nomcompProfe = ?,GENERO_idGENERO = ?,"
-                            + "ROL_idROL = ?,ROL_TIPOROL_idTIPOROL= ? where idPROFESOR = ?"
+                    "UPDATE PROFESOR SET rutProfe = ?,nomProfe = ? where idProfesor = ?"
                     );
             
-            pstm.setInt(1, nuevoProfesor.getRutcProfe());
-            pstm.setString(2, nuevoProfesor.getNomcompProfe());
-            pstm.setInt(3, nuevoProfesor.getGENERO_idGENERO());
-            pstm.setInt(4, nuevoProfesor.getROL_idTIPOROL());
-            pstm.setInt(5, nuevoProfesor.getROL_TIPOROL_idTIPOROL());
-            pstm.setInt(6, nuevoProfesor.getIdPROFESOR());
+            pstm.setInt(1, nuevoProfesor.getRutProfe());
+            pstm.setString(2, nuevoProfesor.getNomProfe());
+            pstm.setInt(6, nuevoProfesor.getIdProfesor());
             if(pstm.executeUpdate() == 1){
                 salida = true; 
             } 
@@ -93,14 +88,14 @@ public class Controlador_Profesor {
         return salida;
     }
     
-    public boolean eliminarProfesor(int idPROFESOR){
+    public boolean eliminarProfesor(int idProfesor){
         boolean salida = false;
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "DELETE FROM PROFESOR WHERE idPROFESOR = ?"
+                    "DELETE FROM PROFESOR WHERE idProfesor = ?"
                     );
-                        pstm.setInt(1, idPROFESOR);
+                        pstm.setInt(1, idProfesor);
                         if(pstm.executeUpdate() == 1) {
                             salida = true;
                         }
@@ -122,18 +117,18 @@ public class Controlador_Profesor {
 
     }
     
-    public Profesor buscarProfesor(int idPROFESOR){
+    public Profesor buscarProfesor(int idProfesor){
         Profesor encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT  nomcompProfe, rutcProfe from PROFESOR WHERE idPROFESOR = ?"
+                    "SELECT rutProfe,nomProfe from PROFESOR WHERE idProfesor = ?"
                     );
-                pstm.setInt(1,idPROFESOR);
+                pstm.setInt(1,idProfesor);
                 ResultSet rs = pstm.executeQuery();
                         if(rs.first()){
                             encontrado = new Profesor(
-                            rs.getInt(2),
-                            rs.getString(1)
+                            rs.getInt(1),
+                            rs.getString(2)
                             );
                         }
         
@@ -160,7 +155,7 @@ public class Controlador_Profesor {
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                      "SELECT rutcProfe,nomcompProfe FROM PROFESOR "      
+                      "SELECT rutProfe,nomProfe FROM PROFESOR "      
                     );
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){

@@ -13,17 +13,17 @@ package modelo;
 public class Profesor {
     private int idProfesor;
     private int rutProfe;
-    private int nomProfe;
+    private String nomProfe;
 
     public Profesor() {
     }
 
-    public Profesor(int nuevoRutProfe, int nuevoNomProfe) {
+    public Profesor(int nuevoRutProfe, String nuevoNomProfe) {
         this.rutProfe = nuevoRutProfe;
         this.nomProfe = nuevoNomProfe;
     }
 
-    public Profesor(int idProfesor, int rutProfe, int nomProfe) {
+    public Profesor(int idProfesor, int rutProfe, String nomProfe) {
         this.idProfesor = idProfesor;
         this.rutProfe = rutProfe;
         this.nomProfe = nomProfe;
@@ -45,11 +45,11 @@ public class Profesor {
         this.rutProfe = rutProfe;
     }
 
-    public int getNomProfe() {
+    public String getNomProfe() {
         return nomProfe;
     }
 
-    public void setNomProfe(int nomProfe) {
+    public void setNomProfe(String nomProfe) {
         this.nomProfe = nomProfe;
     }
 
@@ -57,6 +57,7 @@ public class Profesor {
     public String toString() {
         return "Profesor{" + "idProfesor=" + idProfesor + ", rutProfe=" + rutProfe + ", nomProfe=" + nomProfe + '}';
     }
+
     
 
 }            

@@ -32,7 +32,7 @@ public class Controlador_Credencial {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO credencial (codigo) VALUES(?)"
+                    "INSERT INTO CREDENCIAL (codigo) VALUES(?)"
             );
             pstm.setInt(1, nuevaCredencial.getCodigo());
             if(pstm.executeUpdate()==1){
@@ -58,11 +58,11 @@ public class Controlador_Credencial {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "UPDATE Credencual SET codigo = ? where idCREDENCIAL = ?"
+                    "UPDATE CREDENCIAL SET codigo = ? where idCredencial = ?"
                     );
             pstm.setInt(1, 0);
             pstm.setInt(1, nuevaCredencial.getCodigo());
-            pstm.setInt(2,nuevaCredencial.getIdCREDENCIAL());
+            pstm.setInt(2,nuevaCredencial.getIdCredencial());
             if(pstm.executeUpdate() == 1){
                 salida = true; 
             } 
@@ -83,14 +83,14 @@ public class Controlador_Credencial {
         return salida;
     }
     
-    public boolean eliminarCredencial(int idCREDENCIAL){
+    public boolean eliminarCredencial(int idCredencial){
         boolean salida = false;
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "DELETE FROM CREDENCIAL WHERE idCREDENCIAL = ?"
+                    "DELETE FROM CREDENCIAL WHERE idCredencial = ?"
                     );
-                        pstm.setInt(1, idCREDENCIAL);
+                        pstm.setInt(1, idCredencial);
                         if(pstm.executeUpdate() == 1) {
                             salida = true;
                         }
@@ -112,13 +112,13 @@ public class Controlador_Credencial {
 
     }
     
-    public Credencial buscarCredencial(int idCREDENCIAL){
+    public Credencial buscarCredencial(int idCredencial){
         Credencial encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT idCREDENCIAL, codigo from CREDENCIAL WHERE idCREDENCIAL = ?"
+                    "SELECT idCredencial, codigo from CREDENCIAL WHERE idCredencial = ?"
                     );
-                pstm.setInt(1,idCREDENCIAL);
+                pstm.setInt(1,idCredencial);
                 ResultSet rs = pstm.executeQuery();
                         if(rs.first()){
                             encontrado = new Credencial(
@@ -150,7 +150,7 @@ public class Controlador_Credencial {
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                      "SELECT idCREDENCIAL,codigo FORM CREDENCIAL "      
+                      "SELECT idCredencial,codigo FORM CREDENCIAL "      
                     );
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){

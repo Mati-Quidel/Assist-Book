@@ -34,11 +34,13 @@ public class Controlador_Rol {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO ROL (nombreUsuario,contraseñaUsuario, TIPOROL_idTIPOROL) VALUES(?,?,?)"
+                    "INSERT INTO ROL (nomUsuario,contraseñaUsuario,idProfesor, idTipoRol) VALUES(?,?,?,?)"
             );
-            pstm.setString(1, nuevoRol.getNombreUsuario());
+            pstm.setString(1, nuevoRol.getNomUsuario());
             pstm.setString(2, nuevoRol.getContraseñaUsuario());
-            pstm.setInt(3, nuevoRol.getTIPOROL_idTIPOROL());
+            pstm.setInt(3, nuevoRol.getIdProfesor());
+            pstm.setInt(4, nuevoRol.getIdTipoRol());
+            
             
             
             if(pstm.executeUpdate()==1){
@@ -65,13 +67,13 @@ public class Controlador_Rol {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "UPDATE ROL SET nombreUsuario = ?,contraseñaUsuario = ?, "
-                            + "TIPOROL_idTIPOROL = ? where idROL = ?"
+                    "UPDATE ROL SET nomUsuario = ?,contraseñaUsuario = ?,idProfesor = ?,idTipoRol  = ? where idRol = ?"
                     );
-            pstm.setString(1, nuevoRol.getNombreUsuario());
+            pstm.setString(1, nuevoRol.getNomUsuario());
             pstm.setString(2, nuevoRol.getContraseñaUsuario());
-            pstm.setInt(3, nuevoRol.getTIPOROL_idTIPOROL());
-            pstm.setInt(4,nuevoRol.getIdROL());
+            pstm.setInt(3, nuevoRol.getIdProfesor());
+            pstm.setInt(4,nuevoRol.getIdTipoRol());
+            pstm.setInt(5,nuevoRol.getIdRol());
             if(pstm.executeUpdate() == 1){
                 salida = true; 
             } 
@@ -92,14 +94,14 @@ public class Controlador_Rol {
         return salida;
     }
     
-    public boolean eliminarRol(int idROL){
+    public boolean eliminarRol(int idRol){
         boolean salida = false;
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "DELETE FROM ROL WHERE idROL = ?"
+                    "DELETE FROM ROL WHERE idRol = ?"
                     );
-                        pstm.setInt(1, idROL);
+                        pstm.setInt(1, idRol);
                         if(pstm.executeUpdate() == 1) {
                             salida = true;
                         }
@@ -121,19 +123,20 @@ public class Controlador_Rol {
 
     }
     
-    public Rol buscarRol(int idROL){
+    public Rol buscarRol(int idRol){
         Rol encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT   nombreUsuario,contraseñaUsuario, TIPOROL_idTIPOROL FROM ROL WHERE idROL = ?"
+                    "SELECT   nomUsuario,contraseñaUsuario,idProfesor, idTipoRol FROM ROL WHERE idRol = ?"
                     );
-                pstm.setInt(1,idROL);
+                pstm.setInt(1,idRol);
                 ResultSet rs = pstm.executeQuery();
                         if(rs.first()){
                             encontrado = new Rol(
                             rs.getString(1),     
                             rs.getString(2),
-                            rs.getInt(3));
+                            rs.getInt(3),
+                            rs.getInt(4));
                            
                         }
         
@@ -160,14 +163,15 @@ public class Controlador_Rol {
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                      "SELECT nombreUsuario,contraseñaUsuario, TIPOROL_idTIPOROL from ROL"   
+                      "SELECT nomUsuario,contraseñaUsuario,idProfesor, idTipoRol FROM ROL"   
                     );
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
                 Rol temp = new Rol (
                         rs.getString(1),     
                         rs.getString(2),
-                        rs.getInt(3));
+                        rs.getInt(3),
+                        rs.getInt(4));;
                 roles.add(temp);
             }
         }
