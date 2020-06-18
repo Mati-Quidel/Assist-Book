@@ -17,6 +17,7 @@ public class Profesor {
     private int GENERO_idGENERO;
     private int ROL_idTIPOROL;
     private int ROL_TIPOROL_idTIPOROL;
+    
 
     public Profesor(int nuevoRutcProfe, String nuevoNomcompProfe, int nuevoGENERO_idGENERO, int nuevoROL_idTIPOROL, int nuevoROL_TIPOROL_idTIPOROL) {
         this.rutcProfe = (nuevoRutcProfe);
@@ -91,6 +92,10 @@ public class Profesor {
     @Override
     public String toString() {
         return "Profesor{" + "idPROFESOR=" + idPROFESOR + ", rutcProfe=" + rutcProfe + ", nomcompProfe=" + nomcompProfe + ", GENERO_idGENERO=" + GENERO_idGENERO + ", ROL_idTIPOROL=" + ROL_idTIPOROL + ", ROL_TIPOROL_idTIPOROL=" + ROL_TIPOROL_idTIPOROL + '}';
+    }
+
+    public void setRutProfe(int nuevoRutProfe) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

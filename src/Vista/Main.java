@@ -315,7 +315,7 @@ public class Main {
         
         System.out.println("Actualizando Alumno...");
         if(cAlumno.modificarAlumno(encontrado)){
-            System.out.println("Producto Modificado correctamente");
+            System.out.println("Alumno Modificado correctamente");
         }
         else{
            
@@ -448,7 +448,7 @@ public class Main {
         else{
             for(Alumno temp:cAlumno.listarAlumnos()){
                 System.out.println("-------------------------------------------");
-                System.out.println("nombre: "+temp.getNomcompAlumno()+ "Rut: "+temp.getRutAlumno());
+                System.out.println("nombre: "+temp.getNomcompAlumno()+ " Rut: "+temp.getRutAlumno());
                 System.out.println("-------------------------------------------");
             }
             System.out.println("Terminado\n");
