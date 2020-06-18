@@ -24,9 +24,9 @@ public class testControlador_Profesor {
     }
     
     public static void testAgregarProfesor(){
-        Profesor nuevoProfesor = new Profesor (20597810,"Matias Quidel Arancibia",2,1,2);
+        Profesor nuevoProfesor = new Profesor (20597810,"Matias Quidel Arancibia");
         if(cProfesor.agregarProfesor(nuevoProfesor)){
-            System.out.println(String.format("El Profesor %s fue agregado", nuevoProfesor.getNomcompProfe()));
+            System.out.println(String.format("El Profesor %s fue agregado", nuevoProfesor.getNomProfe()));
         }else{
             System.out.println("No se agrego");
         }
@@ -35,8 +35,8 @@ public class testControlador_Profesor {
     public static void testBuscarProfesor (int idBuscar){
         Profesor encontrado = cProfesor.buscarProfesor(1);
         if(encontrado != null){
-            System.out.println("El Profesor es "+encontrado.getNomcompProfe()
-                                +" de rut "+encontrado.getRutcProfe());
+            System.out.println("El Profesor es "+encontrado.getNomProfe()
+                                +" de rut "+encontrado.getRutProfe());
             
         }
         else{
@@ -45,7 +45,7 @@ public class testControlador_Profesor {
     }
 
     public static void testModificarProfesor(){
-        Profesor profeAMod = new Profesor(20597810,"Matias Alfonso Quidel Arancibia",2,1,2);
+        Profesor profeAMod = new Profesor(20597810,"Matias Alfonso Quidel Arancibia");
         if(cProfesor.modificarProfesor(profeAMod)){
             System.out.println("Modificado Correctamente");
         }else{
@@ -64,7 +64,7 @@ public class testControlador_Profesor {
     public static void testListarProfesores(){
         List<Profesor> profesores = cProfesor.listarProfesores();
                 for(Profesor temp:profesores){
-                    System.out.println("nombre: "+temp.getNomcompProfe()+ " Rut: "+temp.getRutcProfe());
+                    System.out.println("nombre: "+temp.getNomProfe()+ " Rut: "+temp.getRutProfe());
                 }
     }
 }

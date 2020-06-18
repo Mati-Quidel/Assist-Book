@@ -34,7 +34,7 @@ public class testControlador_Credencial {
     public static void testBuscarCredencial (int idBuscar){
         Credencial encontrado = cCredencial.buscarCredencial(1);
         if(encontrado != null){
-            System.out.println("Credencial de ID "+encontrado.getIdCREDENCIAL()
+            System.out.println("Credencial de ID "+encontrado.getIdCredencial()
                                 +" con codigo "+encontrado.getCodigo());
             
         }
@@ -63,7 +63,7 @@ public class testControlador_Credencial {
     public static void testListarCredenciales(){
         List<Credencial> credenciales = cCredencial.listarCredenciales();
                 for(Credencial temp:credenciales){
-                    System.out.println("ID credencial : "+temp.getIdCREDENCIAL()+ 
+                    System.out.println("ID credencial : "+temp.getIdCredencial()+ 
                             " codigo : "+temp.getCodigo());
                 }
     }

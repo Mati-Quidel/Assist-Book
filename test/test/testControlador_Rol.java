@@ -23,9 +23,9 @@ public class testControlador_Rol {
     }
     
     public static void testAgregarRol(){
-        Rol nuevoRol = new Rol ("mati.quidel","profe2020",2);
+        Rol nuevoRol = new Rol ("mati.quidel","profe2020",0,0);
         if(cRol.agregarRol(nuevoRol)){
-            System.out.println(String.format("El Rol %s fue agregado", nuevoRol.getNombreUsuario()));
+            System.out.println(String.format("El Rol %s fue agregado", nuevoRol.getNomUsuario()));
         }else{
             System.out.println("No se agrego");
         }
@@ -34,7 +34,7 @@ public class testControlador_Rol {
     public static void testBuscarRol (int idBuscar){
         Rol encontrado = cRol.buscarRol(1);
         if(encontrado != null){
-            System.out.println("El Rol es "+encontrado.getNombreUsuario()
+            System.out.println("El Rol es "+encontrado.getNomUsuario()
                                 +" con contraseña "+encontrado.getContraseñaUsuario());
             
         }
@@ -44,7 +44,7 @@ public class testControlador_Rol {
     }
 
     public static void testModificarRol(){
-        Rol RolAMod = new Rol("","",0);
+        Rol RolAMod = new Rol("","",0,0);
         if(cRol.modificarRol(RolAMod)){
             System.out.println("Modificado Correctamente");
         }else{
@@ -63,8 +63,8 @@ public class testControlador_Rol {
     public static void testListarRoles(){
         List<Rol> roles = cRol.listarRoles();
                 for(Rol temp:roles){
-                    System.out.println("nombre: "+temp.getNombreUsuario()+ 
-                            " tipo rol (1 = Admin/ 2 = Profesor): "+temp.getTIPOROL_idTIPOROL());
+                    System.out.println("nombre: "+temp.getNomUsuario()+ 
+                            " tipo rol (1 = Admin/ 2 = Profesor): "+temp.getIdTipoRol());
                 }
     }
     

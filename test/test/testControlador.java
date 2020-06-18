@@ -20,14 +20,14 @@ public class testControlador {
        //testAgregarAlumno();
        //testBuscarAlumno(279);
        //testModificarAlumno();
-       testEliminarAlumno(279);
-       //testListarAlumnos();
+       //testEliminarAlumno(279);
+       testListarAlumnos();
     }
     
     public static void testAgregarAlumno(){
         Alumno nuevoAlumno = new Alumno (18977887,"Gómez Veas Alisson",1,1,278);
         if(cAlumno.agregarAlumno(nuevoAlumno)){
-            System.out.println(String.format("El alumno %s fue agregado", nuevoAlumno.getNomcompAlumno()));
+            System.out.println(String.format("El alumno %s fue agregado", nuevoAlumno.getNomAlumno()));
         }else{
             System.out.println("No se agrego");
         }
@@ -36,7 +36,7 @@ public class testControlador {
     public static void testBuscarAlumno (int idBuscar){
         Alumno encontrado = cAlumno.buscarAlumno(279);
         if(encontrado != null){
-            System.out.println("El alumno es "+encontrado.getNomcompAlumno()
+            System.out.println("El alumno es "+encontrado.getNomAlumno()
                                 +" de rut "+encontrado.getRutAlumno());
             
         }
@@ -65,7 +65,7 @@ public class testControlador {
     public static void testListarAlumnos(){
         List<Alumno> alumnos = cAlumno.listarAlumnos();
                 for(Alumno temp:alumnos){
-                    System.out.println("nombre: "+temp.getNomcompAlumno()+ " Rut: "+temp.getRutAlumno());
+                    System.out.println("nombre: "+temp.getNomAlumno()+ " Rut: "+temp.getRutAlumno());
                 }
     }
     
