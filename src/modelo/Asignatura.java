@@ -10,37 +10,44 @@ package modelo;
  * @author aliss
  */
 public class Asignatura {
-    private int idASIGNATURA;
-    private String nomAsig;
+    private int idAsignatura;
+    private String nomAsignatura;
 
     public Asignatura() {
     }
 
-    public Asignatura(int idASIGNATURA, String nomAsig) {
-        this.idASIGNATURA = idASIGNATURA;
-        this.nomAsig = nomAsig;
+    public Asignatura(String nuevoNomAsignatura) {
+        this.nomAsignatura = nuevoNomAsignatura;
     }
 
-    public int getIdASIGNATURA() {
-        return idASIGNATURA;
+    public Asignatura(int idAsignatura, String nomAsignatura) {
+        this.idAsignatura = idAsignatura;
+        this.nomAsignatura = nomAsignatura;
     }
 
-    public void setIdASIGNATURA(int idASIGNATURA) {
-        this.idASIGNATURA = idASIGNATURA;
+    public int getIdAsignatura() {
+        return idAsignatura;
     }
 
-    public String getNomAsig() {
-        return nomAsig;
+    public void setIdAsignatura(int idAsignatura) {
+        this.idAsignatura = idAsignatura;
     }
 
-    public void setNomAsig(String nomAsig) {
-        this.nomAsig = nomAsig;
+    public String getNomAsignatura() {
+        return nomAsignatura;
     }
+
+    public void setNomAsignatura(String nomAsignatura) {
+        this.nomAsignatura = nomAsignatura;
+    }
+    
+    
 
     @Override
     public String toString() {
-        return "Asignatura{" + "idASIGNATURA=" + idASIGNATURA + ", nomAsig=" + nomAsig + '}';
+        return "Asignatura{" + "idAsignatura=" + idAsignatura + ", nomAsignatura=" + nomAsignatura + '}';
     }
+    
     
     
 }

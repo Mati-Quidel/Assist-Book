@@ -20,7 +20,7 @@ public class testControlador {
        //testAgregarAlumno();
        //testBuscarAlumno(279);
        //testModificarAlumno();
-       //testEliminarAlumno(278);
+       testEliminarAlumno(279);
        //testListarAlumnos();
     }
     

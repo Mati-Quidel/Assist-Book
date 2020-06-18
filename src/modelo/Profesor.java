@@ -11,99 +11,52 @@ package modelo;
  * @author Matias
  */
 public class Profesor {
-    private int idPROFESOR;
-    private int rutcProfe;
-    private String nomcompProfe;
-    private int GENERO_idGENERO;
-    private int ROL_idTIPOROL;
-    private int ROL_TIPOROL_idTIPOROL;
-    
+    private int idProfesor;
+    private int rutProfe;
+    private int nomProfe;
 
-    public Profesor(int nuevoRutcProfe, String nuevoNomcompProfe, int nuevoGENERO_idGENERO, int nuevoROL_idTIPOROL, int nuevoROL_TIPOROL_idTIPOROL) {
-        this.rutcProfe = (nuevoRutcProfe);
-        this.nomcompProfe = (nuevoNomcompProfe);
-        this.GENERO_idGENERO = (nuevoGENERO_idGENERO);
-        this.ROL_idTIPOROL = (nuevoROL_idTIPOROL);
-        this.ROL_TIPOROL_idTIPOROL = (nuevoROL_TIPOROL_idTIPOROL);
+    public Profesor() {
     }
 
-    public Profesor(int rutcProfe, String nomcompProfe) {
-        this.rutcProfe = rutcProfe;
-        this.nomcompProfe = nomcompProfe;
+    public Profesor(int nuevoRutProfe, int nuevoNomProfe) {
+        this.rutProfe = nuevoRutProfe;
+        this.nomProfe = nuevoNomProfe;
     }
 
-    public Profesor(int idPROFESOR, int rutcProfe, String nomcompProfe, int GENERO_idGENERO, int ROL_idTIPOROL, int ROL_TIPOROL_idTIPOROL) {
-        this.idPROFESOR = idPROFESOR;
-        this.rutcProfe = rutcProfe;
-        this.nomcompProfe = nomcompProfe;
-        this.GENERO_idGENERO = GENERO_idGENERO;
-        this.ROL_idTIPOROL = ROL_idTIPOROL;
-        this.ROL_TIPOROL_idTIPOROL = ROL_TIPOROL_idTIPOROL;
+    public Profesor(int idProfesor, int rutProfe, int nomProfe) {
+        this.idProfesor = idProfesor;
+        this.rutProfe = rutProfe;
+        this.nomProfe = nomProfe;
     }
 
-    public int getIdPROFESOR() {
-        return idPROFESOR;
+    public int getIdProfesor() {
+        return idProfesor;
     }
 
-    public void setIdPROFESOR(int idPROFESOR) {
-        this.idPROFESOR = idPROFESOR;
+    public void setIdProfesor(int idProfesor) {
+        this.idProfesor = idProfesor;
     }
 
-    public int getRutcProfe() {
-        return rutcProfe;
+    public int getRutProfe() {
+        return rutProfe;
     }
 
-    public void setRutcProfe(int rutcProfe) {
-        this.rutcProfe = rutcProfe;
+    public void setRutProfe(int rutProfe) {
+        this.rutProfe = rutProfe;
     }
 
-    public String getNomcompProfe() {
-        return nomcompProfe;
+    public int getNomProfe() {
+        return nomProfe;
     }
 
-    public void setNomcompProfe(String nomcompProfe) {
-        this.nomcompProfe = nomcompProfe;
-    }
-
-    public int getGENERO_idGENERO() {
-        return GENERO_idGENERO;
-    }
-
-    public void setGENERO_idGENERO(int GENERO_idGENERO) {
-        this.GENERO_idGENERO = GENERO_idGENERO;
-    }
-
-    public int getROL_idTIPOROL() {
-        return ROL_idTIPOROL;
-    }
-
-    public void setROL_idTIPOROL(int ROL_idTIPOROL) {
-        this.ROL_idTIPOROL = ROL_idTIPOROL;
-    }
-
-    public int getROL_TIPOROL_idTIPOROL() {
-        return ROL_TIPOROL_idTIPOROL;
-    }
-
-    public void setROL_TIPOROL_idTIPOROL(int ROL_TIPOROL_idTIPOROL) {
-        this.ROL_TIPOROL_idTIPOROL = ROL_TIPOROL_idTIPOROL;
+    public void setNomProfe(int nomProfe) {
+        this.nomProfe = nomProfe;
     }
 
     @Override
     public String toString() {
-        return "Profesor{" + "idPROFESOR=" + idPROFESOR + ", rutcProfe=" + rutcProfe + ", nomcompProfe=" + nomcompProfe + ", GENERO_idGENERO=" + GENERO_idGENERO + ", ROL_idTIPOROL=" + ROL_idTIPOROL + ", ROL_TIPOROL_idTIPOROL=" + ROL_TIPOROL_idTIPOROL + '}';
+        return "Profesor{" + "idProfesor=" + idProfesor + ", rutProfe=" + rutProfe + ", nomProfe=" + nomProfe + '}';
     }
-
-    public void setRutProfe(int nuevoRutProfe) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
-    
     
 
-    
-    
-}
-            
-            
+}            
