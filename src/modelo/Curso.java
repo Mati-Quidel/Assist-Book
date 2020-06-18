@@ -36,6 +36,7 @@ public class Curso {
         this.ALUMNO_idALUMNO = ALUMNO_idALUMNO;
     }
 
+  
     
     
     public Curso(int idCURSO, String nivel, int SALA_idSALA, int ALUMNO_idALUMNO, 
