@@ -150,7 +150,7 @@ public class Controlador_Credencial {
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                      "SELECT idCredencial,codigo FORM CREDENCIAL "      
+                      "SELECT idCredencial,codigo FROM CREDENCIAL "      
                     );
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){

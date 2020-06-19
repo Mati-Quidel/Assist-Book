@@ -107,11 +107,11 @@ public class Main_4 {
         System.out.println("Bienvenido a Modificar Credencial, por favor siga las instrucciones");
         if(cCredencial.listarCredenciales().size()>0){
         System.out.print("Ingrese el ID de la Credencial a modificar: ");
-        String idCREDENCIALTemp = scann.nextLine().trim();
+        String idCredencialTemp = scann.nextLine().trim();
         int idBuscar = 0;
         while (idBuscar ==0){
             try{
-                idBuscar = Integer.parseInt(idCREDENCIALTemp);
+                idBuscar = Integer.parseInt(idCredencialTemp);
                 if(idBuscar > 0){
                     break;
                 }
@@ -120,18 +120,18 @@ public class Main_4 {
                 idBuscar = 0;
             }
             System.out.print("Debe ingresar una ID valida: ");
-            idCREDENCIALTemp = scann.nextLine();
+            idCredencialTemp = scann.nextLine();
         }
         System.out.println("Buscando Credencial...");
         Credencial encontrado = cCredencial.buscarCredencial(idBuscar);
         while(encontrado == null){
             System.out.println("La ID no es de una Credencial válido, intente denuevo");
             System.out.print("Vuelva a ingresar una ID ");
-            idCREDENCIALTemp = scann.nextLine();
+            idCredencialTemp = scann.nextLine();
             idBuscar =0;
             while(idBuscar ==0){
                 try{
-                    idBuscar = Integer.parseInt(idCREDENCIALTemp);
+                    idBuscar = Integer.parseInt(idCredencialTemp);
                     if(idBuscar > 0){
                     break;
                 }
@@ -141,7 +141,7 @@ public class Main_4 {
                     idBuscar = 0;
                 }
                 System.out.print("Debe ingresar una ID valida: ");
-                idCREDENCIALTemp = scann.nextLine();
+                idCredencialTemp = scann.nextLine();
             }
             System.out.println("Buscando Alumno...");
             encontrado = cCredencial.buscarCredencial(idBuscar);
@@ -182,11 +182,11 @@ public class Main_4 {
         System.out.println("Bienvenido a Eliminar Credencial");
         if(cCredencial.listarCredenciales().size()>0){
         System.out.print("Ingrese un ID para eliminar una Credencial");
-        String idCREDENCIALTemp = scann.nextLine().trim();
+        String idCredencialTemp = scann.nextLine().trim();
         int idCred = 0 ;
         while (idCred ==0){
             try{
-                idCred = Integer.parseInt(idCREDENCIALTemp);
+                idCred = Integer.parseInt(idCredencialTemp);
                 if(idCred >0){
                    break;
                 }
@@ -195,18 +195,18 @@ public class Main_4 {
                 idCred = 0;
             }
             System.out.print("Debe ingresar una ID valida: ");
-            idCREDENCIALTemp = scann.nextLine().trim();
+            idCredencialTemp = scann.nextLine().trim();
         }
         System.out.println("Buscando Credencial...");
         Credencial encontrado = cCredencial.buscarCredencial(idCred);
         while(encontrado == null){
             System.out.println("la ID no es de una Credencial valida");
             System.out.print("Ingrese una ID valida");
-            idCREDENCIALTemp = scann.nextLine().trim();
+            idCredencialTemp = scann.nextLine().trim();
             idCred = 0;
             while(idCred== 0){
                 try{
-                    idCred = Integer.parseInt(idCREDENCIALTemp);
+                    idCred = Integer.parseInt(idCredencialTemp);
                     if(idCred >0){
                         break;
                     }
@@ -215,7 +215,7 @@ public class Main_4 {
                     idCred = 0;
                 }
                 System.out.print("Ingrese una ID valida");
-                idCREDENCIALTemp = scann.nextLine().trim();
+                idCredencialTemp = scann.nextLine().trim();
             }
             System.out.println("Buscando Credencial...");
             encontrado = cCredencial.buscarCredencial(idCred);
@@ -225,7 +225,7 @@ public class Main_4 {
         String opcion = scann.nextLine();
         if(opcion.equals("1")){
             System.out.println("Eliminando Credencial...");
-            cCredencial.eliminarCredencial(encontrado.getIdCREDENCIAL());
+            cCredencial.eliminarCredencial(encontrado.getIdCredencial());
             System.out.println("Credencial Eliminada");
         }
         }else{
@@ -239,11 +239,11 @@ public class Main_4 {
         System.out.println("Bienvenido a Buscar Credencial");
         if(cCredencial.listarCredenciales().size()>0){
         System.out.print("Ingrese una ID de una Credencial");
-        String idCREDENCIALTemp = scann.nextLine();
+        String idCredencialTemp = scann.nextLine();
         int idCred = 0;
         while (idCred ==0){
             try{
-                idCred = Integer.parseInt(idCREDENCIALTemp);
+                idCred = Integer.parseInt(idCredencialTemp);
                 if(idCred >0){
                    break;
                 }
@@ -252,7 +252,7 @@ public class Main_4 {
                 idCred = 0;
             }
             System.out.print("Debe ingresar una ID valida: ");
-            idCREDENCIALTemp = scann.nextLine().trim();
+            idCredencialTemp = scann.nextLine().trim();
         
         }
         System.out.println("Buscando Credencial...");
@@ -260,11 +260,11 @@ public class Main_4 {
         while(encontrado == null){
             System.out.println("la ID no es de una Credencial valida");
             System.out.print("Ingrese una ID valida");
-            idCREDENCIALTemp = scann.nextLine().trim();
+            idCredencialTemp = scann.nextLine().trim();
             idCred = 0;
             while(idCred== 0){
                 try{
-                    idCred= Integer.parseInt(idCREDENCIALTemp);
+                    idCred= Integer.parseInt(idCredencialTemp);
                     if(idCred>0){
                         break;
                     }
@@ -273,7 +273,7 @@ public class Main_4 {
                     idCred = 0;
                 }
                 System.out.print("Ingrese una ID valida");
-                idCREDENCIALTemp = scann.nextLine().trim();
+                idCredencialTemp = scann.nextLine().trim();
             }
             System.out.println("Buscando Credencial...");
             encontrado = cCredencial.buscarCredencial(idCred);
@@ -297,6 +297,7 @@ public class Main_4 {
         else{
             for(Credencial temp:cCredencial.listarCredenciales()){
                 System.out.println("-------------------------------------------");
+                System.out.println("ID Credencial: "+temp.getIdCredencial());
                 System.out.println("Codigo: "+temp.getCodigo());
                 System.out.println("-------------------------------------------");
             }

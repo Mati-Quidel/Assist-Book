@@ -87,98 +87,26 @@ public class Main_2 {
             rutProfeTemp = scann.nextLine().trim();
         }
         
-        //Ingresando Nombre Alumno
+        //Ingresando Nombre Profesor
         System.out.print("Ingrese nombre y 2 apellidos del Alumno:");
-        String nuevoNomcompProfe =scann.nextLine().trim();
-        while(nuevoNomcompProfe.length()==0){
+        String nuevoNomProfe =scann.nextLine().trim();
+        while(nuevoNomProfe.length()==0){
             System.out.print("El nombre es obligatorio, porfavor ingrese un nombre");
-                    nuevoNomcompProfe = scann.nextLine().trim();
+                    nuevoNomProfe = scann.nextLine().trim();
         }
                     
-        //Ingresando Genero
-        
-        System.out.print("Ingrese su genero/ 1 si es femenino, 2 si es masculino:");
-        String nuevoGENERO_idGENEROTemp =scann.nextLine().trim();
        
-        int nuevoGENERO_idGENERO=0;
-        while(nuevoGENERO_idGENERO==0){
-            try{
-                nuevoGENERO_idGENERO = Integer.parseInt(nuevoGENERO_idGENEROTemp);
-                if(nuevoGENERO_idGENERO ==1 || nuevoGENERO_idGENERO==2){
-                    break;
-                
-                }
-            }
-                catch(NumberFormatException e){
-                    nuevoGENERO_idGENERO =0;
-                }
-            System.out.println("Ingrese un valor correcto: ");
-            nuevoGENERO_idGENEROTemp = scann.nextLine().trim();
-        }
-        
-        //ingresar El tipo de Rol
-        
-        System.out.print("Ingrese 1 si el Rol es administrador de lo contrario ingrese 2:");
-        String nuevoROL_TIPOROL_idTIPOROLTemp =scann.nextLine().trim();
-       
-        int nuevoROL_TIPOROL_idTIPOROL=0;
-        while(nuevoROL_TIPOROL_idTIPOROL==0){
-            try{
-                nuevoROL_TIPOROL_idTIPOROL = Integer.parseInt(nuevoROL_TIPOROL_idTIPOROLTemp);
-                if(nuevoROL_TIPOROL_idTIPOROL ==1 || nuevoROL_TIPOROL_idTIPOROL ==2){
-                    break;
-                }
-                
-            }
-                catch(NumberFormatException e){
-                   nuevoROL_TIPOROL_idTIPOROL =0;
-                }
-            System.out.println("Ingrese un valor correcto: ");
-           nuevoROL_TIPOROL_idTIPOROLTemp = scann.nextLine().trim();
-        }
-        
-        
-       // ingresar id credencial
-       
-       System.out.print("Ingrese id de ROL, si no lo conoce, ponga su rut sin punto si guion:");
-        String nuevoROL_idTIPOROLTemp =scann.nextLine().trim();
-       
-        int nuevoROL_idTIPOROL=0;
-        while(nuevoROL_idTIPOROL==0){
-            try{
-                nuevoROL_idTIPOROL = Integer.parseInt(nuevoROL_idTIPOROLTemp);
-                if(nuevoROL_idTIPOROL >0){
-                    break;
-                }
-            }
-                catch(NumberFormatException e){
-                   nuevoROL_idTIPOROL =0;
-                }
-            System.out.println("Ingrese un valor correcto: ");
-           nuevoROL_idTIPOROLTemp = scann.nextLine().trim();
-        }
-        System.out.println("Creando Profesor... por favor espere");
-        Profesor tempProfesor =new Profesor(nuevoRutProfe,nuevoNomcompProfe,nuevoGENERO_idGENERO, nuevoROL_TIPOROL_idTIPOROL,nuevoROL_idTIPOROL);
-        if(cProfesor.agregarProfesor(tempProfesor)){
-            System.out.println("Profesor Agregado Correctamente");
-        }
-        else{
-            System.out.println("Alumno no agregado");
-        }
-        System.out.print("Presione enter para continuar");
-        scann.nextLine();
-        
     }
     
     private static void modificarProfesor(){
         System.out.println("Bienvenido a Modificar Alumno, por favor siga las instrucciones");
         if(cProfesor.listarProfesores().size()>0){
         System.out.print("Ingrese el ID del Profesor a modificar: ");
-        String idPROFESORTemp = scann.nextLine().trim();
+        String idProfesorTemp = scann.nextLine().trim();
         int idBuscar = 0;
         while (idBuscar ==0){
             try{
-                idBuscar = Integer.parseInt(idPROFESORTemp);
+                idBuscar = Integer.parseInt(idProfesorTemp);
                 if(idBuscar > 0){
                     break;
                 }
@@ -187,18 +115,18 @@ public class Main_2 {
                 idBuscar = 0;
             }
             System.out.print("Debe ingresar una ID valida: ");
-            idPROFESORTemp = scann.nextLine();
+            idProfesorTemp = scann.nextLine();
         }
         System.out.println("Buscando Profesor...");
         Profesor encontrado = cProfesor.buscarProfesor(idBuscar);
         while(encontrado == null){
             System.out.println("La ID no es de un Profesor válido, intente denuevo");
             System.out.print("Vuelva a ingresar una ID ");
-            idPROFESORTemp = scann.nextLine();
+            idProfesorTemp = scann.nextLine();
             idBuscar =0;
             while(idBuscar ==0){
                 try{
-                    idBuscar = Integer.parseInt(idPROFESORTemp);
+                    idBuscar = Integer.parseInt(idProfesorTemp);
                     if(idBuscar > 0){
                     break;
                 }
@@ -208,24 +136,24 @@ public class Main_2 {
                     idBuscar = 0;
                 }
                 System.out.print("Debe ingresar una ID valida: ");
-                idPROFESORTemp = scann.nextLine();
+                idProfesorTemp = scann.nextLine();
             }
             System.out.println("Buscando Alumno...");
             encontrado = cProfesor.buscarProfesor(idBuscar);
         }
-            
-            System.out.print(String.format("Ingrese un nuevo nombre para %s (Deje vacio para no cambiar) :", encontrado.getNomcompProfe()));
-            String nuevoNomcompProfe = scann.nextLine().trim();
-            if(nuevoNomcompProfe.length()>0){
-                encontrado.setNomcompProfe(nuevoNomcompProfe);
+             // nombre
+            System.out.print(String.format("Ingrese un nuevo nombre para %s (Deje vacio para no cambiar) :", encontrado.getNomProfe()));
+            String nuevoNomProfe = scann.nextLine().trim();
+            if(nuevoNomProfe.length()>0){
+                encontrado.setNomProfe(nuevoNomProfe);
             }
             
         //rut Profesor
-        System.out.print(String.format("Ingrese un nuevo rut %s (Dejar vacio para no cambiar): ", encontrado.getRutcProfe()));
+        System.out.print(String.format("Ingrese un nuevo rut %s (Dejar vacio para no cambiar): ", encontrado.getRutProfe()));
         String rutProfeTemp = scann.nextLine().trim();
         int nuevoRutProfe = 0;
         if(rutProfeTemp.length()==0){
-            nuevoRutProfe = encontrado.getRutcProfe();
+            nuevoRutProfe = encontrado.getRutProfe();
         }
         while (nuevoRutProfe == 0){
             try{
@@ -242,75 +170,7 @@ public class Main_2 {
         }
         encontrado.setRutProfe(nuevoRutProfe);
         
-        //genero alumno
         
-        System.out.print(String.format("Ingrese un nuevo genero %s (Dejar vacio para no cambiar): ", encontrado.getGENERO_idGENERO()));
-        String GENERO_idGENEROTemp = scann.nextLine().trim();
-        int nuevoGENERO_idGENERO = 0;
-        if(GENERO_idGENEROTemp.length()==0){
-            nuevoGENERO_idGENERO = encontrado.getGENERO_idGENERO();
-        }
-        while (nuevoGENERO_idGENERO == 0){
-            try{
-                nuevoGENERO_idGENERO = Integer.parseInt(GENERO_idGENEROTemp);
-                if(nuevoGENERO_idGENERO == 1 || nuevoGENERO_idGENERO ==2){
-                    break;
-                }
-            }
-            catch(NumberFormatException e){
-                nuevoGENERO_idGENERO = 0;
-            }
-            System.out.println("Ingrese un valor correcto: ");
-            GENERO_idGENEROTemp = scann.nextLine().trim();
-        }
-        encontrado.setGENERO_idGENERO(nuevoGENERO_idGENERO);
-        
-        //Rol
-        System.out.print(String.format("Ingrese un nuevo ROL %s (Dejar vacio para no cambiar): ", encontrado.getROL_TIPOROL_idTIPOROL()));
-        String ROL_TIPOROL_idTIPOROLTemp = scann.nextLine().trim();
-        
-        int nuevoROL_TIPOROL_idTIPOROL = 0;
-     
-        if(ROL_TIPOROL_idTIPOROLTemp.length()==0){
-            nuevoROL_TIPOROL_idTIPOROL = encontrado.getROL_TIPOROL_idTIPOROL();
-        }
-        while (nuevoROL_TIPOROL_idTIPOROL == 0){
-            try{
-                nuevoROL_TIPOROL_idTIPOROL = Integer.parseInt(ROL_TIPOROL_idTIPOROLTemp);
-                if(nuevoROL_TIPOROL_idTIPOROL ==1){
-                    break;
-                }
-            }
-            catch(NumberFormatException e){
-                nuevoROL_TIPOROL_idTIPOROL = 0;
-            }
-            System.out.println("Ingrese un valor correcto: ");
-            ROL_TIPOROL_idTIPOROLTemp = scann.nextLine().trim();
-        }
-        encontrado.setROL_TIPOROL_idTIPOROL(nuevoROL_TIPOROL_idTIPOROL);
-        
-        //rol
-        System.out.print(String.format("Ingrese un nuevo ID de ROL %s (Dejar vacio para no cambiar): ", encontrado.getROL_idTIPOROL()));
-        String ROL_idTIPOROLTemp = scann.nextLine().trim();
-        
-        int nuevoROL_idTIPOROL = 0;
-        if(ROL_idTIPOROLTemp.length()==0){
-            nuevoROL_idTIPOROL = encontrado.getROL_idTIPOROL();
-        }
-        while (nuevoROL_idTIPOROL == 0){
-            try{
-                nuevoROL_idTIPOROL = Integer.parseInt(ROL_idTIPOROLTemp);
-                if(nuevoROL_idTIPOROL>0){
-                    break;
-                }
-            }
-            catch(NumberFormatException e){
-                nuevoROL_idTIPOROL = 0;
-            }
-            System.out.println("Ingrese un valor correcto: ");
-            ROL_idTIPOROLTemp = scann.nextLine().trim();
-        }
-        encontrado.setROL_idTIPOROL(nuevoROL_idTIPOROL);
         
         System.out.println("Actualizando Profesor...");
         if(cProfesor.modificarProfesor(encontrado)){
@@ -332,11 +192,11 @@ public class Main_2 {
         System.out.println("Bienvenido a Eliminar Profesor");
         if(cProfesor.listarProfesores().size()>0){
         System.out.print("Ingrese un ID para eliminar un Profesor");
-        String idPROFESORTemp = scann.nextLine().trim();
+        String idProfesorTemp = scann.nextLine().trim();
         int idProfe = 0 ;
         while (idProfe ==0){
             try{
-                idProfe = Integer.parseInt(idPROFESORTemp);
+                idProfe = Integer.parseInt(idProfesorTemp);
                 if(idProfe >0){
                    break;
                 }
@@ -345,18 +205,18 @@ public class Main_2 {
                 idProfe = 0;
             }
             System.out.print("Debe ingresar una ID valida: ");
-            idPROFESORTemp = scann.nextLine().trim();
+            idProfesorTemp = scann.nextLine().trim();
         }
         System.out.println("Buscando Profesor...");
         Profesor encontrado = cProfesor.buscarProfesor(idProfe);
         while(encontrado == null){
             System.out.println("la ID no es de un Profesor valido");
             System.out.print("Ingrese una ID valida");
-            idPROFESORTemp = scann.nextLine().trim();
+            idProfesorTemp = scann.nextLine().trim();
             idProfe = 0;
             while(idProfe== 0){
                 try{
-                    idProfe = Integer.parseInt(idPROFESORTemp);
+                    idProfe = Integer.parseInt(idProfesorTemp);
                     if(idProfe >0){
                         break;
                     }
@@ -365,12 +225,12 @@ public class Main_2 {
                     idProfe = 0;
                 }
                 System.out.print("Ingrese una ID valida");
-                idPROFESORTemp = scann.nextLine().trim();
+                idProfesorTemp = scann.nextLine().trim();
             }
             System.out.println("Buscando Profesor...");
             encontrado = cProfesor.buscarProfesor(idProfe);
         }
-        System.out.println(String.format("Profesor Encontrado %s ",encontrado.getNomcompProfe()));
+        System.out.println(String.format("Profesor Encontrado %s ",encontrado.getNomProfe()));
         System.out.print("Ingrese 1 para eliminar, 2 para cancelar");
         String opcion = scann.nextLine();
         if(opcion.equals("1")){
@@ -389,11 +249,11 @@ public class Main_2 {
         System.out.println("Bienvenido a Buscar Profesor");
         if(cProfesor.listarProfesores().size()>0){
         System.out.print("Ingrese una ID de un Profesor");
-        String idPROFESORTemp = scann.nextLine();
+        String idProfesorTemp = scann.nextLine();
         int idProfe = 0;
         while (idProfe ==0){
             try{
-                idProfe = Integer.parseInt(idPROFESORTemp);
+                idProfe = Integer.parseInt(idProfesorTemp);
                 if(idProfe >0){
                    break;
                 }
@@ -402,7 +262,7 @@ public class Main_2 {
                 idProfe = 0;
             }
             System.out.print("Debe ingresar una ID valida: ");
-            idPROFESORTemp = scann.nextLine().trim();
+            idProfesorTemp = scann.nextLine().trim();
         
         }
         System.out.println("Buscando Profesor...");
@@ -410,11 +270,11 @@ public class Main_2 {
         while(encontrado == null){
             System.out.println("la ID no es de un Alumno valido");
             System.out.print("Ingrese una ID valida");
-            idPROFESORTemp = scann.nextLine().trim();
+            idProfesorTemp = scann.nextLine().trim();
             idProfe = 0;
             while(idProfe== 0){
                 try{
-                    idProfe = Integer.parseInt(idPROFESORTemp);
+                    idProfe = Integer.parseInt(idProfesorTemp);
                     if(idProfe >0){
                         break;
                     }
@@ -423,13 +283,13 @@ public class Main_2 {
                     idProfe = 0;
                 }
                 System.out.print("Ingrese una ID valida");
-                idPROFESORTemp = scann.nextLine().trim();
+                idProfesorTemp = scann.nextLine().trim();
             }
             System.out.println("Buscando Profesor...");
             encontrado = cProfesor.buscarProfesor(idProfe);
         }
         
-        System.out.println(String.format("Profesor Encontrado %s ",encontrado.getNomcompProfe()));
+        System.out.println(String.format("Profesor Encontrado %s ",encontrado.getNomProfe()));
         
         }else{
             System.out.println("Debe Tener Profesores antes de usar esta opción");
@@ -447,7 +307,7 @@ public class Main_2 {
         else{
             for(Profesor temp:cProfesor.listarProfesores()){
                 System.out.println("-------------------------------------------");
-                System.out.println("nombre: "+temp.getNomcompProfe()+ " Rut: "+temp.getRutcProfe());
+                System.out.println("nombre: "+temp.getNomProfe()+ " Rut: "+temp.getRutProfe());
                 System.out.println("-------------------------------------------");
             }
             System.out.println("Terminado\n");

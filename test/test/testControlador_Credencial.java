@@ -16,10 +16,10 @@ public class testControlador_Credencial {
     
     public static void main (String... args){
        //testAgregarCredencial();
-       testBuscarCredencial(1);
+       //testBuscarCredencial(1);
        //testModificarCredencial();
        //testEliminarCredencial();
-       //testListarCredenciales();
+       testListarCredenciales();
     }
     
     public static void testAgregarCredencial(){
