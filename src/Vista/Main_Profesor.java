@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Matias
  */
-public class Main_2 {
+public class Main_Profesor {
     private static Controlador_Profesor cProfesor = new Controlador_Profesor();
     private static Scanner scann = new Scanner(System.in);
     

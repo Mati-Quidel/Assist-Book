@@ -14,7 +14,7 @@ import modelo.Rol;
  *
  * @author Matias
  */
-public class Main_3 {
+public class Main_Rol {
     private static Controlador_Rol cRol = new Controlador_Rol();
     private static Scanner scann = new Scanner(System.in);
     

@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author Matias
  */
-public class Main_4 {
+public class Main_Credencial {
     private static Controlador_Credencial cCredencial = new Controlador_Credencial();
     private static Scanner scann = new Scanner(System.in);
     
