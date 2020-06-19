@@ -73,10 +73,10 @@ public class Main_Rol {
         System.out.println("Bienvenido a la creación de un nuevo Rol.\n");
         //Ingresando Usuario
         System.out.print("Ingrese el Usuario:");
-        String nombreUsuarioRol =scann.nextLine().trim();
-        while(nombreUsuarioRol.length()==0){
+        String nomUsuarioRol =scann.nextLine().trim();
+        while(nomUsuarioRol.length()==0){
             System.out.println("Ingrese un nombre de usuario: ");
-            nombreUsuarioRol = scann.nextLine().trim();
+            nomUsuarioRol = scann.nextLine().trim();
         }
         
         //Ingresando Contraseña
@@ -86,22 +86,44 @@ public class Main_Rol {
             System.out.print("La contraseña es obligatoria, porfavor ingrese una contraseña");
                     nuevaContraseña = scann.nextLine().trim();
         }
-        //Ingresando Rol
-        System.out.print("Ingrese el Rol del Usuario, 1 es Administrador, 2 es Profesor ");
-        String RolTemp = scann.nextLine().trim();
-        int nuevoRol = 0;
-        while(nuevoRol==0){
+        
+        //Ingresar id profesor
+        
+        System.out.print("Ingrese el ID del profesor:");
+        String nuevoIdProfesorTemp =scann.nextLine().trim();
+       
+        int nuevoIdProfesor=0;
+        while(nuevoIdProfesor==0){
             try{
-                nuevoRol = Integer.parseInt(RolTemp);
-                if(nuevoRol >0){
+                nuevoIdProfesor = Integer.parseInt(nuevoIdProfesorTemp);
+                if(nuevoIdProfesor ==1 || nuevoIdProfesor ==2){
+                    break;
+                }
+                
+            }
+                catch(NumberFormatException e){
+                   nuevoIdProfesor =0;
+                }
+            System.out.println("Ingrese un valor correcto: ");
+           nuevoIdProfesorTemp = scann.nextLine().trim();
+        }
+        
+        //Ingresando tipo Rol
+        System.out.print("Ingrese el Rol del Usuario, 1 es Administrador, 2 es Profesor ");
+        String nuevoIdTipoRolTemp = scann.nextLine().trim();
+        int nuevoIdTipoRol = 0;
+        while(nuevoIdTipoRol==0){
+            try{
+                nuevoIdTipoRol = Integer.parseInt(nuevoIdTipoRolTemp);
+                if(nuevoIdTipoRol >0){
                     break;
                 }
             }
             catch(NumberFormatException e){
-                nuevoRol =0;
+                nuevoIdTipoRol =0;
             }
             System.out.println("Ingrese un valor correcto: ");
-            RolTemp = scann.nextLine().trim();
+            nuevoIdTipoRolTemp = scann.nextLine().trim();
         }
         
         
@@ -111,11 +133,11 @@ public class Main_Rol {
         System.out.println("Bienvenido a Modificar Rol, por favor siga las instrucciones");
         if(cRol.listarRoles().size()>0){
         System.out.print("Ingrese el ID del Rol a modificar: ");
-        String idROLTemp = scann.nextLine().trim();
+        String idRolTemp = scann.nextLine().trim();
         int idBuscar = 0;
         while (idBuscar ==0){
             try{
-                idBuscar = Integer.parseInt(idROLTemp);
+                idBuscar = Integer.parseInt(idRolTemp);
                 if(idBuscar > 0){
                     break;
                 }
@@ -124,18 +146,18 @@ public class Main_Rol {
                 idBuscar = 0;
             }
             System.out.print("Debe ingresar una ID valida: ");
-            idROLTemp = scann.nextLine();
+            idRolTemp = scann.nextLine();
         }
         System.out.println("Buscando Rol...");
         Rol encontrado = cRol.buscarRol(idBuscar);
         while(encontrado == null){
             System.out.println("La ID no es de un Rol válido, intente de nuevo");
             System.out.print("Vuelva a ingresar una ID ");
-            idROLTemp = scann.nextLine();
+            idRolTemp = scann.nextLine();
             idBuscar =0;
             while(idBuscar ==0){
                 try{
-                    idBuscar = Integer.parseInt(idROLTemp);
+                    idBuscar = Integer.parseInt(idRolTemp);
                     if(idBuscar > 0){
                     break;
                 }
@@ -145,50 +167,75 @@ public class Main_Rol {
                     idBuscar = 0;
                 }
                 System.out.print("Debe ingresar una ID valida: ");
-                idROLTemp = scann.nextLine();
+                idRolTemp = scann.nextLine();
             }
             System.out.println("Buscando Rol...");
             encontrado = cRol.buscarRol(idBuscar);
         }
             
-            System.out.print(String.format("Ingrese un nuevo nombre de usuario para %s (Deje vacio para no cambiar) :", encontrado.getNombreUsuario()));
+        // modificar usuario
+            System.out.print(String.format("Ingrese un nuevo nombre de usuario para %s (Deje vacio para no cambiar) :", encontrado.getNomUsuario()));
             String nuevoUsuario = scann.nextLine().trim();
             if(nuevoUsuario.length()>0){
-                encontrado.setNombreUsuario(nuevoUsuario);
+                encontrado.setNomUsuario(nuevoUsuario);
             }
             
-        //rut Profesor
+        //contraseña rol
         System.out.print(String.format("Ingrese una nueva contraseña %s (Dejar vacio para no cambiar): ", encontrado.getContraseñaUsuario()));
         String nuevaContraseña = scann.nextLine().trim();
         if(nuevaContraseña.length()>0) {
             encontrado.getContraseñaUsuario();
             }
         
+        // id profesor
         
-        //Rol
-        
-        System.out.print(String.format("Ingrese un nuevo Rol %s (Dejar vacio para no cambiar): ", encontrado.getTIPOROL_idTIPOROL()));
-        String TIPOROL_idTIPOROLTemp = scann.nextLine().trim();
-        int nuevoTIPOROL_idTIPOROL = 0;
-        if(TIPOROL_idTIPOROLTemp.length()==0){
-            nuevoTIPOROL_idTIPOROL = encontrado.getTIPOROL_idTIPOROL();
+        System.out.print(String.format("Ingrese un nuevo profesor %s (Dejar vacio para no cambiar): ", encontrado.getIdProfesor()));
+        String idProfesorTemp = scann.nextLine().trim();
+        int nuevoIdProfesor = 0;
+        if(idProfesorTemp.length()==0){
+            nuevoIdProfesor= encontrado.getIdProfesor();
         }
-        while (nuevoTIPOROL_idTIPOROL == 0){
+        while (nuevoIdProfesor == 0){
             try{
-                nuevoTIPOROL_idTIPOROL = Integer.parseInt(TIPOROL_idTIPOROLTemp);
-                if(nuevoTIPOROL_idTIPOROL == 1 || nuevoTIPOROL_idTIPOROL ==2){
+                nuevoIdProfesor = Integer.parseInt(idProfesorTemp);
+                if(nuevoIdProfesor== 1 || nuevoIdProfesor ==2){
                     break;
                 }
             }
             catch(NumberFormatException e){
-                nuevoTIPOROL_idTIPOROL = 0;
+                nuevoIdProfesor= 0;
             }
             System.out.println("Ingrese un valor correcto: ");
-            TIPOROL_idTIPOROLTemp = scann.nextLine().trim();
+            idProfesorTemp = scann.nextLine().trim();
         }
-        encontrado.setTIPOROL_idTIPOROL(nuevoTIPOROL_idTIPOROL);
+        encontrado.setIdProfesor(nuevoIdProfesor);
+        
+        
+        //tipo Rol
+        
+        System.out.print(String.format("Ingrese un nuevo Rol %s (Dejar vacio para no cambiar): ", encontrado.getIdTipoRol()));
+        String idTipoRolTemp = scann.nextLine().trim();
+        int nuevoIdTipoRol = 0;
+        if(idTipoRolTemp.length()==0){
+            nuevoIdTipoRol= encontrado.getIdTipoRol();
         }
-    }
+        while (nuevoIdTipoRol == 0){
+            try{
+                nuevoIdTipoRol = Integer.parseInt(idTipoRolTemp);
+                if(nuevoIdTipoRol == 1 || nuevoIdTipoRol ==2){
+                    break;
+                }
+            }
+            catch(NumberFormatException e){
+                nuevoIdTipoRol= 0;
+            }
+            System.out.println("Ingrese un valor correcto: ");
+            idTipoRolTemp = scann.nextLine().trim();
+        }
+        encontrado.setIdTipoRol(nuevoIdTipoRol);
+        }
+        }
+    
 
     private static void eliminarRol (){
         System.out.println("Bienvenido a Eliminar Rol");
@@ -232,7 +279,7 @@ public class Main_Rol {
             System.out.println("Buscando Rol...");
             encontrado = cRol.buscarRol(idRol);
         }
-        System.out.println(String.format("Rol Encontrado %s ",encontrado.getNombreUsuario()));
+        System.out.println(String.format("Rol Encontrado %s ",encontrado.getNomUsuario()));
         System.out.print("Ingrese 1 para eliminar, 2 para cancelar");
         String opcion = scann.nextLine();
         if(opcion.equals("1")){
@@ -251,11 +298,11 @@ public class Main_Rol {
         System.out.println("Bienvenido a Buscar Rol");
         if(cRol.listarRoles().size()>0){
         System.out.print("Ingrese una ID de un Rol");
-        String idROLTemp = scann.nextLine();
+        String idRolTemp = scann.nextLine();
         int idRol = 0;
         while (idRol ==0){
             try{
-                idRol = Integer.parseInt(idROLTemp);
+                idRol = Integer.parseInt(idRolTemp);
                 if(idRol >0){
                    break;
                 }
@@ -264,7 +311,7 @@ public class Main_Rol {
                 idRol = 0;
             }
             System.out.print("Debe ingresar una ID valida: ");
-            idROLTemp = scann.nextLine().trim();
+            idRolTemp = scann.nextLine().trim();
         
         }
         System.out.println("Buscando Rol...");
@@ -272,11 +319,11 @@ public class Main_Rol {
         while(encontrado == null){
             System.out.println("la ID no es de un A  valido");
             System.out.print("Ingrese una ID valida");
-            idROLTemp = scann.nextLine().trim();
+            idRolTemp = scann.nextLine().trim();
             idRol = 0;
             while(idRol == 0){
                 try{
-                    idRol = Integer.parseInt(idROLTemp);
+                    idRol = Integer.parseInt(idRolTemp);
                     if(idRol >0){
                         break;
                     }
@@ -285,13 +332,13 @@ public class Main_Rol {
                     idRol = 0;
                 }
                 System.out.print("Ingrese una ID valida");
-                idROLTemp = scann.nextLine().trim();
+                idRolTemp = scann.nextLine().trim();
             }
             System.out.println("Buscando Rol...");
             encontrado = cRol.buscarRol(idRol);
         }
         
-        System.out.println(String.format("Rol Encontrado %s ",encontrado.getNombreUsuario()));
+        System.out.println(String.format("Rol Encontrado %s ",encontrado.getNomUsuario()));
         
         }else{
             System.out.println("Debe Tener Roles antes de usar esta opción");
@@ -301,15 +348,15 @@ public class Main_Rol {
     }
     
     private static void listarRoles(){
-        List<Rol> Rol = cRol.listarRoles();
+        List<Rol> roles = cRol.listarRoles();
         System.out.println("Buscando Roles...");
-        if(Rol.size()==0){
+        if(roles.size()==0){
             System.out.println("No hay Roles para mostrar");
         }
         else{
             for(Rol temp:cRol.listarRoles()){
                 System.out.println("-------------------------------------------");
-                System.out.println("Usuario: "+temp.getNombreUsuario()+ " Contraseña: "+temp.getContraseñaUsuario());
+                System.out.println("Usuario: "+temp.getNomUsuario()+ " Contraseña: "+temp.getContraseñaUsuario());
                 System.out.println("-------------------------------------------");
             }
             System.out.println("Terminado\n");
