@@ -5,15 +5,17 @@
  */
 package Vista;
 import controlador.Controlador_Libro;
+import java.sql.Date;
+import java.time.LocalDate;
 import modelo.Libro;
 import java.util.Scanner;
 import java.util.List;
+import modelo.Detalle_Libro;
 /**
  *
  * @author aliss
  */
 public class Main_Libro {
-    
     private static Controlador_Libro cLibro = new Controlador_Libro();
     private static Scanner scann = new Scanner(System.in);
     

@@ -317,7 +317,7 @@ public class Main_Rol {
         System.out.println("Buscando Rol...");
         Rol encontrado = cRol.buscarRol(idRol);
         while(encontrado == null){
-            System.out.println("la ID no es de un A  valido");
+            System.out.println("la ID no es de un Rol valido");
             System.out.print("Ingrese una ID valida");
             idRolTemp = scann.nextLine().trim();
             idRol = 0;
