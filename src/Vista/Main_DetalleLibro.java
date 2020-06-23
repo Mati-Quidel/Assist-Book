@@ -70,25 +70,45 @@ public class Main_DetalleLibro {
         limpiarConsola();
         System.out.println("Bienvenido a la creación de un nuevo Detalle.\n");
         
-        //Ingresar id alumno
+        //Ingresar id Libro
         
-        System.out.print("Ingrese el ID del Alumno:");
-        String nuevoIdAlumnoTemp =scann.nextLine().trim();
+        System.out.print("Ingrese el ID de la Libro:");
+        String nuevoIdLibroTemp =scann.nextLine().trim();
        
-        int nuevoIdAlumno=0;
-        while(nuevoIdAlumno==0){
+        int nuevoIdLibro=0;
+        while(nuevoIdLibro==0){
             try{
-                nuevoIdAlumno = Integer.parseInt(nuevoIdAlumnoTemp);
-                if(nuevoIdAlumno ==1 || nuevoIdAlumno ==2){
+                nuevoIdLibro = Integer.parseInt(nuevoIdLibroTemp);
+                if(nuevoIdLibro ==1 || nuevoIdLibro ==2){
                     break;
                 }
                 
             }
                 catch(NumberFormatException e){
-                   nuevoIdAlumno =0;
+                   nuevoIdLibro =0;
                 }
             System.out.println("Ingrese un valor correcto: ");
-           nuevoIdAlumnoTemp = scann.nextLine().trim();
+           nuevoIdLibroTemp = scann.nextLine().trim();
+        }
+        //Ingresar id Asignatura
+        
+        System.out.print("Ingrese el ID de la Asignatura:");
+        String nuevoIdAsignaturaTemp =scann.nextLine().trim();
+       
+        int nuevoIdAsignatura=0;
+        while(nuevoIdAsignatura==0){
+            try{
+                nuevoIdAsignatura = Integer.parseInt(nuevoIdAsignaturaTemp);
+                if(nuevoIdAsignatura ==1 || nuevoIdAsignatura ==2){
+                    break;
+                }
+                
+            }
+                catch(NumberFormatException e){
+                   nuevoIdAsignatura =0;
+                }
+            System.out.println("Ingrese un valor correcto: ");
+           nuevoIdAsignaturaTemp = scann.nextLine().trim();
         }
         
         //Ingresar id tipo asistencia
@@ -111,72 +131,7 @@ public class Main_DetalleLibro {
             System.out.println("Ingrese un valor correcto: ");
            nuevoIdTipoAsisTemp = scann.nextLine().trim();
         }
-        
-        //Ingresar id profesor
-        
-        System.out.print("Ingrese el ID del profesor:");
-        String nuevoIdProfesorTemp =scann.nextLine().trim();
        
-        int nuevoIdProfesor=0;
-        while(nuevoIdProfesor==0){
-            try{
-                nuevoIdProfesor = Integer.parseInt(nuevoIdProfesorTemp);
-                if(nuevoIdProfesor ==1 || nuevoIdProfesor ==2){
-                    break;
-                }
-                
-            }
-                catch(NumberFormatException e){
-                   nuevoIdProfesor =0;
-                }
-            System.out.println("Ingrese un valor correcto: ");
-           nuevoIdProfesorTemp = scann.nextLine().trim();
-        }
-        
-        //Ingresar id Asignatura
-        
-        System.out.print("Ingrese el ID de la Asignatura:");
-        String nuevoIdAsignaturaTemp =scann.nextLine().trim();
-       
-        int nuevoIdAsignatura=0;
-        while(nuevoIdAsignatura==0){
-            try{
-                nuevoIdAsignatura = Integer.parseInt(nuevoIdAsignaturaTemp);
-                if(nuevoIdAsignatura ==1 || nuevoIdAsignatura ==2){
-                    break;
-                }
-                
-            }
-                catch(NumberFormatException e){
-                   nuevoIdAsignatura =0;
-                }
-            System.out.println("Ingrese un valor correcto: ");
-           nuevoIdAsignaturaTemp = scann.nextLine().trim();
-        }
-        
-        //Ingresar id Libro
-        
-        System.out.print("Ingrese el ID de la Libro:");
-        String nuevoIdLibroTemp =scann.nextLine().trim();
-       
-        int nuevoIdLibro=0;
-        while(nuevoIdLibro==0){
-            try{
-                nuevoIdLibro = Integer.parseInt(nuevoIdLibroTemp);
-                if(nuevoIdLibro ==1 || nuevoIdLibro ==2){
-                    break;
-                }
-                
-            }
-                catch(NumberFormatException e){
-                   nuevoIdLibro =0;
-                }
-            System.out.println("Ingrese un valor correcto: ");
-           nuevoIdLibroTemp = scann.nextLine().trim();
-        }
-        
-        
-        
     }
     //modificar rol
     private static void modificarDetalle(){
@@ -222,76 +177,28 @@ public class Main_DetalleLibro {
             System.out.println("Buscando Detalle...");
             encontrado = cDLibro.buscarDetalle(idBuscar);
         }
-            
-        // id Alumno
+         // id Libro
         
-        System.out.print(String.format("Ingrese un nuevo nombre para el alumno ID %s (Dejar vacio para no cambiar): ", encontrado.getIdAlumno()));
-        String idAlumnoTemp = scann.nextLine().trim();
-        int nuevoIdAlumno = 0;
-        if(idAlumnoTemp.length()==0){
-            nuevoIdAlumno= encontrado.getIdAlumno();
+        System.out.print(String.format("Ingrese un nuevo Libro %s (Dejar vacio para no cambiar): ", encontrado.getIdLibro()));
+        String idLibroTemp = scann.nextLine().trim();
+        int nuevoIdLibro = 0;
+        if(idLibroTemp.length()==0){
+            nuevoIdLibro= encontrado.getIdLibro();
         }
-        while (nuevoIdAlumno == 0){
+        while (nuevoIdLibro == 0){
             try{
-                nuevoIdAlumno= Integer.parseInt(idAlumnoTemp);
-                if(nuevoIdAlumno== 1 || nuevoIdAlumno==2){
+                nuevoIdLibro = Integer.parseInt(idLibroTemp);
+                if(nuevoIdLibro== 1 || nuevoIdLibro==2){
                     break;
                 }
             }
             catch(NumberFormatException e){
-                nuevoIdAlumno = 0;
+                nuevoIdLibro = 0;
             }
             System.out.println("Ingrese un valor correcto: ");
-            idAlumnoTemp = scann.nextLine().trim();
+            idLibroTemp = scann.nextLine().trim();
         }
-        encontrado.setIdAlumno(nuevoIdAlumno);
-          
-        
-        // id sala
-        
-        System.out.print(String.format("Ingrese un nuevo tipo de asistencia  %s (Dejar vacio para no cambiar): ", encontrado.getIdTipoAsis()));
-        String idTipoAsisTemp = scann.nextLine().trim();
-        int nuevoIdTipoAsis = 0;
-        if(idTipoAsisTemp.length()==0){
-            nuevoIdTipoAsis= encontrado.getIdTipoAsis();
-        }
-        while (nuevoIdTipoAsis == 0){
-            try{
-                nuevoIdTipoAsis= Integer.parseInt(idTipoAsisTemp);
-                if(nuevoIdTipoAsis== 1 || nuevoIdTipoAsis==2){
-                    break;
-                }
-            }
-            catch(NumberFormatException e){
-                nuevoIdTipoAsis = 0;
-            }
-            System.out.println("Ingrese un valor correcto: ");
-            idTipoAsisTemp = scann.nextLine().trim();
-        }
-        encontrado.setIdTipoAsis(nuevoIdTipoAsis);
-        
-        // id profesor
-        
-        System.out.print(String.format("Ingrese un nuevo profesor %s (Dejar vacio para no cambiar): ", encontrado.getIdProfesor()));
-        String idProfesorTemp = scann.nextLine().trim();
-        int nuevoIdProfesor = 0;
-        if(idProfesorTemp.length()==0){
-            nuevoIdProfesor= encontrado.getIdProfesor();
-        }
-        while (nuevoIdProfesor == 0){
-            try{
-                nuevoIdProfesor = Integer.parseInt(idProfesorTemp);
-                if(nuevoIdProfesor== 1 || nuevoIdProfesor ==2){
-                    break;
-                }
-            }
-            catch(NumberFormatException e){
-                nuevoIdProfesor= 0;
-            }
-            System.out.println("Ingrese un valor correcto: ");
-            idProfesorTemp = scann.nextLine().trim();
-        }
-        encontrado.setIdProfesor(nuevoIdProfesor);
+        encontrado.setIdLibro(nuevoIdLibro);   
         
         // id Asignatura
         
@@ -316,28 +223,29 @@ public class Main_DetalleLibro {
         }
         encontrado.setIdAsignatura(nuevoIdAsignatura);
         
-        // id Libro
+        // id TIPO ASISTENCIA
         
-        System.out.print(String.format("Ingrese un nuevo Libro %s (Dejar vacio para no cambiar): ", encontrado.getIdLibro()));
-        String idLibroTemp = scann.nextLine().trim();
-        int nuevoIdLibro = 0;
-        if(idLibroTemp.length()==0){
-            nuevoIdLibro= encontrado.getIdLibro();
+        System.out.print(String.format("Ingrese un nuevo tipo de asistencia  %s (Dejar vacio para no cambiar): ", encontrado.getIdTipoAsis()));
+        String idTipoAsisTemp = scann.nextLine().trim();
+        int nuevoIdTipoAsis = 0;
+        if(idTipoAsisTemp.length()==0){
+            nuevoIdTipoAsis= encontrado.getIdTipoAsis();
         }
-        while (nuevoIdLibro == 0){
+        while (nuevoIdTipoAsis == 0){
             try{
-                nuevoIdLibro = Integer.parseInt(idLibroTemp);
-                if(nuevoIdLibro== 1 || nuevoIdLibro==2){
+                nuevoIdTipoAsis= Integer.parseInt(idTipoAsisTemp);
+                if(nuevoIdTipoAsis== 1 || nuevoIdTipoAsis==2){
                     break;
                 }
             }
             catch(NumberFormatException e){
-                nuevoIdLibro = 0;
+                nuevoIdTipoAsis = 0;
             }
             System.out.println("Ingrese un valor correcto: ");
-            idLibroTemp = scann.nextLine().trim();
+            idTipoAsisTemp = scann.nextLine().trim();
         }
-        encontrado.setIdLibro(nuevoIdLibro);
+        encontrado.setIdTipoAsis(nuevoIdTipoAsis);
+       
         
             }
         }
@@ -462,9 +370,7 @@ public class Main_DetalleLibro {
         else{
             for(Detalle_Libro temp:cDLibro.listarDetalles()){
                 System.out.println("-------------------------------------------");
-                System.out.println("Alumnos: "+temp.getIdAlumno());
                 System.out.println("Asistencia: "+temp.getIdTipoAsis());
-                System.out.println("Profesor: "+ temp.getIdProfesor());
                 System.out.println("Asignatura: "+ temp.getIdAsignatura());
                 System.out.println("-------------------------------------------");
             }

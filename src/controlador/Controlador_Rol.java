@@ -99,7 +99,7 @@ public class Controlador_Rol {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "DELETE FROM ROL WHERE idRol = ?"
+                    "DELETE ROL FROM ROL WHERE idRol = ?"
                     );
                         pstm.setInt(1, idRol);
                         if(pstm.executeUpdate() == 1) {

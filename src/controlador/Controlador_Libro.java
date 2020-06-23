@@ -65,7 +65,7 @@ public class Controlador_Libro {
             pstm.setString(1, nuevoLibro.getNivel());
             pstm.setInt(2, nuevoLibro.getIdSala());
             pstm.setInt(3, nuevoLibro.getIdProfesor());
-            pstm.setInt(4,nuevoLibro.getIdLibro());
+            pstm.setInt(5,nuevoLibro.getIdLibro());
             if(pstm.executeUpdate() == 1){
                 salida = true; 
             } 
@@ -91,7 +91,7 @@ public class Controlador_Libro {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "DELETE FROM LIBRO WHERE idLibro = ?"
+                    "DELETE LIBRO FROM LIBRO WHERE idLibro = ?"
                     );
                         pstm.setInt(1, idLibro);
                         if(pstm.executeUpdate() == 1) {
@@ -119,7 +119,7 @@ public class Controlador_Libro {
         Libro encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT nivel, idSala, idProfesor from LIBRO WHERE idLibro = ?"
+                    "SELECT nivel, idSala, idProfesor FROM LIBRO WHERE idLibro = ?"
                     );
                 pstm.setInt(1,idLibro);
                 ResultSet rs = pstm.executeQuery();

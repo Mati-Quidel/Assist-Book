@@ -99,7 +99,7 @@ public class Main_Profesor {
     }
     
     private static void modificarProfesor(){
-        System.out.println("Bienvenido a Modificar Alumno, por favor siga las instrucciones");
+        System.out.println("Bienvenido a Modificar Profesor, por favor siga las instrucciones");
         if(cProfesor.listarProfesores().size()>0){
         System.out.print("Ingrese el ID del Profesor a modificar: ");
         String idProfesorTemp = scann.nextLine().trim();

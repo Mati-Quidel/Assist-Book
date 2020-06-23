@@ -17,7 +17,7 @@ public class Asignatura {
     }
 
     public Asignatura(String nuevoNomAsignatura) {
-        this.nomAsignatura = nuevoNomAsignatura;
+        this.nomAsignatura = (nuevoNomAsignatura);
     }
 
     public Asignatura(int idAsignatura, String nomAsignatura) {

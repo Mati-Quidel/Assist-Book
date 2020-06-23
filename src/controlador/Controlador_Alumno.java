@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.Alumno;
+import modelo.Genero;
 import java.util.List;
 import java.util.ArrayList;
 /**
@@ -32,13 +33,13 @@ public class Controlador_Alumno {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO ALUMNO (rutAlumno,nomAlumno,idGenero,idCredencial,idMatricula) VALUES(?,?,?,?,?)"
+                    "INSERT INTO ALUMNO (rutAlumno,nomAlumno,idGenero,idMatricula,idLibro) VALUES(?,?,?,?.?)"
             );
             pstm.setInt(1, nuevoAlumno.getRutAlumno());
             pstm.setString(2, nuevoAlumno.getNomAlumno());
             pstm.setInt(3, nuevoAlumno.getIdGenero());
-            pstm.setInt(4,nuevoAlumno.getIdCredencial());
             pstm.setInt(5,nuevoAlumno.getIdMatricula());
+            pstm.setInt(6,nuevoAlumno.getIdLibro());
             
             if(pstm.executeUpdate()==1){
                 salida = true;
@@ -65,14 +66,14 @@ public class Controlador_Alumno {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
                     "UPDATE ALUMNO SET rutAlumno = ?,nomAlumno = ?,idGenero = ?,"
-                            + "idCredencial = ?,idMatricula = ? where idALumno = ?"
+                            + "idMatricula = ?, idLibro = ? where idALumno = ?"
                     );
             pstm.setInt(1, nuevoAlumno.getRutAlumno());
             pstm.setInt(1, nuevoAlumno.getRutAlumno());
             pstm.setString(2, nuevoAlumno.getNomAlumno());
             pstm.setInt(3, nuevoAlumno.getIdGenero());
-            pstm.setInt(4,nuevoAlumno.getIdCredencial());
             pstm.setInt(5,nuevoAlumno.getIdMatricula());
+            pstm.setInt(6,nuevoAlumno.getIdLibro());
             pstm.setInt(6,nuevoAlumno.getIdAlumno());
             if(pstm.executeUpdate() == 1){
                 salida = true; 
@@ -99,7 +100,7 @@ public class Controlador_Alumno {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "DELETE FROM ALUMNO WHERE idALumno = ?"
+                    "DELETE ALUMNO FROM ALUMNO WHERE idALumno = ?"
                     );
                         pstm.setInt(1, idAlumno);
                         if(pstm.executeUpdate() == 1) {
@@ -127,7 +128,7 @@ public class Controlador_Alumno {
         Alumno encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT   rutAlumno,nomAlumno,idGenero,idCredencial,idMatricula from ALUMNO WHERE idAlumno = ?"
+                    "SELECT   rutAlumno,nomAlumno,idGenero,idCredencial,idMatricula, idLibro from ALUMNO WHERE idAlumno = ?"
                     );
                 pstm.setInt(1,idAlumno);
                 ResultSet rs = pstm.executeQuery();
@@ -137,7 +138,8 @@ public class Controlador_Alumno {
                             rs.getString(2),
                             rs.getInt(3),
                             rs.getInt(4),
-                            rs.getInt(5));
+                            rs.getInt(5),
+                            rs.getInt(6));
                            
                         }
         
@@ -164,7 +166,7 @@ public class Controlador_Alumno {
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                      "SELECT rutAlumno,nomAlumno,idGenero,idCredencial,idMatricula from ALUMNO"   
+                      "SELECT rutAlumno,nomAlumno,idGenero,idCredencial,idMatricula, idLibro from ALUMNO" 
                     );
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
@@ -173,7 +175,8 @@ public class Controlador_Alumno {
                             rs.getString(2),
                             rs.getInt(3),
                             rs.getInt(4),
-                            rs.getInt(5));
+                            rs.getInt(5),
+                            rs.getInt(6));
                 alumnos.add(temp);
             }
         }

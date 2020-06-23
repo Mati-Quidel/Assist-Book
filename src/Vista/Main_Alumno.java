@@ -116,25 +116,7 @@ public class Main_Alumno {
             System.out.println("Ingrese un valor correcto: ");
             nuevoIdGeneroTemp = scann.nextLine().trim();
         }
-        // ingresar id credencial
-       
-       System.out.print("Ingrese id credencial, si no lo conoce, ponga su rut sin punto si guion:");
-        String nuevoIdCredencialTemp =scann.nextLine().trim();
-       
-        int nuevoIdCredencial=0;
-        while(nuevoIdCredencial==0){
-            try{
-                nuevoIdCredencial = Integer.parseInt(nuevoIdCredencialTemp);
-                if(nuevoIdCredencial >0){
-                    break;
-                }
-            }
-                catch(NumberFormatException e){
-                   nuevoIdCredencial =0;
-                }
-            System.out.println("Ingrese un valor correcto: ");
-           nuevoIdCredencialTemp = scann.nextLine().trim();
-        }
+        
         //ingresar estado matricula
         
         System.out.print("Ingrese 1 ya que su matricula es activa:");
@@ -156,10 +138,30 @@ public class Main_Alumno {
            nuevoIdMatriculaTemp = scann.nextLine().trim();
         }
         
+        // ingresar id Libro
+       
+       System.out.print("Ingrese id Libro :");
+        String nuevoIdLibroTemp =scann.nextLine().trim();
+       
+        int nuevoIdLibro=0;
+        while(nuevoIdLibro==0){
+            try{
+                nuevoIdLibro = Integer.parseInt(nuevoIdLibroTemp);
+                if(nuevoIdLibro >0){
+                    break;
+                }
+            }
+                catch(NumberFormatException e){
+                   nuevoIdLibro =0;
+                }
+            System.out.println("Ingrese un valor correcto: ");
+           nuevoIdLibroTemp = scann.nextLine().trim();
+        }
+        
         
        
         System.out.println("Creando Alumno... por favor espere");
-        Alumno tempAlumno =new Alumno(nuevoRutAlumno,nuevoNomAlumno,nuevoIdGenero,nuevoIdCredencial,nuevoIdMatricula);
+        Alumno tempAlumno =new Alumno(nuevoRutAlumno,nuevoNomAlumno,nuevoIdGenero,nuevoIdMatricula, nuevoIdLibro);
         if(cAlumno.agregarAlumno(tempAlumno)){
             System.out.println("Alumno Agregado Correctamente");
         }
@@ -265,29 +267,6 @@ public class Main_Alumno {
             idGeneroTemp = scann.nextLine().trim();
         }
         encontrado.setIdGenero(nuevoIdGenero);
-        //credencial
-        System.out.print(String.format("Ingrese un nuevo ID credencial %s (Dejar vacio para no cambiar): ", encontrado.getIdCredencial()));
-        String idCredencialTemp = scann.nextLine().trim();
-        
-        int nuevoIdCredencial = 0;
-        if(idCredencialTemp.length()==0){
-            nuevoIdCredencial= encontrado.getIdCredencial();
-        }
-        while (nuevoIdCredencial == 0){
-            try{
-                nuevoIdCredencial = Integer.parseInt(idCredencialTemp);
-                if(nuevoIdCredencial>0){
-                    break;
-                }
-            }
-            catch(NumberFormatException e){
-                nuevoIdCredencial = 0;
-            }
-            System.out.println("Ingrese un valor correcto: ");
-            idCredencialTemp = scann.nextLine().trim();
-        }
-        encontrado.setIdCredencial(nuevoIdCredencial);
-        
         
         //ESTADO MATRICULA
         System.out.print(String.format("Ingrese un nuevo E.Matricula %s (Dejar vacio para no cambiar): ", encontrado.getIdMatricula()));
@@ -313,7 +292,28 @@ public class Main_Alumno {
         }
         encontrado.setIdMatricula(nuevoIdMatricula);
         
+        //Libro
+        System.out.print(String.format("Ingrese un nuevo ID Libro %s (Dejar vacio para no cambiar): ", encontrado.getIdCredencial()));
+        String idLibroTemp = scann.nextLine().trim();
         
+        int nuevoIdLibro = 0;
+        if(idLibroTemp.length()==0){
+            nuevoIdLibro= encontrado.getIdLibro();
+        }
+        while (nuevoIdLibro == 0){
+            try{
+                nuevoIdLibro = Integer.parseInt(idLibroTemp);
+                if(nuevoIdLibro>0){
+                    break;
+                }
+            }
+            catch(NumberFormatException e){
+                nuevoIdLibro = 0;
+            }
+            System.out.println("Ingrese un valor correcto: ");
+            idLibroTemp = scann.nextLine().trim();
+        }
+        encontrado.setIdCredencial(nuevoIdLibro);
         
         System.out.println("Actualizando Alumno...");
         if(cAlumno.modificarAlumno(encontrado)){

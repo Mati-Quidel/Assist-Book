@@ -17,25 +17,38 @@ public class Alumno {
     private int idGenero;
     private int idCredencial;
     private int idMatricula;
-
+    private int idLibro;
+   
+        
     public Alumno() {
     }
 
-    public Alumno( int nuevoRutAlumno, String nuevoNomAlumno, int nuevoIdGenero, int nuevoIdCredencial, int nuevoIdMatricula) {
+    public Alumno( int nuevoRutAlumno, String nuevoNomAlumno, int nuevoIdGenero, int nuevoIdMatricula, int nuevoIdLibro) {
         this.rutAlumno = (nuevoRutAlumno);
         this.nomAlumno = (nuevoNomAlumno);
         this.idGenero = (nuevoIdGenero);
-        this.idCredencial = (nuevoIdCredencial);
         this.idMatricula = (nuevoIdMatricula);
+        this.idLibro = (nuevoIdLibro);
     }
 
-    public Alumno(int idAlumno, int rutAlumno, String nomAlumno, int idGenero, int idCredencial, int idMatricula) {
+    public Alumno(int rutAlumno, String nomAlumno, int idGenero, int idCredencial, int idMatricula, int idLibro) {
+        this.rutAlumno = rutAlumno;
+        this.nomAlumno = nomAlumno;
+        this.idGenero = idGenero;
+        this.idCredencial = idCredencial;
+        this.idMatricula = idMatricula;
+        this.idLibro = idLibro;
+    }
+    
+
+    public Alumno(int idAlumno, int rutAlumno, String nomAlumno, int idGenero, int idCredencial, int idMatricula, int idLibro) {
         this.idAlumno = idAlumno;
         this.rutAlumno = rutAlumno;
         this.nomAlumno = nomAlumno;
         this.idGenero = idGenero;
         this.idCredencial = idCredencial;
         this.idMatricula = idMatricula;
+        this.idLibro = idLibro;
     }
 
     public int getIdAlumno() {
@@ -86,13 +99,19 @@ public class Alumno {
         this.idMatricula = idMatricula;
     }
 
+    public int getIdLibro() {
+        return idLibro;
+    }
+
+    public void setIdLibro(int idLibro) {
+        this.idLibro = idLibro;
+    }
+
     @Override
     public String toString() {
-        return "Alumno{" + "idAlumno=" + idAlumno + ", rutAlumno=" + rutAlumno + ", nomAlumno=" + nomAlumno + ", idGenero=" + idGenero + ", idCredencial=" + idCredencial + ", idMatricula=" + idMatricula + '}';
+        return "Alumno{" + "idAlumno=" + idAlumno + ", rutAlumno=" + rutAlumno + ", nomAlumno=" + nomAlumno + ", idGenero=" + idGenero + ", idCredencial=" + idCredencial + ", idMatricula=" + idMatricula + ", idLibro=" + idLibro + '}';
     }
-    
-    
-    
+
     
    
 }

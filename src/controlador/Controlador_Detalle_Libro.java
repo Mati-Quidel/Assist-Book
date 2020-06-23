@@ -34,14 +34,16 @@ public class Controlador_Detalle_Libro {
         boolean salida = false; 
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion().prepareStatement(
-                    "INSERT INTO DETALLE_ALUMNO (idAlumno,fechaAsis,idTipoAsis,idProfesor,idAsignatura,idLibro) VALUES(?,?,?,?,?,?)"
+                    "INSERT INTO DETALLE_ALUMNO (fechaAsis,idLibro,, idAlumno,idAsignatura, idTipoAsis) VALUES(?,?,?,?,?)"
             );
-            pstm.setInt(1, nuevoDetalle_Libro.getIdAlumno());
-            pstm.setDate(2,nuevoDetalle_Libro.setFechaAsis(Date.valueOf(LocalDate.now())));
-            pstm.setInt(3, nuevoDetalle_Libro.getIdTipoAsis());
-            pstm.setInt(4, nuevoDetalle_Libro.getIdProfesor());
-            pstm.setInt(5, nuevoDetalle_Libro.getIdAsignatura());
-            pstm.setInt(6,nuevoDetalle_Libro.getIdLibro());
+            
+            pstm.setDate(1,nuevoDetalle_Libro.getFechaAsis());
+            pstm.setInt(2,nuevoDetalle_Libro.getIdLibro());
+            pstm.setInt(3,nuevoDetalle_Libro.getIdAlumno());
+            pstm.setInt(4, nuevoDetalle_Libro.getIdAsignatura());
+            pstm.setInt(5, nuevoDetalle_Libro.getIdTipoAsis());
+            
+            
             
             if(pstm.executeUpdate()==1){
                 salida = true;
@@ -67,15 +69,15 @@ public class Controlador_Detalle_Libro {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "UPDATE DETALLE_LIBRO SET idAlumno = ?, fechaAsis = ?, idTipoAsis = ?,idProfesor = ?,idAsignatura = ?,idLibro = ? where idDetalle = ?"
+                    "UPDATE DETALLE_LIBRO SET fechaAsis = ?,idLibro = ?,idAlumno = ?,idAsignatura = ?, idTipoAsis = ? where idDetalle = ?"
                     );
-            pstm.setInt(1, nuevoDetalle_Libro.getIdAlumno());
-            pstm.setDate(2, nuevoDetalle_Libro.getFechaAsis());
-            pstm.setInt(3, nuevoDetalle_Libro.getIdTipoAsis());
-            pstm.setInt(4, nuevoDetalle_Libro.getIdProfesor());
-            pstm.setInt(5, nuevoDetalle_Libro.getIdAsignatura());
-            pstm.setInt(6, nuevoDetalle_Libro.getIdLibro());
-            pstm.setInt(7, nuevoDetalle_Libro.getIdDetalle());
+            
+            pstm.setDate(1,nuevoDetalle_Libro.getFechaAsis());
+            pstm.setInt(2,nuevoDetalle_Libro.getIdLibro());
+            pstm.setInt(3,nuevoDetalle_Libro.getIdAlumno());
+            pstm.setInt(4, nuevoDetalle_Libro.getIdAsignatura());
+            pstm.setInt(5, nuevoDetalle_Libro.getIdTipoAsis());
+            pstm.setInt(6, nuevoDetalle_Libro.getIdDetalle());
             if(pstm.executeUpdate() == 1){
                 salida = true; 
             } 
@@ -129,18 +131,17 @@ public class Controlador_Detalle_Libro {
         Detalle_Libro encontrado = null;
         try{ PreparedStatement pstm = this.getConexion().obtenerConexion()
                 .prepareStatement(
-                    "SELECT idAlumno,fechaAsis,idTipoAsis,idProfesor,idAsignatura,idLibro from DETALLE_LIBRO WHERE idDetalle = ?"
+                    "SELECT fechaAsis,idLibro,idAlumno, idAsignatura, idTipoAsis FROM DETALLE_LIBRO WHERE idDetalle = ?"
                     );
                 pstm.setInt(1,idDetalle);
                 ResultSet rs = pstm.executeQuery();
                         if(rs.first()){
                             encontrado = new Detalle_Libro(
-                            rs.getInt(1),
-                            rs.getDate(2),        
+                            rs.getDate(1),        
+                            rs.getInt(2),
                             rs.getInt(3),
                             rs.getInt(4),
-                            rs.getInt(5),
-                            rs.getInt(6));
+                            rs.getInt(5));
                            
                         }
         
@@ -167,17 +168,16 @@ public class Controlador_Detalle_Libro {
         try {
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                      "SELECT idAlumno,fechaAsis,idTipoAsis,idProfesor,idAsignatura,idLibro FROM DETALLE_LIBRO"   
+                      "SELECT fechaAsis,idLibro,idAlumo,idAsignatura, idTipoAsis FROM DETALLE_LIBRO"   
                     );
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
                 Detalle_Libro temp = new Detalle_Libro (
-                        rs.getInt(1),
-                        rs.getDate(2),
+                        rs.getDate(1),        
+                        rs.getInt(2),
                         rs.getInt(3),
                         rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getInt(6));
+                        rs.getInt(5));
                 detalles.add(temp);
             }
         }

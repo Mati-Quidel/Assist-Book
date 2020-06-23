@@ -93,7 +93,7 @@ public class Controlador_Profesor {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "DELETE FROM PROFESOR WHERE idProfesor = ?"
+                    "DELETE PROFESOR FROM PROFESOR WHERE idProfesor = ?"
                     );
                         pstm.setInt(1, idProfesor);
                         if(pstm.executeUpdate() == 1) {

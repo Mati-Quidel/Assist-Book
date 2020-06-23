@@ -19,8 +19,8 @@ public class Profesor {
     }
 
     public Profesor(int nuevoRutProfe, String nuevoNomProfe) {
-        this.rutProfe = nuevoRutProfe;
-        this.nomProfe = nuevoNomProfe;
+        this.rutProfe = (nuevoRutProfe);
+        this.nomProfe = (nuevoNomProfe);
     }
 
     public Profesor(int idProfesor, int rutProfe, String nomProfe) {

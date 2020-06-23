@@ -88,7 +88,7 @@ public class Controlador_Credencial {
         try{
             PreparedStatement pstm = this.getConexion().obtenerConexion()
                     .prepareStatement(
-                    "DELETE FROM CREDENCIAL WHERE idCredencial = ?"
+                    "DELETE CREDENCIAL FROM CREDENCIAL WHERE idCredencial = ?"
                     );
                         pstm.setInt(1, idCredencial);
                         if(pstm.executeUpdate() == 1) {

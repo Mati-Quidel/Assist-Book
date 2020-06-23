@@ -17,10 +17,6 @@ public class Genero {
        
     }
 
-    public Genero(int nuevoTipoGenero) {
-        this.tipoGenero = nuevoTipoGenero;
-    }
-
     public Genero(int idGenero, int tipoGenero) {
         this.idGenero = idGenero;
         this.tipoGenero = tipoGenero;

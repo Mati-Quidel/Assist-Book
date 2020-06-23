@@ -20,7 +20,7 @@ public class testControlador_Profesor {
        //testBuscarProfesor(1);
        //testModificarProfesor();
        //testEliminarProfesor(278);
-       testListarProfesores();
+        //testListarProfesores();
     }
     
     public static void testAgregarProfesor(){

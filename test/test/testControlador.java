@@ -7,6 +7,7 @@
 package test;
 import controlador.Controlador_Alumno;
 import  modelo.Alumno;
+import modelo.Genero;
 import java.util.List;
 /**
  *
@@ -15,6 +16,7 @@ import java.util.List;
 public class testControlador {
 
     private static final Controlador_Alumno cAlumno = new Controlador_Alumno();
+    
     
     public static void main (String... args){
        //testAgregarAlumno();
@@ -25,7 +27,7 @@ public class testControlador {
     }
     
     public static void testAgregarAlumno(){
-        Alumno nuevoAlumno = new Alumno (18977887,"Gómez Veas Alisson",1,1,278);
+        Alumno nuevoAlumno = new Alumno (18977887,"Gómez Veas Alisson",1,1,1);
         if(cAlumno.agregarAlumno(nuevoAlumno)){
             System.out.println(String.format("El alumno %s fue agregado", nuevoAlumno.getNomAlumno()));
         }else{
@@ -46,7 +48,7 @@ public class testControlador {
     }
 
     public static void testModificarAlumno(){
-        Alumno alumAMod = new Alumno(18977887,"Gómez Veas Alisson",1,1,278);
+        Alumno alumAMod = new Alumno(18977887,"Gómez Veas Alisson",1,1,1);
         if(cAlumno.modificarAlumno(alumAMod)){
             System.out.println("Modificado Correctamente");
         }else{
@@ -61,11 +63,15 @@ public class testControlador {
             System.out.println("No se elimino");
         }
     }
-   
+
+    
     public static void testListarAlumnos(){
         List<Alumno> alumnos = cAlumno.listarAlumnos();
                 for(Alumno temp:alumnos){
-                    System.out.println("nombre: "+temp.getNomAlumno()+ " Rut: "+temp.getRutAlumno());
+                    System.out.println("------------------------------");
+                    System.out.println("Nombre: "+temp.getNomAlumno()+"\n"
+                                        + " Rut: "+temp.getRutAlumno());
+                    System.out.println("------------------------------");
                 }
     }
     

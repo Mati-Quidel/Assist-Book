@@ -26,10 +26,10 @@ public class Main_Libro {
             opcion=scann.nextInt();
        
             if(opcion==1){
-                agregarLibro();
+                agregarLibro ();
             }
             else if(opcion==2){
-                modificarLibro();
+                 modificarLibro();
             }
             else if(opcion==3){
                 eliminarLibro();
@@ -47,6 +47,7 @@ public class Main_Libro {
             limpiarConsola();  
         }
         System.exit(0);
+        
     }
     
     private static void menuLibro(){
@@ -68,18 +69,17 @@ public class Main_Libro {
             System.out.println("\b");
         }
     }
-    
+    //AGREGAR LIBRO
     private static void agregarLibro(){
         limpiarConsola();
-        System.out.println("Bienvenido a la creación de un nuevo Libro.\n");
-        //Ingresando nivel
+        System.out.println("Bienvenidos a la creación de un nuevo Alumno.\n");
+        //Ingresar Nivel
         System.out.print("Ingrese el Nivel (ejemplo 1A):");
         String nuevoNivel =scann.nextLine().trim();
         while(nuevoNivel.length()==0){
             System.out.println("Ingrese un nivel junto a su letra (ejemplo 1A) : ");
             nuevoNivel = scann.nextLine().trim();
         }
-        
         
         //Ingresar id sala
         
@@ -102,8 +102,8 @@ public class Main_Libro {
            nuevoIdSalaTemp = scann.nextLine().trim();
         }
         
-        //Ingresar id profesor
-        
+    
+    //Agregar profesor
         System.out.print("Ingrese el ID del profesor:");
         String nuevoIdProfesorTemp =scann.nextLine().trim();
        
@@ -123,12 +123,12 @@ public class Main_Libro {
            nuevoIdProfesorTemp = scann.nextLine().trim();
         }
         
-        
-        
-    }
-    //modificar rol
+       }
+    
+    
+    //MODIFICAR LIBRO
     private static void modificarLibro(){
-        System.out.println("Bienvenido a Modificar Rol, por favor siga las instrucciones");
+        System.out.println("Bienvenido a Modificar Libro, por favor siga las instrucciones");
         if(cLibro.listarLibros().size()>0){
         System.out.print("Ingrese el ID del Libro a modificar: ");
         String idLibroTemp = scann.nextLine().trim();
@@ -149,7 +149,7 @@ public class Main_Libro {
         System.out.println("Buscando Libro...");
         Libro encontrado = cLibro.buscarLibro(idBuscar);
         while(encontrado == null){
-            System.out.println("La ID no es de un Rol válido, intente de nuevo");
+            System.out.println("La ID no es de un Libro válido, intente de nuevo");
             System.out.print("Vuelva a ingresar una ID ");
             idLibroTemp = scann.nextLine();
             idBuscar =0;
@@ -170,18 +170,16 @@ public class Main_Libro {
             System.out.println("Buscando Libro...");
             encontrado = cLibro.buscarLibro(idBuscar);
         }
-            
-        // modificar nivel
+        // nivel
             System.out.print(String.format("Ingrese un nuevo nivel para %s (Deje vacio para no cambiar) :", encontrado.getNivel()));
             String nuevoNivel = scann.nextLine().trim();
             if(nuevoNivel.length()>0){
                 encontrado.setNivel(nuevoNivel);
             }
-          
-        
+            
         // id sala
         
-        System.out.print(String.format("Ingrese un nuevo profesor %s (Dejar vacio para no cambiar): ", encontrado.getIdSala()));
+        System.out.print(String.format("Ingrese un nueva sala %s (Dejar vacio para no cambiar): ", encontrado.getIdSala()));
         String idSalaTemp = scann.nextLine().trim();
         int nuevoIdSala = 0;
         if(idSalaTemp.length()==0){
@@ -190,12 +188,12 @@ public class Main_Libro {
         while (nuevoIdSala == 0){
             try{
                 nuevoIdSala = Integer.parseInt(idSalaTemp);
-                if(nuevoIdSala== 1 || nuevoIdSala==2){
+                if(nuevoIdSala== 1 || nuevoIdSala ==2){
                     break;
                 }
             }
             catch(NumberFormatException e){
-                nuevoIdSala = 0;
+                nuevoIdSala= 0;
             }
             System.out.println("Ingrese un valor correcto: ");
             idSalaTemp = scann.nextLine().trim();
@@ -223,16 +221,12 @@ public class Main_Libro {
             System.out.println("Ingrese un valor correcto: ");
             idProfesorTemp = scann.nextLine().trim();
         }
-        encontrado.setIdProfesor(nuevoIdProfesor);
-        
-        
-        
-            }
-        }
+        encontrado.setIdProfesor(nuevoIdProfesor);}}
     
-
+    
+    //ELIMINAR LIBRO
     private static void eliminarLibro(){
-        System.out.println("Bienvenido a Eliminar Libro");
+        
         if(cLibro.listarLibros().size()>0){
         System.out.print("Ingrese un ID para eliminar un Libro");
         String idLibroTemp = scann.nextLine().trim();
@@ -250,7 +244,7 @@ public class Main_Libro {
             System.out.print("Debe ingresar una ID valida: ");
             idLibroTemp = scann.nextLine().trim();
         }
-        System.out.println("Buscando Rol...");
+        System.out.println("Buscando Libro...");
         Libro encontrado = cLibro.buscarLibro(idLibro);
         while(encontrado == null){
             System.out.println("la ID no es de un Libro valido");
@@ -287,7 +281,7 @@ public class Main_Libro {
         System.out.print("Presione Enter para continuar...");
         scann.nextLine();
     }
-    
+        
     private static void buscarLibro(){
         System.out.println("Bienvenido a Buscar Libro");
         if(cLibro.listarLibros().size()>0){
@@ -340,7 +334,7 @@ public class Main_Libro {
         System.out.print("Presione Enter para continuar");
         scann.nextLine();
     }
-    
+
     private static void listarLibros(){
         List<Libro> libros = cLibro.listarLibros();
         System.out.println("Buscando Libros...");

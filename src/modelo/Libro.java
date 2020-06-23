@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.util.List;
+
 /**
  *
  * @author Matias
@@ -14,7 +16,12 @@ public class Libro {
     private String nivel;
     private int idSala;
     private int idProfesor;
+    private List<Alumno> Alumnos;
 
+    public Libro() {
+    }
+    
+    
     public Libro(String nuevoNivel, int nuevoIdSala, int nuevoIdProfesor) {
         this.nivel = (nuevoNivel);
         this.idSala = (nuevoIdSala);
@@ -64,10 +71,13 @@ public class Libro {
     public String toString() {
         return "Libro{" + "idLibro=" + idLibro + ", nivel=" + nivel + ", idSala=" + idSala + ", idProfesor=" + idProfesor + '}';
     }
+
     
+
     
+
     
-    
+
    
                 
 }
